@@ -14,7 +14,7 @@ static void BM_SimpleTransform(benchmark::State& state) {
     std::iota(data.begin(), data.end(), 0);
 
     for (auto _ : state) {
-        auto result = Pipeline<int,int>::from(data)
+        auto result = from(data)
             .transform([](int x) { return x * 2; })
             .collect(data);
         benchmark::DoNotOptimize(result);
@@ -31,7 +31,7 @@ static void BM_FilterTransform(benchmark::State& state) {
     std::iota(data.begin(), data.end(), 0);
 
     for (auto _ : state) {
-        auto result = Pipeline<int,int>::from(data)
+        auto result = from(data)
             .filter([](int x) { return x % 2 == 0; })
             .transform([](int x) { return x * x; })
             .collect(data);
@@ -67,7 +67,7 @@ static void BM_WithStats(benchmark::State& state) {
     std::iota(data.begin(), data.end(), 0);
 
     for (auto _ : state) {
-        auto result = Pipeline<int,int>::from(data)
+        auto result = from(data)
             .with_stats()
             .filter([](int x) { return x % 2 == 0; })
             .transform([](int x) { return x * 2; })
@@ -85,7 +85,7 @@ static void BM_EmptyPipeline(benchmark::State& state) {
     std::iota(data.begin(), data.end(), 0);
 
     for (auto _ : state) {
-        auto result = Pipeline<int,int>::from(data)
+        auto result = from(data)
             .collect(data);
         benchmark::DoNotOptimize(result);
     }
@@ -100,7 +100,7 @@ static void BM_ParallelFilterTransform(benchmark::State& state) {
     std::iota(data.begin(), data.end(), 0);
 
     for (auto _ : state) {
-        auto result = Pipeline<int,int>::from(data)
+        auto result = from(data)
             .filter([](int x) { return x % 2 == 0; })
             .transform([](int x) { return x * x; })
             .parallel(std::thread::hardware_concurrency(), ExecutionPolicy::ParallelPreserveOrder)
@@ -118,7 +118,7 @@ static void BM_ParallelUnordered(benchmark::State& state) {
     std::iota(data.begin(), data.end(), 0);
 
     for (auto _ : state) {
-        auto result = Pipeline<int,int>::from(data)
+        auto result = from(data)
             .filter([](int x) { return x % 2 == 0; })
             .transform([](int x) { return x * x; })
             .parallel(std::thread::hardware_concurrency(), ExecutionPolicy::ParallelUnordered)

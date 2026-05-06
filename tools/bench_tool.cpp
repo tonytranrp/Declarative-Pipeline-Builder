@@ -10,11 +10,11 @@ void run_benchmark(size_t data_size) {
 
     std::cout << "\n=== Benchmarking with " << data_size << " items ===\n";
 
-    auto result = dpb::Pipeline<int, int>::from(data)
+    auto result = dpb::from(data)
         .with_stats()
-        .filter([](int x) { return x % 2 == 0; })
-        .transform([](int x) { return x * x; })
-        .filter([](int x) { return x < 100000; })
+        .where([](int x) { return x % 2 == 0; })
+        .map([](int x) { return x * x; })
+        .where([](int x) { return x < 100000; })
         .collect(data);
 
     result.print_stats();
@@ -28,7 +28,6 @@ int main(int argc, char* argv[]) {
         size_t size = std::stoull(argv[1]);
         run_benchmark(size);
     } else {
-        // Default: run multiple sizes
         for (size_t size : {1000, 10000, 100000, 1000000}) {
             run_benchmark(size);
         }

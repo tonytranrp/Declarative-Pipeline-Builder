@@ -39,7 +39,7 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
     target_link_options(declarative_pipeline INTERFACE
         $<$<CONFIG:Release>:/LTCG>      # Link-time code generation
     )
-elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+    elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU" OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     target_compile_options(declarative_pipeline INTERFACE
         $<$<CONFIG:Release>:-O3>
         $<$<CONFIG:Release>:-march=native>
@@ -64,39 +64,36 @@ target_include_directories(fast_pipeline INTERFACE
 )
 target_compile_features(fast_pipeline INTERFACE cxx_std_23)
 
-# Maximum optimization for fast pipeline
-if(CMAKE_BUILD_TYPE STREQUAL "Release")
-    if(MSVC)
-        target_compile_options(fast_pipeline INTERFACE
-            /O2          # Max optimization
-            /Ob3         # Aggressive inlining
-            /GL          # Whole program optimization
-            /Oi          # Intrinsic functions
-            /Ot          # Favor speed
-            /GS-         # Disable security checks (if safe)
-            /Oy          # Omit frame pointers
-            /arch:AVX2   # Enable AVX2
-        )
-        target_link_options(fast_pipeline INTERFACE
-            /LTCG        # Link-time code generation
-        )
-    else()  # GCC/Clang
-        target_compile_options(fast_pipeline INTERFACE
-            -O3
-            -march=native
-            -mtune=native
-            -flto
-            -ffast-math
-            -funroll-loops
-            -finline-functions
-            -fomit-frame-pointer
-            -fno-exceptions  # If you don't need them
-            -fno-rtti        # If you don't need them
-        )
-        target_link_options(fast_pipeline INTERFACE
-            -flto
-        )
-    endif()
+if(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
+    target_compile_options(fast_pipeline INTERFACE
+        $<$<CONFIG:Release>:/O2>
+        $<$<CONFIG:Release>:/Ob3>
+        $<$<CONFIG:Release>:/GL>
+        $<$<CONFIG:Release>:/Oi>
+        $<$<CONFIG:Release>:/Ot>
+        $<$<CONFIG:Release>:/GS->
+        $<$<CONFIG:Release>:/Oy>
+        $<$<CONFIG:Release>:/arch:AVX2>
+    )
+    target_link_options(fast_pipeline INTERFACE
+        $<$<CONFIG:Release>:/LTCG>
+    )
+else()
+    target_compile_options(fast_pipeline INTERFACE
+        $<$<CONFIG:Release>:-O3>
+        $<$<CONFIG:Release>:-march=native>
+        $<$<CONFIG:Release>:-mtune=native>
+        $<$<CONFIG:Release>:-flto>
+        $<$<CONFIG:Release>:-ffast-math>
+        $<$<CONFIG:Release>:-funroll-loops>
+        $<$<CONFIG:Release>:-finline-functions>
+        $<$<CONFIG:Release>:-fomit-frame-pointer>
+        $<$<CONFIG:Release>:-fno-exceptions>
+        $<$<CONFIG:Release>:-fno-rtti>
+    )
+    target_link_options(fast_pipeline INTERFACE
+        $<$<CONFIG:Release>:-flto>
+    )
 endif()
 
 # Tests
@@ -148,9 +145,9 @@ if(DPB_BUILD_BENCHMARKS)
     )
 
     target_compile_options(pipeline_benchmarks PRIVATE
-        -O3
-        -march=native
-        -DNDEBUG
+        $<$<CONFIG:Release>:-DNDEBUG>
+        $<$<CXX_COMPILER_ID:MSVC>:/O2 /Ob3 /arch:AVX2>
+        $<$<CXX_COMPILER_ID:GNU,Clang>:-O3 -march=native>
     )
 endif()
 

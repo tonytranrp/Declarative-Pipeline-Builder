@@ -3,33 +3,16 @@
 #include "concepts.hpp"
 #include "pipeline_stats.hpp"
 #include "profiler.hpp"
+#include "../thread_pool.hpp"
 
 #include <vector>
 #include <memory>
 #include <functional>
 #include <ranges>
 #include <algorithm>
-#include <variant>
-#include <iostream>
-#include <optional>
+#include <span>
 #include <thread>
-#include <future>
-
-// Performance intrinsics
-#ifdef _MSC_VER
-#include <intrin.h>
-inline uint64_t read_tsc() noexcept {
-    return __rdtsc();
-}
-#define PREFETCH(addr) _mm_prefetch((char*)(addr), _MM_HINT_T0)
-#else
-inline uint64_t read_tsc() noexcept {
-    uint32_t lo, hi;
-    __asm__ __volatile__ ("rdtsc" : "=a"(lo), "=d"(hi));
-    return ((uint64_t)hi << 32) | lo;
-}
-#define PREFETCH(addr) __builtin_prefetch(addr, 0, 3)
-#endif
+#include <optional>
 
 namespace dpb {
 
@@ -53,7 +36,7 @@ struct ResultWithStats {
     size_t items_processed{0};
     size_t items_filtered{0};
     size_t errors{0};
-    size_t total_items{0};  // ✅ NEW
+    size_t total_items{0};
     std::chrono::nanoseconds total_duration{0};
 
     ResultWithStats(std::vector<T> d, size_t processed, size_t filtered, size_t errs, size_t total, std::chrono::nanoseconds duration)
@@ -65,7 +48,6 @@ struct ResultWithStats {
         std::cout << "Items filtered: " << items_filtered << "\n";
         std::cout << "Errors: " << errors << "\n";
 
-        // Show total input items for clarity
         if (total_items > 0) {
             std::cout << "Total input items: " << total_items << "\n";
             std::cout << "Pass rate: " << std::fixed << std::setprecision(2)
@@ -77,9 +59,8 @@ struct ResultWithStats {
                   << std::chrono::duration<double, std::milli>(total_duration).count()
                   << " ms\n";
 
-        // ✅ FIXED: Calculate latency based on TOTAL items, not just processed
         if (total_items > 0) {
-            auto latency_ns = total_duration.count() / total_items;  // Per input item, not per passed item
+            auto latency_ns = total_duration.count() / total_items;
             std::cout << "Average latency: " << latency_ns << " ns/item (per input)\n";
 
             double throughput = total_items / std::chrono::duration<double>(total_duration).count();
@@ -112,32 +93,31 @@ struct ResultWithStats {
 
 template<typename In, typename Out = In, typename OpFunc = std::function<bool(const In&, Out&)>>
 class Pipeline {
-    OpFunc operation_;  // ✅ ZERO overhead - stores actual lambda type, not std::function!
-    PipelineStats* stats_{nullptr};  // Raw pointer - no atomic ref counting
-    Profiler* profiler_{nullptr};
-    ExecutionPolicy                exec_policy_ = ExecutionPolicy::Sequential;
-    std::size_t                    parallelism_ = std::thread::hardware_concurrency();
+    OpFunc operation_;
+    std::shared_ptr<PipelineStats> stats_;
+    std::shared_ptr<Profiler> profiler_;
+    ExecutionPolicy exec_policy_ = ExecutionPolicy::Sequential;
+    std::size_t parallelism_ = std::thread::hardware_concurrency();
 
 public:
-    // Internal constructor for chaining operations (not for public use)
     template<typename F>
     Pipeline(F&& op,
-             PipelineStats* stats = nullptr,
-             Profiler* prof = nullptr,
+             std::shared_ptr<PipelineStats> stats = nullptr,
+             std::shared_ptr<Profiler> prof = nullptr,
              ExecutionPolicy exec_policy = ExecutionPolicy::Sequential,
              std::size_t parallelism = std::thread::hardware_concurrency())
         : operation_(std::forward<F>(op)),
-          stats_(stats),
-          profiler_(prof),
+          stats_(std::move(stats)),
+          profiler_(std::move(prof)),
           exec_policy_(exec_policy),
           parallelism_(parallelism) {}
+
     Pipeline() : operation_([](const In& x, Out& out) -> bool {
-        if constexpr (std::convertible_to<const In&, Out>) {
+        if constexpr (std::is_convertible_v<const In&, Out>) {
             out = static_cast<Out>(x);
             return true;
-        } else {
-            return false;
         }
+        return false;
     }) {}
 
     // Static factory
@@ -147,27 +127,22 @@ public:
         return Pipeline<T, T>{};
     }
 
-    // Enable stats tracking
-    [[nodiscard]] auto with_stats() && noexcept {
-        // User manages lifetime - typically stack allocated
-        // This avoids heap allocation + ref counting
-        static thread_local PipelineStats local_stats;
-        local_stats.reset();
-        stats_ = &local_stats;
+    [[nodiscard]] auto with_stats() && {
+        auto new_stats = std::make_shared<PipelineStats>();
         return Pipeline<In, Out, OpFunc>(
-            std::move(operation_), stats_, profiler_, exec_policy_, parallelism_
+            std::move(operation_), std::move(new_stats), profiler_, exec_policy_, parallelism_
         );
     }
 
-    // Enable profiling
-    [[nodiscard]] auto with_profiler() && noexcept {
-        profiler_ = std::make_shared<Profiler>();
-        return std::move(*this);
+    [[nodiscard]] auto with_profiler() && {
+        auto new_prof = std::make_shared<Profiler>();
+        return Pipeline<In, Out, OpFunc>(
+            std::move(operation_), stats_, std::move(new_prof), exec_policy_, parallelism_
+        );
     }
 
-    // Get stats
-    [[nodiscard]] const PipelineStats& stats() const noexcept { return *stats_; }
-    [[nodiscard]] const Profiler& profiler() const noexcept { return *profiler_; }
+    [[nodiscard]] const PipelineStats* stats() const noexcept { return stats_.get(); }
+    [[nodiscard]] const Profiler* profiler() const noexcept { return profiler_.get(); }
 
     // Enable parallel execution
     [[nodiscard]] auto parallel(std::size_t threads = std::thread::hardware_concurrency(),
@@ -182,13 +157,11 @@ public:
     [[nodiscard]] std::size_t parallelism() const noexcept { return parallelism_; }
     [[nodiscard]] ExecutionPolicy execution_policy() const noexcept { return exec_policy_; }
 
-    // ✅ OPTIMIZED: filter - fused instead of wrapped
+    // Fused filter: operation + predicate compose into single lambda
     template<typename Fn>
-    [[nodiscard]] auto filter(Fn&& fn) && {
-        // Instead of capturing prev_op, we fuse the operations directly
+    [[nodiscard]] [[gnu::hot]] auto filter(Fn&& fn) && {
         auto fused = [op = std::move(operation_),
-                      pred = std::forward<Fn>(fn)](const In& x, Out& out) constexpr noexcept(noexcept(pred(out))) -> bool {
-            // Single pass: apply operation then filter in place
+                      pred = std::forward<Fn>(fn)](const In& x, Out& out) noexcept(noexcept(pred(out))) -> bool {
             return op(x, out) && pred(out);
         };
 
@@ -197,17 +170,16 @@ public:
         );
     }
 
-    // ✅ OPTIMIZED: transform - fused with intermediate elimination
+    // Fused transform: operation + transform compose into single lambda, no intermediate allocation
     template<typename Fn>
-    [[nodiscard]] auto transform(Fn&& fn) && {
+    [[nodiscard]] [[gnu::hot]] auto transform(Fn&& fn) && {
         using NewOut = decltype(fn(std::declval<const Out&>()));
 
         auto fused = [op = std::move(operation_),
-                      tfn = std::forward<Fn>(fn)](const In& x, NewOut& out) constexpr noexcept(noexcept(tfn(std::declval<Out>()))) -> bool {
-            // Eliminate temporary - compute directly into out
+                      tfn = std::forward<Fn>(fn)](const In& x, NewOut& out) noexcept(noexcept(tfn(std::declval<Out>()))) -> bool {
             Out temp;
             if (!op(x, temp)) [[unlikely]] return false;
-            out = tfn(std::move(temp));  // Move instead of copy when possible
+            out = tfn(std::move(temp));
             return true;
         };
 
@@ -216,8 +188,257 @@ public:
         );
     }
 
+    // ── Aliases ──────────────────────────────────────────────────────────
 
-    // Collect with optimizations - supports parallel execution
+    template<typename Fn>
+    [[nodiscard]] auto map(Fn&& fn) && {
+        return std::move(*this).transform(std::forward<Fn>(fn));
+    }
+
+    template<typename Fn>
+    [[nodiscard]] auto where(Fn&& fn) && {
+        return std::move(*this).filter(std::forward<Fn>(fn));
+    }
+
+    // ── Stream control ───────────────────────────────────────────────────
+
+    [[nodiscard]] auto take(std::size_t n) && {
+        auto fused = [op = std::move(operation_),
+                      remaining = n](const In& x, Out& out) mutable -> bool {
+            if (remaining == 0) return false;
+            --remaining;
+            return op(x, out);
+        };
+        return Pipeline<In, Out, decltype(fused)>(
+            std::move(fused), stats_, profiler_, exec_policy_, parallelism_
+        );
+    }
+
+    [[nodiscard]] auto skip(std::size_t n) && {
+        auto fused = [op = std::move(operation_),
+                      skip_count = n](const In& x, Out& out) mutable -> bool {
+            if (skip_count > 0) {
+                --skip_count;
+                return false;
+            }
+            return op(x, out);
+        };
+        return Pipeline<In, Out, decltype(fused)>(
+            std::move(fused), stats_, profiler_, exec_policy_, parallelism_
+        );
+    }
+
+    template<typename Fn>
+    [[nodiscard]] auto take_while(Fn&& pred) && {
+        auto fused = [op = std::move(operation_),
+                      pred = std::forward<Fn>(pred),
+                      active = true](const In& x, Out& out) mutable -> bool {
+            if (!active) return false;
+            if (!op(x, out)) return false;
+            if (!pred(out)) { active = false; return false; }
+            return true;
+        };
+        return Pipeline<In, Out, decltype(fused)>(
+            std::move(fused), stats_, profiler_, exec_policy_, parallelism_
+        );
+    }
+
+    template<typename Fn>
+    [[nodiscard]] auto skip_while(Fn&& pred) && {
+        auto fused = [op = std::move(operation_),
+                      pred = std::forward<Fn>(pred),
+                      skipping = true](const In& x, Out& out) mutable -> bool {
+            if (!op(x, out)) return false;
+            if (skipping && pred(out)) return false;
+            skipping = false;
+            return true;
+        };
+        return Pipeline<In, Out, decltype(fused)>(
+            std::move(fused), stats_, profiler_, exec_policy_, parallelism_
+        );
+    }
+
+    // ── Side-effect tap ──────────────────────────────────────────────────
+
+    template<typename Fn>
+    [[nodiscard]] auto tee(Fn&& fn) && {
+        auto fused = [op = std::move(operation_),
+                      side_effect = std::forward<Fn>(fn)](const In& x, Out& out) mutable -> bool {
+            if (!op(x, out)) return false;
+            side_effect(out);
+            return true;
+        };
+        return Pipeline<In, Out, decltype(fused)>(
+            std::move(fused), stats_, profiler_, exec_policy_, parallelism_
+        );
+    }
+
+    template<typename Fn>
+    [[nodiscard]] auto inspect(Fn&& fn) && {
+        return std::move(*this).tee(std::forward<Fn>(fn));
+    }
+
+    // ── Terminal reductions ──────────────────────────────────────────────
+
+    template<std::ranges::input_range Range, typename Acc, typename Fn>
+    [[nodiscard]] auto fold(Range&& input, Acc initial, Fn&& fn) && {
+        Acc acc = std::move(initial);
+        auto it = std::ranges::begin(input);
+        auto end = std::ranges::end(input);
+        while (it != end) {
+            Out out_val;
+            if (operation_(*it++, out_val)) {
+                acc = fn(std::move(acc), std::move(out_val));
+            }
+        }
+        return acc;
+    }
+
+    template<std::ranges::input_range Range>
+    [[nodiscard]] auto count(Range&& input) && {
+        size_t c = 0;
+        auto it = std::ranges::begin(input);
+        auto end = std::ranges::end(input);
+        while (it != end) {
+            Out out_val;
+            if (operation_(*it++, out_val)) ++c;
+        }
+        return c;
+    }
+
+    template<std::ranges::input_range Range>
+    [[nodiscard]] auto sum(Range&& input) && {
+        return std::move(*this).fold(std::forward<Range>(input), Out{}, std::plus<>{});
+    }
+
+    template<std::ranges::input_range Range, typename Comp = std::less<Out>>
+    [[nodiscard]] auto min(Range&& input, Comp comp = {}) && {
+        return std::move(*this).fold(std::forward<Range>(input),
+            std::optional<Out>{},
+            [&comp](std::optional<Out> acc, Out val) {
+                return (!acc || comp(val, *acc)) ? std::optional<Out>(std::move(val)) : acc;
+            });
+    }
+
+    template<std::ranges::input_range Range, typename Comp = std::less<Out>>
+    [[nodiscard]] auto max(Range&& input, Comp comp = {}) && {
+        return std::move(*this).fold(std::forward<Range>(input),
+            std::optional<Out>{},
+            [&comp](std::optional<Out> acc, Out val) {
+                return (!acc || comp(*acc, val)) ? std::optional<Out>(std::move(val)) : acc;
+            });
+    }
+
+    template<std::ranges::input_range Range, typename Fn>
+    [[nodiscard]] bool all_of(Range&& input, Fn&& pred) && {
+        auto it = std::ranges::begin(input);
+        auto end = std::ranges::end(input);
+        while (it != end) {
+            Out out_val;
+            if (operation_(*it++, out_val)) {
+                if (!pred(out_val)) return false;
+            }
+        }
+        return true;
+    }
+
+    template<std::ranges::input_range Range, typename Fn>
+    [[nodiscard]] bool any_of(Range&& input, Fn&& pred) && {
+        auto it = std::ranges::begin(input);
+        auto end = std::ranges::end(input);
+        while (it != end) {
+            Out out_val;
+            if (operation_(*it++, out_val)) {
+                if (pred(out_val)) return true;
+            }
+        }
+        return false;
+    }
+
+    template<std::ranges::input_range Range, typename Fn>
+    [[nodiscard]] bool none_of(Range&& input, Fn&& pred) && {
+        return !std::move(*this).any_of(std::forward<Range>(input), std::forward<Fn>(pred));
+    }
+
+    // ── Collect to vector (no stats wrapper) ─────────────────────────────
+
+    template<typename Range>
+    [[nodiscard]] auto to_vector(Range&& input) && {
+        return std::move(*this).collect(std::forward<Range>(input)).data;
+    }
+
+    // Collect with post-processing: sort
+    template<std::ranges::input_range Range, typename Comp = std::less<Out>>
+    [[nodiscard]] auto collect_sorted(Range&& input, Comp comp = {}) && {
+        auto result = std::move(*this).collect(std::forward<Range>(input));
+        std::sort(result.data.begin(), result.data.end(), comp);
+        return result;
+    }
+
+    // Collect with post-processing: distinct
+    template<std::ranges::input_range Range>
+    [[nodiscard]] auto collect_distinct(Range&& input) && {
+        auto result = std::move(*this).collect(std::forward<Range>(input));
+        std::sort(result.data.begin(), result.data.end());
+        auto [first, last] = std::unique(result.data.begin(), result.data.end());
+        result.data.erase(last, result.data.end());
+        return result;
+    }
+
+    // ── Collect with output iterator (zero-copy sink) ────────────────────
+    template<std::ranges::input_range Range, std::output_iterator<Out> OutIter>
+    [[nodiscard]] OutIter collect_into(Range&& input, OutIter out) && {
+        auto it = std::ranges::begin(input);
+        auto end = std::ranges::end(input);
+        while (it != end) {
+            Out out_val;
+            if (operation_(*it++, out_val)) {
+                *out++ = std::move(out_val);
+            }
+        }
+        return out;
+    }
+
+    // ── Flat map (one-to-many transform, terminal) ────────────────────────
+
+    template<std::ranges::input_range Range, typename Fn>
+    [[nodiscard]] auto flat_map(Range&& input, Fn&& fn) && {
+        using MappedRange = decltype(fn(std::declval<Out>()));
+        using MappedType = std::ranges::range_value_t<MappedRange>;
+        std::vector<MappedType> result;
+        auto it = std::ranges::begin(input);
+        auto end = std::ranges::end(input);
+        while (it != end) {
+            Out out_val;
+            if (operation_(*it++, out_val)) {
+                auto mapped = fn(std::move(out_val));
+                result.insert(result.end(),
+                              std::ranges::begin(mapped),
+                              std::ranges::end(mapped));
+            }
+        }
+        return result;
+    }
+
+    // ── Scan (prefix accumulation) ────────────────────────────────────────
+
+    template<std::ranges::input_range Range, typename Acc, typename Fn>
+    [[nodiscard]] auto scan(Range&& input, Acc initial, Fn&& fn) && {
+        std::vector<Acc> result;
+        Acc acc = std::move(initial);
+        auto it = std::ranges::begin(input);
+        auto end = std::ranges::end(input);
+        while (it != end) {
+            Out out_val;
+            if (operation_(*it++, out_val)) {
+                acc = fn(acc, std::move(out_val));
+            }
+            result.push_back(acc);
+        }
+        return result;
+    }
+
+    // ── Collect ──────────────────────────────────────────────────────────
     template<typename Range>
     [[nodiscard]] auto collect(Range&& input) && {
         if (!is_parallel() || !std::ranges::sized_range<Range>) {
@@ -238,31 +459,16 @@ private:
     auto collect_sequential(Range&& input) {
         std::vector<Out> result;
 
-        // Cache-friendly vector reserve
         if constexpr (std::ranges::sized_range<Range>) {
             const size_t input_size = std::ranges::size(input);
-
-            // Reserve in cache-line friendly chunks (64 bytes = 16 ints on x64)
-            constexpr size_t elements_per_cacheline = 64 / sizeof(Out);
-            size_t estimated = input_size >> 1;  // 50% pass rate estimate
-
-            // Round up to nearest cache line boundary
-            estimated = ((estimated + elements_per_cacheline - 1) / elements_per_cacheline) * elements_per_cacheline;
-
+            size_t estimated = input_size;
             result.reserve(estimated);
         }
 
-        // Start timing with RDTSC (much faster than std::chrono)
-        uint64_t start_cycles = 0;
-        if (stats_) {
-            start_cycles = read_tsc();  // ~1 ns vs 20-50 ns for chrono
-        }
+        auto start_time = std::chrono::high_resolution_clock::now();
 
-        // Local counters - NO atomic overhead per item
         size_t processed_count = 0;
         size_t filtered_count = 0;
-
-        // ✅ ULTRA-HOT LOOP - optimized with prefetching and branchless counters
         auto it = std::ranges::begin(input);
         auto end = std::ranges::end(input);
 
@@ -270,47 +476,34 @@ private:
             auto&& in_val = *it;
             ++it;
 
-            // Prefetch next item (if not at end)
-            if (it != end) [[likely]] {
-                PREFETCH(&(*it));
-            }
-
             Out out_val;
             bool passed = operation_(in_val, out_val);
 
-            // Branchless: use passed as 0/1 multiplier
             if (passed) [[likely]] {
                 if constexpr (std::is_trivially_copyable_v<Out> && sizeof(Out) <= 64) {
-                    result.push_back(out_val);  // Copy for trivial types
+                    result.push_back(out_val);
                 } else {
-                    result.push_back(std::move(out_val));  // Move for complex types
+                    result.push_back(std::move(out_val));
                 }
             }
 
-            // Branchless counters - compiler optimizes to CMOV instruction
             processed_count += passed;
             filtered_count += !passed;
         }
 
-        // End timing and batch-update atomics ONCE
         if (stats_) {
-            uint64_t end_cycles = read_tsc();
-            uint64_t cycles_elapsed = end_cycles - start_cycles;
-
-            // Convert cycles to nanoseconds (approximate)
-            // Assuming 3 GHz CPU: 1 cycle = 0.333 ns
-            // Adjust multiplier based on your CPU frequency
-            uint64_t ns_elapsed = (cycles_elapsed * 10) / 30;  // Integer math: cycles * (10/30)
+            auto end_time = std::chrono::high_resolution_clock::now();
+            auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end_time - start_time).count();
 
             stats_->items_processed.fetch_add(processed_count, std::memory_order_relaxed);
             stats_->items_filtered.fetch_add(filtered_count, std::memory_order_relaxed);
             stats_->total_items.fetch_add(processed_count + filtered_count, std::memory_order_relaxed);
-            stats_->total_duration_ns.fetch_add(ns_elapsed, std::memory_order_relaxed);
+            stats_->total_duration_ns.fetch_add(elapsed, std::memory_order_relaxed);
         }
 
         if (stats_) {
             return ResultWithStats<Out>{
-                result,  // ✅ NRVO (Named Return Value Optimization) handles this
+                std::move(result),
                 stats_->items_processed.load(),
                 stats_->items_filtered.load(),
                 stats_->errors.load(),
@@ -319,48 +512,49 @@ private:
             };
         }
         return ResultWithStats<Out>{
-            result,  // ✅ NRVO handles this
+            std::move(result),
             result.size(), 0, 0, result.size(),
             std::chrono::nanoseconds{0}
         };
     }
 
-    // Parallel collection
+    // Parallel collection using thread pool
     template<std::ranges::input_range Range>
     [[nodiscard]] auto collect_parallel(Range&& input) {
         const std::size_t total = std::ranges::size(input);
-        const std::size_t threads = std::min<std::size_t>(parallelism_, total);
-        const std::size_t base_chunk = total / threads;
-        const std::size_t remainder = total % threads;
+        const std::size_t num_threads = std::min<std::size_t>(parallelism_, total);
+        const std::size_t base_chunk = total / num_threads;
+        const std::size_t remainder = total % num_threads;
 
-        // Convert input to contiguous buffer for thread-safe access
-        std::vector<In> buffer;
+        // Thread-safe access: for contiguous ranges use span to avoid copy
+        const In* data_ptr;
+        std::vector<In> noncontiguous_buffer;
         if constexpr (std::ranges::contiguous_range<Range>) {
-            buffer.assign(std::ranges::begin(input), std::ranges::end(input));
+            data_ptr = std::ranges::data(input);
         } else {
-            buffer.assign(std::ranges::begin(input), std::ranges::end(input));
+            noncontiguous_buffer.assign(std::ranges::begin(input), std::ranges::end(input));
+            data_ptr = noncontiguous_buffer.data();
         }
 
-        std::vector<std::vector<Out>> local_results(threads);
-        std::vector<std::thread> workers;
-        workers.reserve(threads);
+        std::vector<std::vector<Out>> local_results(num_threads);
+        auto& pool = global_thread_pool();
+        std::vector<std::future<void>> futures;
+        futures.reserve(num_threads);
 
-        // ✅ START TIMING
         auto start_time = std::chrono::high_resolution_clock::now();
 
         std::size_t offset = 0;
-        for (std::size_t t = 0; t < threads; ++t) {
+        for (std::size_t t = 0; t < num_threads; ++t) {
             const std::size_t chunk_size = base_chunk + (t < remainder ? 1 : 0);
-            if (chunk_size == 0) break;
+            if (chunk_size == 0) continue;
 
-            auto chunk_begin = buffer.data() + offset;
+            auto chunk_begin = data_ptr + offset;
             offset += chunk_size;
-            auto chunk_end = buffer.data() + offset;
+            auto chunk_end = data_ptr + offset;
 
-            workers.emplace_back([this, &local_results, t, chunk_begin, chunk_end]() {
-                local_results[t].reserve(static_cast<std::size_t>(chunk_end - chunk_begin));
+            futures.push_back(pool.enqueue([this, &local_results, t, chunk_begin, chunk_end, chunk_size]() {
+                local_results[t].reserve(chunk_size);
 
-                // Local counters for this thread - batch update later
                 size_t local_processed = 0;
                 size_t local_filtered = 0;
 
@@ -374,24 +568,19 @@ private:
                     }
                 }
 
-                // Batch update atomics once per thread (not per item)
                 if (stats_) {
                     stats_->items_processed.fetch_add(local_processed, std::memory_order_relaxed);
                     stats_->items_filtered.fetch_add(local_filtered, std::memory_order_relaxed);
                 }
-            });
+            }));
         }
 
-        // Wait for all threads to complete
-        for (auto& th : workers) {
-            if (th.joinable()) th.join();
-        }
+        for (auto& f : futures) f.get();
 
-        // ✅ END TIMING - record duration after all work complete
         if (stats_) {
             auto end_time = std::chrono::high_resolution_clock::now();
             auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end_time - start_time).count();
-            stats_->total_items.fetch_add(total, std::memory_order_relaxed);  // ✅ NEW: Total input items
+            stats_->total_items.fetch_add(total, std::memory_order_relaxed);
             stats_->total_duration_ns.fetch_add(elapsed, std::memory_order_relaxed);
         }
 
@@ -401,18 +590,10 @@ private:
         for (auto& v : local_results) total_out += v.size();
         merged.reserve(total_out);
 
-        if (exec_policy_ == ExecutionPolicy::ParallelPreserveOrder) {
-            for (auto& v : local_results) {
-                merged.insert(merged.end(),
-                            std::make_move_iterator(v.begin()),
-                            std::make_move_iterator(v.end()));
-            }
-        } else { // ParallelUnordered
-            for (auto& v : local_results) {
-                merged.insert(merged.end(),
-                            std::make_move_iterator(v.begin()),
-                            std::make_move_iterator(v.end()));
-            }
+        for (auto& v : local_results) {
+            merged.insert(merged.end(),
+                          std::make_move_iterator(v.begin()),
+                          std::make_move_iterator(v.end()));
         }
 
         if (stats_) {
@@ -421,13 +602,24 @@ private:
                 stats_->items_processed.load(),
                 stats_->items_filtered.load(),
                 stats_->errors.load(),
-                stats_->total_items.load(),  // ✅ NEW
+                stats_->total_items.load(),
                 std::chrono::nanoseconds{stats_->total_duration_ns.load()}
             };
-        } else {
-            return ResultWithStats<Out>{std::move(merged), merged.size(), 0, 0, total, std::chrono::nanoseconds{0}};  // ✅ NEW: total input items
         }
+        return ResultWithStats<Out>{
+            std::move(merged),
+            merged.size(), 0, 0, total,
+            std::chrono::nanoseconds{0}
+        };
     }
 };
+
+// ── Free function: convenience entry point ───────────────────────────────────
+
+template<std::ranges::input_range Range>
+[[nodiscard]] auto from(Range&&) noexcept {
+    using T = std::ranges::range_value_t<Range>;
+    return Pipeline<T, T>{};
+}
 
 } // namespace dpb

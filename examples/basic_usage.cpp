@@ -3,87 +3,110 @@
 #include <iostream>
 #include <numeric>
 #include <chrono>
+#include <string>
 
 int main() {
     using namespace dpb;
 
-    std::cout << "=== Declarative Pipeline Builder Examples ===\n\n";
+    std::cout << "=== Declarative Pipeline Builder ===\n\n";
 
-    // Test 1: Simple transform
-    std::cout << "Test 1: Simple transform\n";
-    std::vector<int> input1 = {1, 2, 3};
-    auto result1 = Pipeline<int,int>::from(input1)
-        .transform([](int x) { return x * 2; })
-        .collect(input1);
-
-    std::cout << "Input: 1, 2, 3\n";
-    std::cout << "Result: ";
-    for (int x : result1) std::cout << x << " ";
+    // ── Aliases: map and where ──────────────────────────────────────────
+    std::cout << "--- Aliases: map / where ---\n";
+    auto v1 = from(std::vector{1, 2, 3, 4, 5})
+        .where([](int x) { return x > 2; })
+        .map([](int x) { return x * 10; })
+        .to_vector(std::vector{1, 2, 3, 4, 5});
+    for (int x : v1) std::cout << x << " ";
     std::cout << "\n\n";
 
-    // Test 2: Simple filter
-    std::cout << "Test 2: Simple filter\n";
-    std::vector<int> input2 = {1, 2, 3, 4, 5};
-    auto result2 = Pipeline<int,int>::from(input2)
-        .filter([](int x) { return x > 3; })
-        .collect(input2);
+    // ── Stream control: take / skip ─────────────────────────────────────
+    std::cout << "--- Stream control: take / skip ---\n";
+    std::vector<int> numbers(20);
+    std::iota(numbers.begin(), numbers.end(), 1);
 
-    std::cout << "Input: 1, 2, 3, 4, 5\n";
-    std::cout << "Filtered (> 3): ";
-    for (int x : result2) std::cout << x << " ";
+    auto taken = from(numbers).take(5).to_vector(numbers);
+    std::cout << "take(5): ";
+    for (int x : taken) std::cout << x << " ";
+    std::cout << "\n";
+
+    auto skipped = from(numbers).skip(15).to_vector(numbers);
+    std::cout << "skip(15): ";
+    for (int x : skipped) std::cout << x << " ";
     std::cout << "\n\n";
 
-    // Test 3: Filter then transform
-    std::cout << "Test 3: Filter then transform\n";
-    std::vector<int> input3 = {1, 2, 3, 4, 5};
-    auto result3 = Pipeline<int,int>::from(input3)
-        .filter([](int x) { return x > 3; })
-        .transform([](int x) { return x * 2; })
-        .collect(input3);
+    // ── Side effects: tee ───────────────────────────────────────────────
+    std::cout << "--- Side effects: tee ---\n";
+    int seen = 0;
+    auto result = from(numbers)
+        .take(6)
+        .tee([&seen](int x) { seen++; })
+        .collect(numbers);
+    std::cout << "Processed " << result.size() << " items, tee observed " << seen << "\n\n";
 
-    std::cout << "Filter (> 3) then transform (* 2): ";
-    for (int x : result3) std::cout << x << " ";
+    // ── Reductions ───────────────────────────────────────────────────────
+    std::cout << "--- Reductions ---\n";
+    std::vector<int> data = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+
+    auto total = from(data).sum(data);
+    std::cout << "sum: " << total << "\n";
+
+    auto evens = from(data)
+        .where([](int x) { return x % 2 == 0; })
+        .count(data);
+    std::cout << "even count: " << evens << "\n";
+
+    auto min_val = from(data).min(data);
+    std::cout << "min: " << (min_val.has_value() ? std::to_string(*min_val) : "none") << "\n";
+
+    bool all_positive = from(data).all_of(data, [](int x) { return x > 0; });
+    std::cout << "all positive: " << (all_positive ? "true" : "false") << "\n\n";
+
+    // ── flat_map ─────────────────────────────────────────────────────────
+    std::cout << "--- flat_map ---\n";
+    auto expanded = from(data)
+        .take(3)
+        .flat_map(data, [](int x) {
+            return std::vector<int>{x, x * 100};
+        });
+    std::cout << "flat_map [1,2,3] -> ";
+    for (int x : expanded) std::cout << x << " ";
     std::cout << "\n\n";
 
-    // Test 4: Transform then filter
-    std::cout << "Test 4: Transform then filter\n";
-    std::vector<int> input4 = {1, 2, 3, 4, 5, 6};
-    auto result4 = Pipeline<int,int>::from(input4)
-        .transform([](int x) { return x * 2; })
-        .filter([](int x) { return x > 6; })
-        .collect(input4);
-
-    std::cout << "Transform (* 2) then filter (> 6): ";
-    for (int x : result4) std::cout << x << " ";
+    // ── scan ─────────────────────────────────────────────────────────────
+    std::cout << "--- scan ---\n";
+    auto running = from(data)
+        .take(5)
+        .scan(data, 0, [](int acc, int x) { return acc + x; });
+    std::cout << "running sum: ";
+    for (int x : running) std::cout << x << " ";
     std::cout << "\n\n";
 
-    // Test 5: Parallel execution
-    std::cout << "Test 5: Parallel execution\n";
-    std::vector<int> input5(10000);
-    std::iota(input5.begin(), input5.end(), 0);
+    // ── Performance comparison ──────────────────────────────────────────
+    std::cout << "--- Performance ---\n";
+    std::vector<int> big(100000);
+    std::iota(big.begin(), big.end(), 0);
 
-    auto start = std::chrono::high_resolution_clock::now();
-    auto result5_seq = Pipeline<int,int>::from(input5)
-        .filter([](int x) { return x % 2 == 0; })
-        .transform([](int x) { return x * 2; })
-        .collect(input5);
-    auto end_seq = std::chrono::high_resolution_clock::now();
+    auto start_seq = std::chrono::high_resolution_clock::now();
+    auto seq = from(big)
+        .where([](int x) { return x % 2 == 0; })
+        .map([](int x) { return x * x; })
+        .collect(big);
+    auto seq_time = std::chrono::duration<double, std::milli>(
+        std::chrono::high_resolution_clock::now() - start_seq).count();
 
     auto start_par = std::chrono::high_resolution_clock::now();
-    auto result5_par = Pipeline<int,int>::from(input5)
-        .filter([](int x) { return x % 2 == 0; })
-        .transform([](int x) { return x * 2; })
-        .parallel(4, ExecutionPolicy::ParallelPreserveOrder)
-        .collect(input5);
-    auto end_par = std::chrono::high_resolution_clock::now();
+    auto par = from(big)
+        .where([](int x) { return x % 2 == 0; })
+        .map([](int x) { return x * x; })
+        .parallel(8)
+        .collect(big);
+    auto par_time = std::chrono::duration<double, std::milli>(
+        std::chrono::high_resolution_clock::now() - start_par).count();
 
-    auto seq_time = std::chrono::duration<double, std::milli>(end_seq - start).count();
-    auto par_time = std::chrono::duration<double, std::milli>(end_par - start_par).count();
-
-    std::cout << "Sequential time: " << seq_time << " ms\n";
-    std::cout << "Parallel time: " << par_time << " ms\n";
-    std::cout << "Speedup: " << (seq_time / par_time) << "x\n";
-    std::cout << "Results match: " << (result5_seq == result5_par) << "\n\n";
+    std::cout << "Sequential: " << seq_time << " ms\n";
+    std::cout << "Parallel:   " << par_time << " ms\n";
+    std::cout << "Speedup:    " << (seq_time / par_time) << "x\n";
+    std::cout << "Match:      " << (seq == par ? "yes" : "no") << "\n";
 
     return 0;
 }

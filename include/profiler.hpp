@@ -44,12 +44,10 @@ public:
         }
     }
 
-    // Reset profiler for reuse
     void reset() {
         profiles_.clear();
     }
 
-    // Get total time across all stages
     std::chrono::nanoseconds total_time() const {
         std::chrono::nanoseconds total{0};
         for (const auto& [name, profile] : profiles_) {

@@ -7,6 +7,7 @@
 #include "pipeline/pipeline.hpp"
 #include "pipeline_stats.hpp"
 #include "profiler.hpp"
+#include "thread_pool.hpp"
 
 // Version information
 #define DECLARATIVE_PIPELINE_VERSION_MAJOR 1

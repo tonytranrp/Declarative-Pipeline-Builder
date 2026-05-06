@@ -35,13 +35,11 @@ int main() {
 
     std::vector<int> data = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
-    // Simple pipeline: filter even numbers, square them
-    auto result = Pipeline<int, int>::from(data)
-        .filter([](int x) { return x % 2 == 0; })
-        .transform([](int x) { return x * x; })
+    auto result = from(data)
+        .where([](int x) { return x % 2 == 0; })
+        .map([](int x) { return x * x; })
         .collect(data);
 
-    // Result: [4, 16, 36, 64, 100]
     for (int x : result) std::cout << x << " ";
     // Output: 4 16 36 64 100
 
@@ -52,80 +50,31 @@ int main() {
 ### Parallel Execution
 
 ```cpp
-#include <declarative_pipeline.hpp>
-#include <vector>
-#include <numeric>
-
-int main() {
-    using namespace dpb;
-
-    std::vector<int> data(1000000);
-    std::iota(data.begin(), data.end(), 0);
-
-    // Parallel pipeline with preserved ordering
-    auto result = Pipeline<int, int>::from(data)
-        .parallel(8)  // Use 8 threads
-        .filter([](int x) { return x % 2 == 0; })
-        .transform([](int x) { return x * x; })
-        .collect(data);
-
-    std::cout << "Processed " << result.size() << " even squares\n";
-    return 0;
-}
+auto result = dpb::from(data)
+    .parallel(8)
+    .where([](int x) { return x % 2 == 0; })
+    .map([](int x) { return x * x; })
+    .collect(data);
 ```
 
-### Performance Monitoring
+### With Stats
 
 ```cpp
-auto result = Pipeline<int, int>::from(data)
+auto result = dpb::from(data)
     .with_stats()
-    .filter([](int x) { return x % 2 == 0; })
-    .transform([](int x) { return x * x; })
+    .where([](int x) { return x % 2 == 0; })
+    .map([](int x) { return x * x; })
     .collect(data);
 
 result.print_stats();
-// Output:
-// === Pipeline Statistics ===
-// Items processed: 241412
-// Items filtered: 758588
-// Total input items: 1000000
-// Pass rate: 24.14%
-// Total duration: 2.135 ms
-// Average latency: 2 ns/item (per input)
-// Throughput: 468358189 items/sec
-```
-
-### Type Transformations
-
-```cpp
-#include <declarative_pipeline.hpp>
-#include <vector>
-#include <string>
-
-int main() {
-    using namespace dpb;
-
-    std::vector<int> numbers = {1, 2, 3, 4, 5};
-
-    // Transform: int → string → length
-    auto result = Pipeline<int, int>::from(numbers)
-        .transform([](int x) { return std::to_string(x); })     // int → string
-        .transform([](const std::string& s) { return s.length(); }) // string → size_t
-        .collect(numbers);
-
-    for (size_t len : result) std::cout << len << " ";
-    // Output: 1 1 1 1 1
-
-    return 0;
-}
 ```
 
 ## 🏗️ Building and Installation
 
 ### Requirements
-- **C++17** or later (C++20 recommended for full features)
+- **C++23** or later
 - **CMake 3.20+**
-- **Modern C++ compiler** (GCC 9+, Clang 10+, MSVC 2019+)
+- **Modern C++ compiler** (GCC 13+, Clang 17+, MSVC 2022+)
 
 ### Build Instructions
 
@@ -179,65 +128,65 @@ include_directories(path/to/declarative-pipeline-builder/include)
 
 ## 📚 API Reference
 
-### Core Classes
+### Entry Point
 
-#### `Pipeline<In, Out>`
-Generic pipeline builder class with fluent API supporting arbitrary type transformations.
-
-**Template Parameters:**
-- `In`: Input element type
-- `Out`: Current output element type (changes through transformation chain)
-
-**Methods:**
-- `static auto from(Range&& input)` - Create pipeline from input range (infers types automatically)
-- `auto filter(Fn&& func)` - Add filter stage (operates on current `Out` type)
-- `auto transform(Fn&& func)` - Add transform stage (can change `Out` type)
-- `auto parallel(size_t threads, ExecutionPolicy policy)` - Enable parallel execution
-- `auto with_stats()` - Enable statistics collection
-- `auto with_profiler()` - Enable profiling
-- `auto collect(Range&& input)` - Execute pipeline and return `ResultWithStats<FinalOut>`
-
-#### `ResultWithStats<T>`
-Container for pipeline results with performance statistics.
-
-**Methods:**
-- `size()`, `empty()`, `operator[]` - Vector-like interface
-- `print_stats()` - Print detailed performance metrics
-- `items_processed`, `items_filtered`, `total_duration` - Raw statistics
-
-#### `ExecutionPolicy`
-Enum controlling parallel execution behavior.
-
-**Values:**
-- `Sequential` - Single-threaded execution (default)
-- `ParallelPreserveOrder` - Multi-threaded with preserved ordering
-- `ParallelUnordered` - Multi-threaded without ordering guarantees
-
-### Pipeline Operations
-
-#### Filter
 ```cpp
-.filter([](const T& item) -> bool { return condition; })
+auto pipeline = dpb::from(data);  // Infers types automatically
 ```
-Keeps only elements where the predicate returns `true`.
 
-#### Transform
-```cpp
-.transform([](const T& item) -> U { return transformed_item; })
-```
-Applies a function to each element, potentially changing the type. Supports arbitrary type transformations (e.g., `int` → `std::string`, `std::string` → custom structs).
+### Core Operations
 
-#### Parallel Execution
-```cpp
-.parallel(thread_count, ExecutionPolicy::ParallelPreserveOrder)
-```
-Enables multi-threaded execution. Automatically falls back to sequential for small datasets.
+| Method | Description |
+|--------|-------------|
+| `filter(Fn)` / `where(Fn)` | Keep elements where predicate returns `true` |
+| `transform(Fn)` / `map(Fn)` | Apply function to each element, may change type |
+| `take(n)` | Keep first `n` elements |
+| `skip(n)` | Skip first `n` elements |
+| `take_while(Fn)` | Take elements while predicate holds |
+| `skip_while(Fn)` | Skip elements while predicate holds |
+| `tee(Fn)` / `inspect(Fn)` | Observe elements without modifying (side-effect tap) |
+| `flat_map(input, Fn)` | One-to-many transform (terminal operation) |
+| `scan(input, init, Fn)` | Running prefix accumulation (terminal operation) |
 
-#### Statistics Collection
+### Terminal Reductions
+
+| Method | Description |
+|--------|-------------|
+| `fold(input, init, Fn)` | Generic left fold |
+| `sum(input)` | Sum all values |
+| `count(input)` | Count elements passing through |
+| `min(input)` / `max(input)` | Find min/max (returns `std::optional`) |
+| `all_of(input, Fn)` | True if all elements satisfy predicate |
+| `any_of(input, Fn)` | True if any element satisfies predicate |
+| `none_of(input, Fn)` | True if no element satisfies predicate |
+
+### Collectors
+
+| Method | Description |
+|--------|-------------|
+| `collect(input)` | Execute and return `ResultWithStats<T>` |
+| `to_vector(input)` | Execute and return plain `std::vector<T>` |
+| `collect_sorted(input)` | Execute and sort results |
+| `collect_distinct(input)` | Execute and deduplicate results |
+| `collect_into(input, iter)` | Zero-copy sink via output iterator |
+
+### Pipeline Configuration
+
+| Method | Description |
+|--------|-------------|
+| `parallel(n, policy)` | Enable multi-threaded execution |
+| `with_stats()` | Enable performance statistics |
+| `with_profiler()` | Enable per-stage profiling |
+
+### Quick Start (v2 DSL)
 ```cpp
-.with_stats()
+#include <declarative_pipeline.hpp>
+
+auto result = dpb::from(data)
+    .where([](int x) { return x % 2 == 0; })
+    .map([](int x) { return x * x; })
+    .collect(data);
 ```
-Enables detailed performance monitoring and statistics collection.
 
 ## 🧪 Testing
 
