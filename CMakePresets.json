@@ -1,0 +1,54 @@
+{
+  "version": 6,
+  "configurePresets": [
+    {
+      "name": "default",
+      "displayName": "Default (no optional deps)",
+      "binaryDir": "${sourceDir}/build/default",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "DPB_BUILD_TESTS": "OFF",
+        "DPB_BUILD_EXAMPLES": "ON",
+        "DPB_BUILD_BENCHMARKS": "OFF"
+      }
+    },
+    {
+      "name": "with-simd",
+      "displayName": "With Highway SIMD",
+      "inherits": "default",
+      "binaryDir": "${sourceDir}/build/simd",
+      "cacheVariables": {
+        "DPB_ENABLE_SIMD": "ON"
+      }
+    },
+    {
+      "name": "with-fmt",
+      "displayName": "With {fmt} formatting",
+      "inherits": "default",
+      "binaryDir": "${sourceDir}/build/fmt",
+      "cacheVariables": {
+        "DPB_ENABLE_FMT": "ON"
+      }
+    },
+    {
+      "name": "with-tracy",
+      "displayName": "With Tracy profiling",
+      "inherits": "default",
+      "binaryDir": "${sourceDir}/build/tracy",
+      "cacheVariables": {
+        "DPB_ENABLE_TRACY": "ON"
+      }
+    },
+    {
+      "name": "all-deps",
+      "displayName": "All optional dependencies enabled",
+      "inherits": "default",
+      "binaryDir": "${sourceDir}/build/all-deps",
+      "cacheVariables": {
+        "DPB_ENABLE_SIMD": "ON",
+        "DPB_ENABLE_FMT": "ON",
+        "DPB_ENABLE_TRACY": "ON"
+      }
+    }
+  ]
+}

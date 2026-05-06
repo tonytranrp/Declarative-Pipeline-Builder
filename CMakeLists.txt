@@ -17,6 +17,14 @@ option(DPB_BUILD_TESTS "Build tests" ON)
 option(DPB_BUILD_EXAMPLES "Build examples" ON)
 option(DPB_BUILD_BENCHMARKS "Build benchmarks" ON)
 option(DPB_BUILD_DOCS "Build documentation" OFF)
+option(DPB_ENABLE_SIMD "Enable Highway SIMD vectorization" OFF)
+option(DPB_ENABLE_FMT "Use {fmt} for output formatting" OFF)
+option(DPB_ENABLE_TRACY "Enable Tracy profiling integration" OFF)
+
+set(CMAKE_INTERPROCEDURAL_OPTIMIZATION_RELEASE ON)
+
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+include(CompilerFlags)
 
 # Library
 add_library(declarative_pipeline INTERFACE)
@@ -25,36 +33,7 @@ target_include_directories(declarative_pipeline INTERFACE
     $<INSTALL_INTERFACE:include>
 )
 
-# Aggressive optimization flags for performance
-if(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
-    target_compile_options(declarative_pipeline INTERFACE
-        $<$<CONFIG:Release>:/O2>        # Maximum optimization
-        $<$<CONFIG:Release>:/Ob3>       # Aggressive inlining
-        $<$<CONFIG:Release>:/GL>        # Whole program optimization
-        $<$<CONFIG:Release>:/Oi>        # Intrinsic functions
-        $<$<CONFIG:Release>:/Ot>        # Favor fast code
-        $<$<CONFIG:Release>:/arch:AVX2> # Enable AVX2 instructions
-        $<$<CONFIG:Release>:/GS->       # Disable security checks for speed
-    )
-    target_link_options(declarative_pipeline INTERFACE
-        $<$<CONFIG:Release>:/LTCG>      # Link-time code generation
-    )
-    elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU" OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-    target_compile_options(declarative_pipeline INTERFACE
-        $<$<CONFIG:Release>:-O3>
-        $<$<CONFIG:Release>:-march=native>
-        $<$<CONFIG:Release>:-flto>
-        $<$<CONFIG:Release>:-ffast-math>
-        $<$<CONFIG:Release>:-funroll-loops>
-        $<$<CONFIG:Release>:-finline-functions>
-        $<$<CONFIG:Release>:-fno-exceptions>
-    )
-endif()
-
-# Coroutine support will be added later when MSVC fully supports C++23 coroutines
-# if(MSVC)
-#     target_compile_options(declarative_pipeline INTERFACE /await)
-# endif()
+dpb_apply_optimization_flags(declarative_pipeline)
 
 # Fast pipeline library - zero overhead implementation
 add_library(fast_pipeline INTERFACE)
@@ -64,37 +43,10 @@ target_include_directories(fast_pipeline INTERFACE
 )
 target_compile_features(fast_pipeline INTERFACE cxx_std_23)
 
-if(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
-    target_compile_options(fast_pipeline INTERFACE
-        $<$<CONFIG:Release>:/O2>
-        $<$<CONFIG:Release>:/Ob3>
-        $<$<CONFIG:Release>:/GL>
-        $<$<CONFIG:Release>:/Oi>
-        $<$<CONFIG:Release>:/Ot>
-        $<$<CONFIG:Release>:/GS->
-        $<$<CONFIG:Release>:/Oy>
-        $<$<CONFIG:Release>:/arch:AVX2>
-    )
-    target_link_options(fast_pipeline INTERFACE
-        $<$<CONFIG:Release>:/LTCG>
-    )
-else()
-    target_compile_options(fast_pipeline INTERFACE
-        $<$<CONFIG:Release>:-O3>
-        $<$<CONFIG:Release>:-march=native>
-        $<$<CONFIG:Release>:-mtune=native>
-        $<$<CONFIG:Release>:-flto>
-        $<$<CONFIG:Release>:-ffast-math>
-        $<$<CONFIG:Release>:-funroll-loops>
-        $<$<CONFIG:Release>:-finline-functions>
-        $<$<CONFIG:Release>:-fomit-frame-pointer>
-        $<$<CONFIG:Release>:-fno-exceptions>
-        $<$<CONFIG:Release>:-fno-rtti>
-    )
-    target_link_options(fast_pipeline INTERFACE
-        $<$<CONFIG:Release>:-flto>
-    )
-endif()
+dpb_apply_optimization_flags(fast_pipeline)
+
+# Optional dependency integration (must come after library targets)
+include(Dependencies)
 
 # Tests
 if(DPB_BUILD_TESTS)
@@ -173,7 +125,8 @@ if(DPB_BUILD_BENCHMARKS)
     target_compile_features(bench_tool PRIVATE cxx_std_23)
 endif()
 
-# Install
+# Install (skip when optional deps enabled — they're not in the export set)
+if(NOT DPB_ENABLE_SIMD AND NOT DPB_ENABLE_FMT AND NOT DPB_ENABLE_TRACY)
 install(TARGETS declarative_pipeline
     EXPORT DeclarativePipelineBuilderTargets
     INCLUDES DESTINATION include
@@ -186,3 +139,4 @@ install(EXPORT DeclarativePipelineBuilderTargets
     NAMESPACE DeclarativePipelineBuilder::
     DESTINATION lib/cmake/DeclarativePipelineBuilder
 )
+endif()

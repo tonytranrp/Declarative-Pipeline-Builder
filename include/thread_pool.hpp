@@ -8,7 +8,17 @@
 #include <cstddef>
 #include <chrono>
 #include <memory>
-#include <stop_token>
+
+// Apple Clang's libc++ does not ship jthread/stop_token yet. Use <thread> + atomics.
+#if defined(__cpp_lib_jthread) && __cpp_lib_jthread >= 201911L
+#  if __has_include(<stop_token>)
+#    include <stop_token>
+#    define DPB_HAS_JTHREAD 1
+#  endif
+#endif
+#ifndef DPB_HAS_JTHREAD
+#  define DPB_HAS_JTHREAD 0
+#endif
 
 namespace dpb {
 
@@ -76,17 +86,30 @@ class ThreadPool {
     };
 
     // workers_ declared BEFORE threads_ → threads destroyed first (reverse order).
-    // This guarantees worker data (ring buffers, atomics) outlives running jthreads.
+    // This guarantees worker data (ring buffers, atomics) outlives running threads.
     std::vector<std::unique_ptr<Worker>> workers_;
+#if DPB_HAS_JTHREAD
     std::vector<std::jthread> threads_;
+#else
+    std::vector<std::thread> threads_;
+    std::atomic<bool> stop_{false};
+#endif
     std::atomic<std::size_t> next_enqueue_{0};
 
+#if DPB_HAS_JTHREAD
     void worker_loop(std::size_t id, std::stop_token st) {
+#else
+    void worker_loop(std::size_t id) {
+#endif
         auto& w = *workers_[id];
         const std::size_t n = workers_.size();
         int spins = 0;
 
+#if DPB_HAS_JTHREAD
         while (!st.stop_requested()) {
+#else
+        while (!stop_.load(std::memory_order_acquire)) {
+#endif
             // 1. Try own deque
             if (auto task = w.pop()) {
                 task();
@@ -96,7 +119,11 @@ class ThreadPool {
 
             // 2. Try stealing from others
             bool stolen = false;
+#if DPB_HAS_JTHREAD
             for (std::size_t i = 1; i < n && !st.stop_requested(); ++i) {
+#else
+            for (std::size_t i = 1; i < n && !stop_.load(std::memory_order_acquire); ++i) {
+#endif
                 const std::size_t victim = (id + i) % n;
                 if (auto task = workers_[victim]->steal()) {
                     task();
@@ -126,14 +153,31 @@ public:
             workers_.push_back(std::make_unique<Worker>());
         }
         threads_.reserve(num_threads);
+#if DPB_HAS_JTHREAD
         for (std::size_t i = 0; i < num_threads; ++i) {
             threads_.emplace_back([this, i](std::stop_token st) {
                 worker_loop(i, st);
             });
         }
+#else
+        for (std::size_t i = 0; i < num_threads; ++i) {
+            threads_.emplace_back([this, i]() {
+                worker_loop(i);
+            });
+        }
+#endif
     }
 
+#if DPB_HAS_JTHREAD
     ~ThreadPool() = default;  // jthreads auto-stop & join; workers outlive threads
+#else
+    ~ThreadPool() {
+        stop_.store(true, std::memory_order_release);
+        for (auto& t : threads_) {
+            if (t.joinable()) t.join();
+        }
+    }
+#endif
 
     ThreadPool(const ThreadPool&) = delete;
     ThreadPool& operator=(const ThreadPool&) = delete;
