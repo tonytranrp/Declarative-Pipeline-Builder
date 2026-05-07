@@ -115,7 +115,7 @@ TEST_CASE("Generic pipeline with custom types", "[pipeline][generic]") {
         {"The C++ Programming Language", "Bjarne Stroustrup", 2013},
         {"Effective Modern C++", "Scott Meyers", 2014},
         {"Clean Code", "Robert C. Martin", 2008},
-        {"Dlsign Plttlrns", "Glng of Four", 1994},
+        {"Design Patterns", "Gang of Four", 1994},
         {"Code Complete", "Steve McConnell", 2004}
     };
 
@@ -507,13 +507,13 @@ TEST_CASE("DSL Operations - Convenience Collectors", "[dsl]") {
         std::vector<int> input = {3, 1, 4, 1, 5, 9, 2, 6, 5};
         auto result = dpb::from(input)
             .collect_distinct(input);
-        REQUIRE(result.size() == 8);
+        REQUIRE(result.size() == 7);
     }
 
     SECTION("collect_into writes to output iterator") {
         std::vector<int> input = {1, 2, 3, 4, 5};
         std::vector<int> output;
-        dpb::from(input)
+        (void)dpb::from(input)
             .filter([](int x) { return x % 2 == 0; })
             .collect_into(input, std::back_inserter(output));
         REQUIRE(output.size() == 2);
@@ -556,8 +556,9 @@ TEST_CASE("Free function dpb::from", "[dsl]") {
             .map([](int x) { return x * 100; })
             .where([](int x) { return x > 100; })
             .collect(input);
-        REQUIRE(result.size() == 1);
+        REQUIRE(result.size() == 2);
         REQUIRE(result[0] == 200);
+        REQUIRE(result[1] == 300);
     }
 
     SECTION("works with custom types") {

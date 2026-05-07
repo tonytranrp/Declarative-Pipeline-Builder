@@ -63,6 +63,7 @@ if(DPB_BUILD_TESTS)
         tests/test_async_pipeline.cpp
         tests/test_parallel_pipeline.cpp
         tests/test_integration.cpp
+        tests/test_new_features.cpp
     )
     target_link_libraries(pipeline_tests PRIVATE Catch2::Catch2WithMain declarative_pipeline fast_pipeline)
     target_compile_features(pipeline_tests PRIVATE cxx_std_23)

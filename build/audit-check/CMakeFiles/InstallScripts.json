@@ -1,0 +1,9 @@
+{
+	"InstallScripts" : 
+	[
+		"/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/audit-check/cmake_install.cmake",
+		"/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/audit-check/_deps/catch2-build/cmake_install.cmake",
+		"/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/audit-check/_deps/catch2-build/src/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

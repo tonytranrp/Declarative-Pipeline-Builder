@@ -70,6 +70,8 @@ auto simd_filter(R&& range, Pred pred) -> std::vector<std::ranges::range_value_t
 template <std::ranges::input_range R, std::predicate<std::ranges::range_value_t<R>> Pred>
 auto simd_filter(R&& range, Pred pred) -> std::vector<std::ranges::range_value_t<R>>
 {
+    // Scalar fallback — also provided by dpb/simd_filter.hpp wrapper.
+    // Kept here for direct dpb::simd::simd_filter() callers.
     using T = std::ranges::range_value_t<R>;
     std::vector<T> result;
 
@@ -140,6 +142,8 @@ template <std::ranges::input_range R, std::invocable<std::ranges::range_value_t<
 auto simd_transform(R&& range, Fn fn)
     -> std::vector<std::invoke_result_t<Fn, std::ranges::range_value_t<R>>>
 {
+    // Scalar fallback — also provided by dpb/simd_transform.hpp wrapper.
+    // Kept here for direct dpb::simd::simd_transform() callers.
     using Out = std::invoke_result_t<Fn, std::ranges::range_value_t<R>>;
     std::vector<Out> result;
 

@@ -5,9 +5,6 @@
 #include <vector>
 #include <ranges>
 #include <concepts>
-#include <type_traits>
-#include <algorithm>
-#include <iterator>
 
 namespace dpb {
 

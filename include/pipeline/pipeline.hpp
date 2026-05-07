@@ -12,7 +12,6 @@
 #include <memory>
 #include <ranges>
 #include <algorithm>
-#include <span>
 #include <thread>
 #include <optional>
 
@@ -444,6 +443,157 @@ public:
         return result;
     }
 
+    // ── Enumerate: pairs each item with its index ──────────────────────
+
+    [[nodiscard]] auto enumerate() && {
+        auto fused = [op = std::move(operation_), idx = size_t(0)](const In& x, std::pair<size_t, Out>& out) mutable -> bool {
+            if (!op(x, out.second)) return false;
+            out.first = idx++;
+            return true;
+        };
+        return Pipeline<In, std::pair<size_t, Out>, decltype(fused)>(
+            std::move(fused), stats_, profiler_, exec_policy_, parallelism_
+        );
+    }
+
+    // ── Unique: removes consecutive duplicates (fused) ─────────────────
+
+    [[nodiscard]] auto unique() && {
+        auto fused = [op = std::move(operation_), last = std::optional<Out>{}](const In& x, Out& out) mutable -> bool {
+            if (!op(x, out)) return false;
+            if (last && *last == out) return false;
+            last = out;
+            return true;
+        };
+        return Pipeline<In, Out, decltype(fused)>(
+            std::move(fused), stats_, profiler_, exec_policy_, parallelism_
+        );
+    }
+
+    // ── Dedup: alias for unique() ──────────────────────────────────────
+
+    [[nodiscard]] auto dedup() && {
+        return std::move(*this).unique();
+    }
+
+    // ── Chunk: groups items into chunks of size n (terminal) ───────────
+
+    template<std::ranges::input_range Range>
+    [[nodiscard]] auto chunk(Range&& input, size_t chunk_size) && {
+        std::vector<std::vector<Out>> result;
+        std::vector<Out> current_chunk;
+        auto it = std::ranges::begin(input);
+        auto end = std::ranges::end(input);
+        while (it != end) {
+            Out out_val;
+            if (operation_(*it++, out_val)) {
+                current_chunk.push_back(std::move(out_val));
+                if (current_chunk.size() == chunk_size) {
+                    result.push_back(std::move(current_chunk));
+                    current_chunk = std::vector<Out>();
+                }
+            }
+        }
+        if (!current_chunk.empty()) result.push_back(std::move(current_chunk));
+        return result;
+    }
+
+    // ── Window: sliding window of size n (terminal) ────────────────────
+
+    template<std::ranges::input_range Range>
+    [[nodiscard]] auto window(Range&& input, size_t window_size) && {
+        std::vector<std::vector<Out>> result;
+        std::vector<Out> buffer;
+        auto it = std::ranges::begin(input);
+        auto end = std::ranges::end(input);
+        while (it != end) {
+            Out out_val;
+            if (operation_(*it++, out_val)) {
+                buffer.push_back(std::move(out_val));
+                if (buffer.size() >= window_size) {
+                    std::vector<Out> win(buffer.end() - window_size, buffer.end());
+                    result.push_back(std::move(win));
+                }
+            }
+        }
+        return result;
+    }
+
+    // ── Group by: groups consecutive items by key (terminal) ───────────
+
+    template<std::ranges::input_range Range, typename Fn>
+    [[nodiscard]] auto group_by(Range&& input, Fn&& key_fn) && {
+        using Key = decltype(key_fn(std::declval<const Out&>()));
+        std::vector<std::pair<Key, std::vector<Out>>> result;
+        auto it = std::ranges::begin(input);
+        auto end = std::ranges::end(input);
+        while (it != end) {
+            Out out_val;
+            if (operation_(*it++, out_val)) {
+                Key key = key_fn(out_val);
+                if (result.empty() || result.back().first != key) {
+                    result.emplace_back(std::move(key), std::vector<Out>{});
+                }
+                result.back().second.push_back(std::move(out_val));
+            }
+        }
+        return result;
+    }
+
+    // ── Reverse: reverses the collected output (terminal) ──────────────
+
+    template<std::ranges::input_range Range>
+    [[nodiscard]] auto reverse(Range&& input) && {
+        auto collected = std::move(*this).collect(std::forward<Range>(input));
+        std::reverse(collected.data.begin(), collected.data.end());
+        return collected;
+    }
+
+    // ── For each: applies fn to each item, returns void (terminal) ─────
+
+    template<std::ranges::input_range Range, typename Fn>
+    void for_each(Range&& input, Fn&& fn) && {
+        auto it = std::ranges::begin(input);
+        auto end = std::ranges::end(input);
+        while (it != end) {
+            Out out_val;
+            if (operation_(*it++, out_val)) {
+                fn(std::move(out_val));
+            }
+        }
+    }
+
+    // ── First: returns optional<Out> - first matching item (terminal) ──
+
+    template<std::ranges::input_range Range>
+    [[nodiscard]] auto first(Range&& input) && -> std::optional<Out> {
+        auto it = std::ranges::begin(input);
+        auto end = std::ranges::end(input);
+        while (it != end) {
+            Out out_val;
+            if (operation_(*it++, out_val)) {
+                return out_val;
+            }
+        }
+        return std::nullopt;
+    }
+
+    // ── Last: returns optional<Out> - last matching item (terminal) ────
+
+    template<std::ranges::input_range Range>
+    [[nodiscard]] auto last(Range&& input) && -> std::optional<Out> {
+        std::optional<Out> result;
+        auto it = std::ranges::begin(input);
+        auto end = std::ranges::end(input);
+        while (it != end) {
+            Out out_val;
+            if (operation_(*it++, out_val)) {
+                result = std::move(out_val);
+            }
+        }
+        return result;
+    }
+
     // ── Type-erased conversion ──────────────────────────────────────────
     [[nodiscard]] auto erase() && {
         return PipelineErase<In, Out>(std::move(operation_));
@@ -537,7 +687,7 @@ private:
         const std::size_t base_chunk = total / num_threads;
         const std::size_t remainder = total % num_threads;
 
-        // Thread-safe access: for contiguous ranges use span to avoid copy
+        // Thread-safe access: for contiguous ranges use data pointer to avoid copy
         const In* data_ptr;
         std::vector<In> noncontiguous_buffer;
         if constexpr (std::ranges::contiguous_range<Range>) {

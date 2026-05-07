@@ -45,7 +45,7 @@ public:
 
     std::chrono::nanoseconds total_time() const {
         std::chrono::nanoseconds total{0};
-        for (const auto& [name, profile] : profiles_) {
+        for (const auto& [_, profile] : profiles_) {
             total += profile.total_time;
         }
         return total;

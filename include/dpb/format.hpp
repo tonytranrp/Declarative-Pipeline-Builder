@@ -1,10 +1,7 @@
 #pragma once
 
 #include "fmt_config.hpp"
-#ifdef DPB_HAS_FMT
-#include <fmt/format.h>
-#include <fmt/ostream.h>
-#else
+#ifndef DPB_HAS_FMT
 #include <iostream>
 #include <format>
 #endif

@@ -73,114 +73,68 @@ public:
     collect_buffer& operator=(const collect_buffer&) = delete;
     collect_buffer& operator=(collect_buffer&&) = delete;
     
-    // Vector-like interface
+    // Vector-like interface — both pmr_impl and std_impl expose .vec
+    // with an identical API, so no if-constexpr dispatch is needed.
+    
     void push_back(const T& value) {
-        if constexpr (use_pmr) {
-            impl_.vec.push_back(value);
-        } else {
-            impl_.vec.push_back(value);
-        }
+        impl_.vec.push_back(value);
     }
     
     void push_back(T&& value) {
-        if constexpr (use_pmr) {
-            impl_.vec.push_back(std::move(value));
-        } else {
-            impl_.vec.push_back(std::move(value));
-        }
+        impl_.vec.push_back(std::move(value));
     }
     
     template<typename... Args>
     void emplace_back(Args&&... args) {
-        if constexpr (use_pmr) {
-            impl_.vec.emplace_back(std::forward<Args>(args)...);
-        } else {
-            impl_.vec.emplace_back(std::forward<Args>(args)...);
-        }
+        impl_.vec.emplace_back(std::forward<Args>(args)...);
     }
     
     void reserve(size_t new_capacity) {
-        if constexpr (use_pmr) {
-            impl_.vec.reserve(new_capacity);
-        } else {
-            impl_.vec.reserve(new_capacity);
-        }
+        impl_.vec.reserve(new_capacity);
     }
     
     size_t size() const noexcept {
-        if constexpr (use_pmr) {
-            return impl_.vec.size();
-        } else {
-            return impl_.vec.size();
-        }
+        return impl_.vec.size();
     }
     
     bool empty() const noexcept {
-        if constexpr (use_pmr) {
-            return impl_.vec.empty();
-        } else {
-            return impl_.vec.empty();
-        }
+        return impl_.vec.empty();
     }
     
     auto begin() noexcept {
-        if constexpr (use_pmr) {
-            return impl_.vec.begin();
-        } else {
-            return impl_.vec.begin();
-        }
+        return impl_.vec.begin();
     }
     
     auto end() noexcept {
-        if constexpr (use_pmr) {
-            return impl_.vec.end();
-        } else {
-            return impl_.vec.end();
-        }
+        return impl_.vec.end();
     }
     
     auto begin() const noexcept {
-        if constexpr (use_pmr) {
-            return impl_.vec.begin();
-        } else {
-            return impl_.vec.begin();
-        }
+        return impl_.vec.begin();
     }
     
     auto end() const noexcept {
-        if constexpr (use_pmr) {
-            return impl_.vec.end();
-        } else {
-            return impl_.vec.end();
-        }
+        return impl_.vec.end();
     }
     
     auto data() noexcept {
-        if constexpr (use_pmr) {
-            return impl_.vec.data();
-        } else {
-            return impl_.vec.data();
-        }
+        return impl_.vec.data();
     }
     
     auto data() const noexcept {
-        if constexpr (use_pmr) {
-            return impl_.vec.data();
-        } else {
-            return impl_.vec.data();
-        }
+        return impl_.vec.data();
     }
     
     // Conversion to std::vector<T> (move)
+    // This is the only method where the PMR vs std branches differ:
+    // PMR vectors can't be moved into a std::vector directly, so we copy.
     operator std::vector<T>() && {
         if constexpr (use_pmr) {
-            // For PMR vector, we need to copy to regular vector
             std::vector<T> result;
             result.reserve(impl_.vec.size());
             result.insert(result.end(), impl_.vec.begin(), impl_.vec.end());
             return result;
         } else {
-            // For regular vector, just move it
             return std::move(impl_.vec);
         }
     }
