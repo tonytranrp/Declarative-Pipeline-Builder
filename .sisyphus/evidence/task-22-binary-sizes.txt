@@ -1,0 +1,16 @@
+# Binary Size Audit (T22)
+
+Date: 2026-05-06
+
+## Default Build (no optional deps)
+- basic_example:  46KB
+- async_example:   28KB
+- parallel_example: 51KB
+
+All well under 500KB limit.
+
+## Note
+SIMD, fmt, and Tracy builds are not yet available for size comparison.
+Will update after full build cycle.
+
+Verdict: PASS - all binaries under 500KB

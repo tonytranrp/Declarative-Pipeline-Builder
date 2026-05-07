@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG -flto=thin -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/parallel_example.dir/examples/parallel_usage.cpp.o -o parallel_example

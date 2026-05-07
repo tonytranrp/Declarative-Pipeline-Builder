@@ -3,8 +3,8 @@
 #include <map>
 #include <string>
 #include <chrono>
-#include <iostream>
-#include <iomanip>
+
+#include "dpb/format.hpp"
 
 namespace dpb {
 
@@ -27,20 +27,15 @@ public:
     }
 
     void print() const {
-        std::cout << "\n=== Pipeline Profile ===\n";
-        std::cout << std::setw(20) << "Stage"
-                  << std::setw(15) << "Total (ms)"
-                  << std::setw(15) << "Avg (ns)"
-                  << std::setw(15) << "Calls\n";
-        std::cout << std::string(65, '-') << "\n";
+        dpb::print("\n=== Pipeline Profile ===\n");
+        dpb::print("{:>20}{:>15}{:>15}{:>15}\n",
+                    "Stage", "Total (ms)", "Avg (ns)", "Calls");
+        dpb::print("{}\n", std::string(65, '-'));
 
         for (const auto& [name, profile] : profiles_) {
-            std::cout << std::setw(20) << name
-                      << std::setw(15) << std::fixed << std::setprecision(3)
-                      << std::chrono::duration<double, std::milli>(profile.total_time).count()
-                      << std::setw(15) << std::fixed << std::setprecision(0)
-                      << profile.avg_time_ns()
-                      << std::setw(15) << profile.call_count << "\n";
+            auto total_ms = std::chrono::duration<double, std::milli>(profile.total_time).count();
+            dpb::print("{:>20}{:>15.3f}{:>15.0f}{:>15}\n",
+                        name, total_ms, profile.avg_time_ns(), profile.call_count);
         }
     }
 

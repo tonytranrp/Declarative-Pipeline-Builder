@@ -1,8 +1,8 @@
-# Install script for directory: C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder
+# Install script for directory: /Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/DeclarativePipelineBuilder")
+  set(CMAKE_INSTALL_PREFIX "/usr/local")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -32,15 +32,20 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "FALSE")
 endif()
 
+# Set path to fallback-tool for dependency-resolution.
+if(NOT DEFINED CMAKE_OBJDUMP)
+  set(CMAKE_OBJDUMP "/usr/bin/objdump")
+endif()
+
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/include/")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/include/")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/DeclarativePipelineBuilder/DeclarativePipelineBuilderTargets.cmake")
     file(DIFFERENT _cmake_export_file_changed FILES
          "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/DeclarativePipelineBuilder/DeclarativePipelineBuilderTargets.cmake"
-         "C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/CMakeFiles/Export/00327f3a70856f8ae5884492e0ab20f9/DeclarativePipelineBuilderTargets.cmake")
+         "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/CMakeFiles/Export/00327f3a70856f8ae5884492e0ab20f9/DeclarativePipelineBuilderTargets.cmake")
     if(_cmake_export_file_changed)
       file(GLOB _cmake_old_config_files "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/DeclarativePipelineBuilder/DeclarativePipelineBuilderTargets-*.cmake")
       if(_cmake_old_config_files)
@@ -53,13 +58,13 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
     endif()
     unset(_cmake_export_file_changed)
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/DeclarativePipelineBuilder" TYPE FILE FILES "C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/CMakeFiles/Export/00327f3a70856f8ae5884492e0ab20f9/DeclarativePipelineBuilderTargets.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/DeclarativePipelineBuilder" TYPE FILE FILES "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/CMakeFiles/Export/00327f3a70856f8ae5884492e0ab20f9/DeclarativePipelineBuilderTargets.cmake")
 endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/install_local_manifest.txt"
+  file(WRITE "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()
 if(CMAKE_INSTALL_COMPONENT)
@@ -75,6 +80,6 @@ else()
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/${CMAKE_INSTALL_MANIFEST}"
+  file(WRITE "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

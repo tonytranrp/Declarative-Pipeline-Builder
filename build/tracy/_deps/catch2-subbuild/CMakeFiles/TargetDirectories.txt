@@ -1,0 +1,3 @@
+/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/tracy/_deps/catch2-subbuild/CMakeFiles/catch2-populate.dir
+/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/tracy/_deps/catch2-subbuild/CMakeFiles/edit_cache.dir
+/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/tracy/_deps/catch2-subbuild/CMakeFiles/rebuild_cache.dir

@@ -2,9 +2,9 @@
 
 #include <chrono>
 #include <atomic>
-#include <iostream>
-#include <iomanip>
 #include <new>
+
+#include "dpb/format.hpp"
 
 namespace dpb {
 
@@ -29,37 +29,34 @@ struct PipelineStats {
     }
 
     void print() const {
-        std::cout << "=== Pipeline Statistics ===\n";
+        dpb::print("=== Pipeline Statistics ===\n");
 
         size_t proc = items_processed.load();
         size_t filt = items_filtered.load();
         size_t total = total_items.load();
         auto dur_ns = total_duration_ns.load();
 
-        std::cout << "Items processed: " << proc << "\n";
-        std::cout << "Items filtered: " << filt << "\n";
-        std::cout << "Errors: " << errors.load() << "\n";
+        dpb::print("Items processed: {}\n", proc);
+        dpb::print("Items filtered: {}\n", filt);
+        dpb::print("Errors: {}\n", errors.load());
 
         if (total > 0) {
-            std::cout << "Total input items: " << total << "\n";
-            std::cout << "Pass rate: " << std::fixed << std::setprecision(2)
-                      << (100.0 * proc / total) << "%\n";
+            dpb::print("Total input items: {}\n", total);
+            dpb::print("Pass rate: {:.2f}%\n", 100.0 * proc / total);
         }
 
         auto dur_ms = dur_ns / 1'000'000.0;
-        std::cout << "Total duration: " << std::fixed << std::setprecision(4)
-                  << dur_ms << " ms\n";
+        dpb::print("Total duration: {:.4f} ms\n", dur_ms);
 
         if (total > 0 && dur_ns > 0) {
             auto latency_ns = dur_ns / total;
-            std::cout << "Average latency: " << latency_ns << " ns/item (per input)\n";
+            dpb::print("Average latency: {} ns/item (per input)\n", latency_ns);
 
             double throughput = (total * 1'000'000'000.0) / dur_ns;
-            std::cout << "Throughput: " << std::fixed << std::setprecision(2)
-                      << throughput << " items/sec\n";
+            dpb::print("Throughput: {:.2f} items/sec\n", throughput);
         } else if (total > 0) {
-            std::cout << "Average latency: < 1 ns/item (too fast to measure)\n";
-            std::cout << "Throughput: > 1 billion items/sec\n";
+            dpb::print("Average latency: < 1 ns/item (too fast to measure)\n");
+            dpb::print("Throughput: > 1 billion items/sec\n");
         }
     }
 

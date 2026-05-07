@@ -62,6 +62,7 @@ if(DPB_BUILD_TESTS)
         tests/test_pipeline.cpp
         tests/test_async_pipeline.cpp
         tests/test_parallel_pipeline.cpp
+        tests/test_integration.cpp
     )
     target_link_libraries(pipeline_tests PRIVATE Catch2::Catch2WithMain declarative_pipeline fast_pipeline)
     target_compile_features(pipeline_tests PRIVATE cxx_std_23)
@@ -101,6 +102,23 @@ if(DPB_BUILD_BENCHMARKS)
         $<$<CXX_COMPILER_ID:MSVC>:/O2 /Ob3 /arch:AVX2>
         $<$<CXX_COMPILER_ID:GNU,Clang>:-O3 -march=native>
     )
+
+    if(DPB_ENABLE_SIMD)
+        add_executable(bench_simd
+            benchmarks/bench_simd.cpp
+        )
+        target_link_libraries(bench_simd
+            PRIVATE
+            declarative_pipeline
+            benchmark::benchmark
+            benchmark::benchmark_main
+        )
+        target_compile_options(bench_simd PRIVATE
+            $<$<CONFIG:Release>:-DNDEBUG>
+            $<$<CXX_COMPILER_ID:MSVC>:/O2 /Ob3 /arch:AVX2>
+            $<$<CXX_COMPILER_ID:GNU,Clang>:-O3 -march=native>
+        )
+    endif()
 endif()
 
 # Examples

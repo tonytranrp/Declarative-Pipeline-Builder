@@ -4,10 +4,12 @@
 #include "pipeline_stats.hpp"
 #include "profiler.hpp"
 #include "../thread_pool.hpp"
+#include "dpb/tracy_config.hpp"
+#include "dpb/memory.hpp"
+#include "dpb/pipeline_erase.hpp"
 
 #include <vector>
 #include <memory>
-#include <functional>
 #include <ranges>
 #include <algorithm>
 #include <span>
@@ -43,29 +45,24 @@ struct ResultWithStats {
         : data(std::move(d)), items_processed(processed), items_filtered(filtered), errors(errs), total_items(total), total_duration(duration) {}
 
     void print_stats() const {
-        std::cout << "=== Pipeline Statistics ===\n";
-        std::cout << "Items processed: " << items_processed << "\n";
-        std::cout << "Items filtered: " << items_filtered << "\n";
-        std::cout << "Errors: " << errors << "\n";
+        dpb::print("=== Pipeline Statistics ===\n");
+        dpb::print("Items processed: {}\n", items_processed);
+        dpb::print("Items filtered: {}\n", items_filtered);
+        dpb::print("Errors: {}\n", errors);
 
         if (total_items > 0) {
-            std::cout << "Total input items: " << total_items << "\n";
-            std::cout << "Pass rate: " << std::fixed << std::setprecision(2)
-                      << (100.0 * items_processed / total_items) << "%\n";
+            dpb::print("Total input items: {}\n", total_items);
+            dpb::print("Pass rate: {:.2f}%\n", 100.0 * items_processed / total_items);
         }
 
-        std::cout << "Total duration: "
-                  << std::fixed << std::setprecision(4)
-                  << std::chrono::duration<double, std::milli>(total_duration).count()
-                  << " ms\n";
+        dpb::print("Total duration: {:.4f} ms\n", std::chrono::duration<double, std::milli>(total_duration).count());
 
         if (total_items > 0) {
             auto latency_ns = total_duration.count() / total_items;
-            std::cout << "Average latency: " << latency_ns << " ns/item (per input)\n";
+            dpb::print("Average latency: {} ns/item (per input)\n", latency_ns);
 
             double throughput = total_items / std::chrono::duration<double>(total_duration).count();
-            std::cout << "Throughput: " << std::fixed << std::setprecision(2)
-                      << throughput << " items/sec\n";
+            dpb::print("Throughput: {:.2f} items/sec\n", throughput);
         }
     }
 
@@ -88,10 +85,25 @@ struct ResultWithStats {
 };
 
 // ============================================================================
+// DEFAULT OPERATION - Identity-like pass-through, default-constructible
+// ============================================================================
+
+struct DefaultOp {
+    template<typename In, typename Out>
+    bool operator()(const In& x, Out& out) const {
+        if constexpr (std::is_convertible_v<const In&, Out>) {
+            out = static_cast<Out>(x);
+            return true;
+        }
+        return false;
+    }
+};
+
+// ============================================================================
 // GENERIC PIPELINE - Type-driven pipeline supporting arbitrary transformations
 // ============================================================================
 
-template<typename In, typename Out = In, typename OpFunc = std::function<bool(const In&, Out&)>>
+template<typename In, typename Out = In, typename OpFunc = DefaultOp>
 class Pipeline {
     OpFunc operation_;
     std::shared_ptr<PipelineStats> stats_;
@@ -112,13 +124,7 @@ public:
           exec_policy_(exec_policy),
           parallelism_(parallelism) {}
 
-    Pipeline() : operation_([](const In& x, Out& out) -> bool {
-        if constexpr (std::is_convertible_v<const In&, Out>) {
-            out = static_cast<Out>(x);
-            return true;
-        }
-        return false;
-    }) {}
+    Pipeline() : operation_(DefaultOp{}) {}
 
     // Static factory
     template<std::ranges::input_range Range>
@@ -380,8 +386,8 @@ public:
     [[nodiscard]] auto collect_distinct(Range&& input) && {
         auto result = std::move(*this).collect(std::forward<Range>(input));
         std::sort(result.data.begin(), result.data.end());
-        auto [first, last] = std::unique(result.data.begin(), result.data.end());
-        result.data.erase(last, result.data.end());
+        auto new_last = std::unique(result.data.begin(), result.data.end());
+        result.data.erase(new_last, result.data.end());
         return result;
     }
 
@@ -438,6 +444,11 @@ public:
         return result;
     }
 
+    // ── Type-erased conversion ──────────────────────────────────────────
+    [[nodiscard]] auto erase() && {
+        return PipelineErase<In, Out>(std::move(operation_));
+    }
+
     // ── Collect ──────────────────────────────────────────────────────────
     template<typename Range>
     [[nodiscard]] auto collect(Range&& input) && {
@@ -457,13 +468,14 @@ private:
     template<std::ranges::input_range Range>
     [[nodiscard]] [[gnu::hot]] [[gnu::flatten]] [[gnu::always_inline]]
     auto collect_sequential(Range&& input) {
-        std::vector<Out> result;
-
+        DPB_ZONE_SCOPED;
+        size_t estimated = 0;
+        
         if constexpr (std::ranges::sized_range<Range>) {
-            const size_t input_size = std::ranges::size(input);
-            size_t estimated = input_size;
-            result.reserve(estimated);
+            estimated = std::ranges::size(input);
         }
+        
+        dpb::collect_buffer<Out> result(estimated);
 
         auto start_time = std::chrono::high_resolution_clock::now();
 
@@ -480,11 +492,7 @@ private:
             bool passed = operation_(in_val, out_val);
 
             if (passed) [[likely]] {
-                if constexpr (std::is_trivially_copyable_v<Out> && sizeof(Out) <= 64) {
-                    result.push_back(out_val);
-                } else {
-                    result.push_back(std::move(out_val));
-                }
+                result.emplace_back(std::move(out_val));
             }
 
             processed_count += passed;
@@ -501,6 +509,7 @@ private:
             stats_->total_duration_ns.fetch_add(elapsed, std::memory_order_relaxed);
         }
 
+        DPB_FRAME_MARK;
         if (stats_) {
             return ResultWithStats<Out>{
                 std::move(result),
@@ -511,9 +520,10 @@ private:
                 std::chrono::nanoseconds{stats_->total_duration_ns.load()}
             };
         }
+        const std::size_t result_size = result.size();
         return ResultWithStats<Out>{
             std::move(result),
-            result.size(), 0, 0, result.size(),
+            result_size, 0, 0, result_size,
             std::chrono::nanoseconds{0}
         };
     }
@@ -521,6 +531,7 @@ private:
     // Parallel collection using thread pool
     template<std::ranges::input_range Range>
     [[nodiscard]] auto collect_parallel(Range&& input) {
+        DPB_ZONE_SCOPED;
         const std::size_t total = std::ranges::size(input);
         const std::size_t num_threads = std::min<std::size_t>(parallelism_, total);
         const std::size_t base_chunk = total / num_threads;
@@ -596,6 +607,7 @@ private:
                           std::make_move_iterator(v.end()));
         }
 
+        DPB_FRAME_MARK;
         if (stats_) {
             return ResultWithStats<Out>{
                 std::move(merged),
@@ -606,9 +618,10 @@ private:
                 std::chrono::nanoseconds{stats_->total_duration_ns.load()}
             };
         }
+        const std::size_t merged_size = merged.size();
         return ResultWithStats<Out>{
             std::move(merged),
-            merged.size(), 0, 0, total,
+            merged_size, 0, 0, total,
             std::chrono::nanoseconds{0}
         };
     }

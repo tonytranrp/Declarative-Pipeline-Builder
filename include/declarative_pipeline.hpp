@@ -1,13 +1,11 @@
 #pragma once
 
-// Main header for Declarative Pipeline Builder
-// Includes all core functionality
-
 #include "pipeline/concepts.hpp"
 #include "pipeline/pipeline.hpp"
 #include "pipeline_stats.hpp"
 #include "profiler.hpp"
 #include "thread_pool.hpp"
+#include "dpb/pipeline_erase.hpp"
 
 // Version information
 #define DECLARATIVE_PIPELINE_VERSION_MAJOR 1

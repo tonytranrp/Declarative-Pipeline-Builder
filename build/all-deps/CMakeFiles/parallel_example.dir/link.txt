@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG -flto=thin -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/parallel_example.dir/examples/parallel_usage.cpp.o -o parallel_example  _deps/highway-build/libhwy_contrib.a _deps/highway-build/libhwy.a _deps/fmt-build/libfmt.a libtracy_client.a -framework CoreFoundation

@@ -1,0 +1,11 @@
+{
+	"InstallScripts" : 
+	[
+		"/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/test-t6/cmake_install.cmake",
+		"/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/test-t6/_deps/catch2-build/cmake_install.cmake",
+		"/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/test-t6/_deps/catch2-build/src/cmake_install.cmake",
+		"/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/test-t6/_deps/benchmark-build/cmake_install.cmake",
+		"/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/test-t6/_deps/benchmark-build/src/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

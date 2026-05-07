@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG -flto=thin -Wl,-search_paths_first -Wl,-headerpad_max_install_names -fPIE -Xlinker -pie CMakeFiles/hwy_list_targets.dir/hwy/tests/list_targets.cc.o -o hwy_list_targets  libhwy.a

@@ -106,7 +106,31 @@ int main() {
     std::cout << "Sequential: " << seq_time << " ms\n";
     std::cout << "Parallel:   " << par_time << " ms\n";
     std::cout << "Speedup:    " << (seq_time / par_time) << "x\n";
-    std::cout << "Match:      " << (seq == par ? "yes" : "no") << "\n";
+    std::cout << "Match:      " << (seq == par ? "yes" : "no") << "\n\n";
+
+    // ── Type-erased pipelines ──────────────────────────────────────────
+    std::cout << "--- Type-erased pipelines ---\n";
+    auto erased = from(data)
+        .where([](int x) { return x % 2 == 0; })
+        .map([](int x) { return x * x; })
+        .erase();
+    auto erased_result = std::move(erased).collect(data);
+    std::cout << "PipelineErase result: ";
+    for (size_t i = 0; i < erased_result.size() && i < 5; ++i)
+        std::cout << erased_result[i] << " ";
+    if (erased_result.size() > 5) std::cout << "...";
+    std::cout << "\n\n";
+
+    // ── SIMD filter/transform (when enabled) ─────────────────────────────
+#ifdef DPB_HAS_HIGHWAY
+    std::cout << "--- SIMD filter/transform ---\n";
+    std::vector<int> simd_data(10000);
+    std::iota(simd_data.begin(), simd_data.end(), 0);
+    auto simd_filtered = dpb::simd_filter(simd_data, [](int x) { return x % 3 == 0; });
+    auto simd_transformed = dpb::simd_transform(simd_data, [](int x) { return x * 2; });
+    std::cout << "SIMD filter: " << simd_filtered.size() << " items (divisible by 3)\n";
+    std::cout << "SIMD transform: " << simd_transformed.size() << " items (doubled)\n";
+#endif
 
     return 0;
 }

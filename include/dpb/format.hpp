@@ -11,26 +11,29 @@
 
 namespace dpb {
 
-template<typename... Args>
-void print(Args&&... args) {
+inline void print(std::string_view fmt_str) {
 #ifdef DPB_HAS_FMT
-    fmt::print(std::forward<Args>(args)...);
+    fmt::vprint(fmt_str, {});
 #else
-    if constexpr (sizeof...(Args) == 0) {
-        return;
-    } else {
-        ((std::cout << std::forward<Args>(args)), ...);
-    }
+    std::cout << fmt_str;
 #endif
 }
 
-template<typename Fmt, typename... Args>
-auto format(Fmt&& fmt_str, Args&&... args) {
+template<typename Arg, typename... Args>
+void print(std::string_view fmt_str, Arg&& arg, Args&&... args) {
 #ifdef DPB_HAS_FMT
-    return fmt::format(std::forward<Fmt>(fmt_str), std::forward<Args>(args)...);
+    fmt::vprint(fmt_str, fmt::make_format_args(arg, args...));
+#else
+    std::cout << std::vformat(fmt_str, std::make_format_args(arg, args...));
+#endif
+}
+
+inline auto format(std::string_view fmt_str, auto&&... args) {
+#ifdef DPB_HAS_FMT
+    return fmt::vformat(fmt_str, fmt::make_format_args(args...));
 #else
     return std::vformat(fmt_str, std::make_format_args(args...));
 #endif
 }
 
-}
+} // namespace dpb

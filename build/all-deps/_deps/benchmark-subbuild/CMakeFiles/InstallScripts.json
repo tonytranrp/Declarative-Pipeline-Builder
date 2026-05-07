@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/all-deps/_deps/benchmark-subbuild/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

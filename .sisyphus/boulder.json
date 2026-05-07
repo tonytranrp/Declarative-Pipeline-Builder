@@ -1,0 +1,26 @@
+{
+  "active_plan": "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/.sisyphus/plans/lib-integration.md",
+  "started_at": "2026-05-06T19:17:54.432Z",
+  "session_ids": [
+    "ses_201465388ffevwHiSPW9pM1tN1",
+    "ses_200c975a2ffesdxMaAuBvVOwEN",
+    "ses_201374cd5ffeHYs58KsJrP2Xlj"
+  ],
+  "plan_name": "lib-integration",
+  "session_origins": {
+    "ses_201465388ffevwHiSPW9pM1tN1": "direct",
+    "ses_200c975a2ffesdxMaAuBvVOwEN": "direct"
+  },
+  "task_sessions": {
+    "todo:1": {
+      "task_key": "todo:1",
+      "task_label": "1",
+      "task_title": "Modernize CMakeLists.txt — LTO flags, vcpkg skeleton, option guards",
+      "session_id": "ses_2014370f7ffeuvLl4CV8ZiKqxT",
+      "agent": "Sisyphus-Junior",
+      "category": "quick",
+      "updated_at": "2026-05-06T19:21:04.699Z"
+    }
+  },
+  "agent": "atlas"
+}

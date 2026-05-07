@@ -14,6 +14,52 @@ A high-performance, zero-overhead C++ library for building composable data proce
 - **📈 High throughput**: 350-470M items/second on modern hardware
 - **🔧 Production-ready**: Works with any data type, not just integers
 
+## 🧩 Type-Erased Pipelines
+
+Use `.erase()` to convert a typed pipeline into `PipelineErase<In, Out>`, which can be stored in containers:
+
+```cpp
+#include <dpb/pipeline_erase.hpp>
+
+std::vector<dpb::PipelineErase<int, int>> pipelines;
+pipelines.push_back(dpb::from(data).where(is_even).map(square).erase());
+pipelines.push_back(dpb::from(data).where(is_odd).map(cube).erase());
+
+for (auto& p : pipelines) {
+    auto results = std::move(p).collect(data);
+}
+```
+
+> **Note**: `PipelineErase` uses `std::function` internally, which has a small overhead. Use typed `Pipeline` for maximum performance.
+
+## 🧰 Optional Dependencies
+
+All dependencies are **opt-in** — zero dependencies by default.
+
+| Library | CMake Flag | Description |
+|---------|-----------|-------------|
+| [Highway](https://github.com/google/highway) | `DPB_ENABLE_SIMD=ON` | SIMD-accelerated filter/transform for numeric types |
+| [{fmt}](https://github.com/fmtlib/fmt) | `DPB_ENABLE_FMT=ON` | High-performance formatting for stats/profiler output |
+| [Tracy](https://github.com/wolfpld/tracy) | `DPB_ENABLE_TRACY=ON` | Real-time profiling zones in collect paths |
+
+```bash
+# Build with SIMD support
+cmake --preset with-simd
+
+# Build with all optional deps
+cmake --preset all-deps
+```
+
+### CMake Presets
+
+| Preset | Description |
+|--------|-------------|
+| `default` | No optional deps (zero deps) |
+| `with-simd` | Highway SIMD enabled |
+| `with-fmt` | {fmt} formatting enabled |
+| `with-tracy` | Tracy profiling enabled |
+| `all-deps` | All optional deps enabled |
+
 ## 📊 Performance Benchmarks
 
 **Latest Results (Modern Hardware):**

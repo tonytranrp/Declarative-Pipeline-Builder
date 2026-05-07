@@ -1,0 +1,2 @@
+"/usr/bin/ar" qc libhwy_test.a CMakeFiles/hwy_test.dir/hwy/tests/test_util.cc.o
+"/usr/bin/ranlib" libhwy_test.a

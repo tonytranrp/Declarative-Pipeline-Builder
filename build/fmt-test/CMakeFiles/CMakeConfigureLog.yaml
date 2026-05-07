@@ -1,0 +1,2357 @@
+
+---
+events:
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/CMakeDetermineSystem.cmake:12 (find_program)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_UNAME"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "uname"
+    candidate_directories:
+      - "/Users/tonytran/.local/bin/"
+      - "/usr/local/bin/"
+      - "/System/Cryptexes/App/usr/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/Users/tonytran/.cargo/bin/"
+    searched_directories:
+      - "/Users/tonytran/.local/bin/uname"
+      - "/usr/local/bin/uname"
+      - "/System/Cryptexes/App/usr/bin/uname"
+    found: "/usr/bin/uname"
+    search_context:
+      ENV{PATH}:
+        - "/Users/tonytran/.local/bin"
+        - "/usr/local/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Users/tonytran/.local/bin"
+        - "/Users/tonytran/.cargo/bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/CMakeDetermineSystem.cmake:212 (message)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      The system is: Darwin - 24.6.0 - x86_64
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/CMakeUnixFindMake.cmake:5 (find_program)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_MAKE_PROGRAM"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "gmake"
+      - "make"
+      - "smake"
+    candidate_directories:
+      - "/Users/tonytran/.local/bin/"
+      - "/usr/local/bin/"
+      - "/System/Cryptexes/App/usr/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/Users/tonytran/.cargo/bin/"
+    searched_directories:
+      - "/Users/tonytran/.local/bin/gmake"
+      - "/usr/local/bin/gmake"
+      - "/System/Cryptexes/App/usr/bin/gmake"
+      - "/usr/bin/gmake"
+      - "/bin/gmake"
+      - "/usr/sbin/gmake"
+      - "/sbin/gmake"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/gmake"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/gmake"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/gmake"
+      - "/Users/tonytran/.cargo/bin/gmake"
+      - "/Users/tonytran/.local/bin/make"
+      - "/usr/local/bin/make"
+      - "/System/Cryptexes/App/usr/bin/make"
+    found: "/usr/bin/make"
+    search_context:
+      ENV{PATH}:
+        - "/Users/tonytran/.local/bin"
+        - "/usr/local/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Users/tonytran/.local/bin"
+        - "/Users/tonytran/.cargo/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompiler.cmake:73 (find_program)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:69 (_cmake_find_compiler)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_CXX_COMPILER"
+    description: "CXX compiler"
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "c++"
+      - "g++"
+      - "cl"
+      - "bcc"
+      - "icpx"
+      - "icx"
+      - "clang++"
+    candidate_directories:
+      - "/Users/tonytran/.local/bin/"
+      - "/usr/local/bin/"
+      - "/System/Cryptexes/App/usr/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/Users/tonytran/.cargo/bin/"
+    searched_directories:
+      - "/Users/tonytran/.local/bin/c++"
+      - "/usr/local/bin/c++"
+      - "/System/Cryptexes/App/usr/bin/c++"
+    found: "/usr/bin/c++"
+    search_context:
+      ENV{PATH}:
+        - "/Users/tonytran/.local/bin"
+        - "/usr/local/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Users/tonytran/.local/bin"
+        - "/Users/tonytran/.cargo/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompilerId.cmake:468 (find_file)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompilerId.cmake:506 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCXXCompilerId.cpp.in"
+    candidate_directories:
+      - "/usr/local/share/cmake/Modules/"
+    found: "/usr/local/share/cmake/Modules/CMakeCXXCompilerId.cpp.in"
+    search_context:
+      ENV{PATH}:
+        - "/Users/tonytran/.local/bin"
+        - "/usr/local/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Users/tonytran/.local/bin"
+        - "/Users/tonytran/.cargo/bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler: /usr/bin/c++ 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+      
+      The CXX compiler identification is AppleClang, found in:
+        /Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/4.3.2/CompilerIdCXX/a.out
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompilerId.cmake:296 (message)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Detecting CXX compiler apple sysroot: "/usr/bin/c++" "-E" "apple-sdk.cpp"
+        # 1 "apple-sdk.cpp"
+        # 1 "<built-in>" 1
+        # 1 "<built-in>" 3
+        # 480 "<built-in>" 3
+        # 1 "<command line>" 1
+        # 1 "<built-in>" 2
+        # 1 "apple-sdk.cpp" 2
+        # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityMacros.h" 1 3 4
+        # 89 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityMacros.h" 3 4
+        # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityVersions.h" 1 3 4
+        # 90 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityMacros.h" 2 3 4
+        # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/TargetConditionals.h" 1 3 4
+        # 91 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityMacros.h" 2 3 4
+        # 207 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityMacros.h" 3 4
+        # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h" 1 3 4
+        # 196 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h" 3 4
+        # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityVersions.h" 1 3 4
+        # 197 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h" 2 3 4
+        # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternal.h" 1 3 4
+        # 33 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternal.h" 3 4
+        # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityVersions.h" 1 3 4
+        # 34 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternal.h" 2 3 4
+        # 198 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h" 2 3 4
+        # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternalLegacy.h" 1 3 4
+        # 34 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternalLegacy.h" 3 4
+        # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternal.h" 1 3 4
+        # 35 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternalLegacy.h" 2 3 4
+        # 199 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h" 2 3 4
+        # 208 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityMacros.h" 2 3 4
+        # 2 "apple-sdk.cpp" 2
+        
+        
+      Found apple sysroot: /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_AR"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "ar"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/Users/tonytran/.local/bin/"
+      - "/usr/local/bin/"
+      - "/System/Cryptexes/App/usr/bin/"
+      - "/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/Users/tonytran/.cargo/bin/"
+    found: "/usr/bin/ar"
+    search_context:
+      ENV{PATH}:
+        - "/Users/tonytran/.local/bin"
+        - "/usr/local/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Users/tonytran/.local/bin"
+        - "/Users/tonytran/.cargo/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_RANLIB"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "ranlib"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/Users/tonytran/.local/bin/"
+      - "/usr/local/bin/"
+      - "/System/Cryptexes/App/usr/bin/"
+      - "/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/Users/tonytran/.cargo/bin/"
+    found: "/usr/bin/ranlib"
+    search_context:
+      ENV{PATH}:
+        - "/Users/tonytran/.local/bin"
+        - "/usr/local/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Users/tonytran/.local/bin"
+        - "/Users/tonytran/.cargo/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_STRIP"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "strip"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/Users/tonytran/.local/bin/"
+      - "/usr/local/bin/"
+      - "/System/Cryptexes/App/usr/bin/"
+      - "/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/Users/tonytran/.cargo/bin/"
+    found: "/usr/bin/strip"
+    search_context:
+      ENV{PATH}:
+        - "/Users/tonytran/.local/bin"
+        - "/usr/local/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Users/tonytran/.local/bin"
+        - "/Users/tonytran/.cargo/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_LINKER"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "ld"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/Users/tonytran/.local/bin/"
+      - "/usr/local/bin/"
+      - "/System/Cryptexes/App/usr/bin/"
+      - "/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/Users/tonytran/.cargo/bin/"
+    found: "/usr/bin/ld"
+    search_context:
+      ENV{PATH}:
+        - "/Users/tonytran/.local/bin"
+        - "/usr/local/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Users/tonytran/.local/bin"
+        - "/Users/tonytran/.cargo/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_NM"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "nm"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/Users/tonytran/.local/bin/"
+      - "/usr/local/bin/"
+      - "/System/Cryptexes/App/usr/bin/"
+      - "/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/Users/tonytran/.cargo/bin/"
+    found: "/usr/bin/nm"
+    search_context:
+      ENV{PATH}:
+        - "/Users/tonytran/.local/bin"
+        - "/usr/local/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Users/tonytran/.local/bin"
+        - "/Users/tonytran/.cargo/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_OBJDUMP"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "objdump"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/Users/tonytran/.local/bin/"
+      - "/usr/local/bin/"
+      - "/System/Cryptexes/App/usr/bin/"
+      - "/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/Users/tonytran/.cargo/bin/"
+    found: "/usr/bin/objdump"
+    search_context:
+      ENV{PATH}:
+        - "/Users/tonytran/.local/bin"
+        - "/usr/local/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Users/tonytran/.local/bin"
+        - "/Users/tonytran/.cargo/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_OBJCOPY"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "objcopy"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/Users/tonytran/.local/bin/"
+      - "/usr/local/bin/"
+      - "/System/Cryptexes/App/usr/bin/"
+      - "/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/Users/tonytran/.cargo/bin/"
+    searched_directories:
+      - "/usr/bin/objcopy"
+      - "/Users/tonytran/.local/bin/objcopy"
+      - "/usr/local/bin/objcopy"
+      - "/System/Cryptexes/App/usr/bin/objcopy"
+      - "/bin/objcopy"
+      - "/usr/sbin/objcopy"
+      - "/sbin/objcopy"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/objcopy"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/objcopy"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/objcopy"
+      - "/Users/tonytran/.cargo/bin/objcopy"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "/Users/tonytran/.local/bin"
+        - "/usr/local/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Users/tonytran/.local/bin"
+        - "/Users/tonytran/.cargo/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_READELF"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "readelf"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/Users/tonytran/.local/bin/"
+      - "/usr/local/bin/"
+      - "/System/Cryptexes/App/usr/bin/"
+      - "/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/Users/tonytran/.cargo/bin/"
+    searched_directories:
+      - "/usr/bin/readelf"
+      - "/Users/tonytran/.local/bin/readelf"
+      - "/usr/local/bin/readelf"
+      - "/System/Cryptexes/App/usr/bin/readelf"
+      - "/bin/readelf"
+      - "/usr/sbin/readelf"
+      - "/sbin/readelf"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/readelf"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/readelf"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/readelf"
+      - "/Users/tonytran/.cargo/bin/readelf"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "/Users/tonytran/.local/bin"
+        - "/usr/local/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Users/tonytran/.local/bin"
+        - "/Users/tonytran/.cargo/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_DLLTOOL"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "dlltool"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/Users/tonytran/.local/bin/"
+      - "/usr/local/bin/"
+      - "/System/Cryptexes/App/usr/bin/"
+      - "/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/Users/tonytran/.cargo/bin/"
+    searched_directories:
+      - "/usr/bin/dlltool"
+      - "/Users/tonytran/.local/bin/dlltool"
+      - "/usr/local/bin/dlltool"
+      - "/System/Cryptexes/App/usr/bin/dlltool"
+      - "/bin/dlltool"
+      - "/usr/sbin/dlltool"
+      - "/sbin/dlltool"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/dlltool"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/dlltool"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/dlltool"
+      - "/Users/tonytran/.cargo/bin/dlltool"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "/Users/tonytran/.local/bin"
+        - "/usr/local/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Users/tonytran/.local/bin"
+        - "/Users/tonytran/.cargo/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_ADDR2LINE"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "addr2line"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/Users/tonytran/.local/bin/"
+      - "/usr/local/bin/"
+      - "/System/Cryptexes/App/usr/bin/"
+      - "/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/Users/tonytran/.cargo/bin/"
+    searched_directories:
+      - "/usr/bin/addr2line"
+      - "/Users/tonytran/.local/bin/addr2line"
+      - "/usr/local/bin/addr2line"
+      - "/System/Cryptexes/App/usr/bin/addr2line"
+      - "/bin/addr2line"
+      - "/usr/sbin/addr2line"
+      - "/sbin/addr2line"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/addr2line"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/addr2line"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/addr2line"
+      - "/Users/tonytran/.cargo/bin/addr2line"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "/Users/tonytran/.local/bin"
+        - "/usr/local/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Users/tonytran/.local/bin"
+        - "/Users/tonytran/.cargo/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_TAPI"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "tapi"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/Users/tonytran/.local/bin/"
+      - "/usr/local/bin/"
+      - "/System/Cryptexes/App/usr/bin/"
+      - "/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/Users/tonytran/.cargo/bin/"
+    searched_directories:
+      - "/usr/bin/tapi"
+      - "/Users/tonytran/.local/bin/tapi"
+      - "/usr/local/bin/tapi"
+      - "/System/Cryptexes/App/usr/bin/tapi"
+      - "/bin/tapi"
+      - "/usr/sbin/tapi"
+      - "/sbin/tapi"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/tapi"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/tapi"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/tapi"
+      - "/Users/tonytran/.cargo/bin/tapi"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "/Users/tonytran/.local/bin"
+        - "/usr/local/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Users/tonytran/.local/bin"
+        - "/Users/tonytran/.cargo/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/Platform/Darwin.cmake:66 (find_program)"
+      - "/usr/local/share/cmake/Modules/CMakeSystemSpecificInformation.cmake:32 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_INSTALL_NAME_TOOL"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "install_name_tool"
+    candidate_directories:
+      - "/Users/tonytran/.local/bin/"
+      - "/usr/local/bin/"
+      - "/System/Cryptexes/App/usr/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/Users/tonytran/.cargo/bin/"
+    searched_directories:
+      - "/Users/tonytran/.local/bin/install_name_tool"
+      - "/usr/local/bin/install_name_tool"
+      - "/System/Cryptexes/App/usr/bin/install_name_tool"
+    found: "/usr/bin/install_name_tool"
+    search_context:
+      ENV{PATH}:
+        - "/Users/tonytran/.local/bin"
+        - "/usr/local/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Users/tonytran/.local/bin"
+        - "/Users/tonytran/.cargo/bin"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:83 (try_compile)"
+      - "/usr/local/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-NDOj1l"
+      binary: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-NDOj1l"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+      CMAKE_CXX_STDLIB_MODULES_JSON: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-NDOj1l'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_2f15b/fast
+        /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_2f15b.dir/build.make CMakeFiles/cmTC_2f15b.dir/build
+        Building CXX object CMakeFiles/cmTC_2f15b.dir/CMakeCXXCompilerABI.cpp.o
+        /usr/bin/c++   -v -Wl,-v -MD -MT CMakeFiles/cmTC_2f15b.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_2f15b.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_2f15b.dir/CMakeCXXCompilerABI.cpp.o -c /usr/local/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+        Apple clang version 17.0.0 (clang-1700.0.13.5)
+        Target: x86_64-apple-darwin24.6.0
+        Thread model: posix
+        InstalledDir: /Library/Developer/CommandLineTools/usr/bin
+        clang++: warning: -Wl,-v: 'linker' input unused [-Wunused-command-line-argument]
+        ignoring nonexistent directory "/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"
+         "/Library/Developer/CommandLineTools/usr/bin/clang" -cc1 -triple x86_64-apple-macosx15.0.0 -Wundef-prefix=TARGET_OS_ -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -Werror=implicit-function-declaration -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=all -fno-strict-return -ffp-contract=on -fno-rounding-math -funwind-tables=2 -target-sdk-version=15.5 -fvisibility-inlines-hidden-static-local-var -fdefine-target-os-macros -fno-assume-unique-vtables -fno-modulemap-allow-subdirectory-search -target-cpu penryn -tune-cpu generic -debugger-tuning=lldb -fdebug-compilation-dir=/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-NDOj1l -target-linker-version 1167.5 -v -fcoverage-compilation-dir=/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-NDOj1l -resource-dir /Library/Developer/CommandLineTools/usr/lib/clang/17 -dependency-file CMakeFiles/cmTC_2f15b.dir/CMakeCXXCompilerABI.cpp.o.d -skip-unused-modulemap-deps -MT CMakeFiles/cmTC_2f15b.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -internal-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/usr/lib/clang/17/include -internal-externc-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -internal-externc-isystem /Library/Developer/CommandLineTools/usr/include -Wno-reorder-init-list -Wno-implicit-int-float-conversion -Wno-c99-designator -Wno-final-dtor-non-final-class -Wno-extra-semi-stmt -Wno-misleading-indentation -Wno-quoted-include-in-framework-header -Wno-implicit-fallthrough -Wno-enum-enum-conversion -Wno-enum-float-conversion -Wno-elaborated-enum-base -Wno-reserved-identifier -Wno-gnu-folding-constant -fdeprecated-macro -ferror-limit 19 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fno-cxx-modules -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -fmax-type-align=16 -fcommon -clang-vendor-feature=+disableNonDependentMemberExprInCurrentInstantiation -fno-odr-hash-protocols -clang-vendor-feature=+enableAggressiveVLAFolding -clang-vendor-feature=+revert09abecef7bbf -clang-vendor-feature=+thisNoAlignAttr -clang-vendor-feature=+thisNoNullAttr -clang-vendor-feature=+disableAtImportPrivateFrameworkInImplementationError -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_2f15b.dir/CMakeCXXCompilerABI.cpp.o -x c++ /usr/local/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+        clang -cc1 version 17.0.0 (clang-1700.0.13.5) default target x86_64-apple-darwin24.6.0
+        ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include"
+        ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/SubFrameworks"
+        ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/Library/Frameworks"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /usr/local/include
+         /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1
+         /Library/Developer/CommandLineTools/usr/lib/clang/17/include
+         /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include
+         /Library/Developer/CommandLineTools/usr/include
+         /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks (framework directory)
+        End of search list.
+        Linking CXX executable cmTC_2f15b
+        /usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2f15b.dir/link.txt --verbose=1
+        Apple clang version 17.0.0 (clang-1700.0.13.5)
+        Target: x86_64-apple-darwin24.6.0
+        Thread model: posix
+        InstalledDir: /Library/Developer/CommandLineTools/usr/bin
+         "/Library/Developer/CommandLineTools/usr/bin/ld" -demangle -lto_library /Library/Developer/CommandLineTools/usr/lib/libLTO.dylib -dynamic -arch x86_64 -platform_version macos 15.0.0 15.5 -syslibroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -mllvm -enable-linkonceodr-outlining -o cmTC_2f15b -L/usr/local/lib -v CMakeFiles/cmTC_2f15b.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lSystem /Library/Developer/CommandLineTools/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a
+        @(#)PROGRAM:ld PROJECT:ld-1167.5
+        BUILD 01:44:07 Apr 30 2025
+        configured to support archs: armv6 armv7 armv7s arm64 arm64e arm64_32 i386 x86_64 x86_64h armv6m armv7k armv7m armv7em
+        will use ld-classic for: armv6 armv7 armv7s i386 armv6m armv7k armv7m armv7em
+        LTO support using: LLVM version 17.0.0 (static support for 29, runtime is 29)
+        TAPI support using: Apple TAPI version 17.0.0 (tapi-1700.0.3.5)
+        Library search paths:
+        	/usr/local/lib
+        	/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib
+        	/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib/swift
+        Framework search paths:
+        	/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks
+        /usr/bin/c++  -v -Wl,-v CMakeFiles/cmTC_2f15b.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_2f15b
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:122 (message)"
+      - "/usr/local/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Effective list of requested architectures (possibly empty)  : ""
+      Effective list of architectures found in the ABI info binary: "x86_64"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:217 (message)"
+      - "/usr/local/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed CXX implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/usr/local/include]
+          add: [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1]
+          add: [/Library/Developer/CommandLineTools/usr/lib/clang/17/include]
+          add: [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include]
+          add: [/Library/Developer/CommandLineTools/usr/include]
+        end of search list found
+        collapse include dir [/usr/local/include] ==> [/usr/local/include]
+        collapse include dir [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1] ==> [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1]
+        collapse include dir [/Library/Developer/CommandLineTools/usr/lib/clang/17/include] ==> [/Library/Developer/CommandLineTools/usr/lib/clang/17/include]
+        collapse include dir [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include] ==> [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include]
+        collapse include dir [/Library/Developer/CommandLineTools/usr/include] ==> [/Library/Developer/CommandLineTools/usr/include]
+        implicit include dirs: [/usr/local/include;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1;/Library/Developer/CommandLineTools/usr/lib/clang/17/include;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include;/Library/Developer/CommandLineTools/usr/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:253 (message)"
+      - "/usr/local/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|"|[0-9]+>[ 	-]*Build:[ 	0-9]+ ms[ 	]*)?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)))("|,| |$)]
+        ignore line: [Change Dir: '/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-NDOj1l']
+        ignore line: []
+        ignore line: [Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_2f15b/fast]
+        ignore line: [/Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_2f15b.dir/build.make CMakeFiles/cmTC_2f15b.dir/build]
+        ignore line: [Building CXX object CMakeFiles/cmTC_2f15b.dir/CMakeCXXCompilerABI.cpp.o]
+        ignore line: [/usr/bin/c++   -v -Wl -v -MD -MT CMakeFiles/cmTC_2f15b.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_2f15b.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_2f15b.dir/CMakeCXXCompilerABI.cpp.o -c /usr/local/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [Apple clang version 17.0.0 (clang-1700.0.13.5)]
+        ignore line: [Target: x86_64-apple-darwin24.6.0]
+        ignore line: [Thread model: posix]
+        ignore line: [InstalledDir: /Library/Developer/CommandLineTools/usr/bin]
+        ignore line: [clang++: warning: -Wl -v: 'linker' input unused [-Wunused-command-line-argument]]
+        ignore line: [ignoring nonexistent directory "/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"]
+        ignore line: [ "/Library/Developer/CommandLineTools/usr/bin/clang" -cc1 -triple x86_64-apple-macosx15.0.0 -Wundef-prefix=TARGET_OS_ -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -Werror=implicit-function-declaration -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=all -fno-strict-return -ffp-contract=on -fno-rounding-math -funwind-tables=2 -target-sdk-version=15.5 -fvisibility-inlines-hidden-static-local-var -fdefine-target-os-macros -fno-assume-unique-vtables -fno-modulemap-allow-subdirectory-search -target-cpu penryn -tune-cpu generic -debugger-tuning=lldb -fdebug-compilation-dir=/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-NDOj1l -target-linker-version 1167.5 -v -fcoverage-compilation-dir=/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-NDOj1l -resource-dir /Library/Developer/CommandLineTools/usr/lib/clang/17 -dependency-file CMakeFiles/cmTC_2f15b.dir/CMakeCXXCompilerABI.cpp.o.d -skip-unused-modulemap-deps -MT CMakeFiles/cmTC_2f15b.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -internal-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/usr/lib/clang/17/include -internal-externc-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -internal-externc-isystem /Library/Developer/CommandLineTools/usr/include -Wno-reorder-init-list -Wno-implicit-int-float-conversion -Wno-c99-designator -Wno-final-dtor-non-final-class -Wno-extra-semi-stmt -Wno-misleading-indentation -Wno-quoted-include-in-framework-header -Wno-implicit-fallthrough -Wno-enum-enum-conversion -Wno-enum-float-conversion -Wno-elaborated-enum-base -Wno-reserved-identifier -Wno-gnu-folding-constant -fdeprecated-macro -ferror-limit 19 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fno-cxx-modules -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -fmax-type-align=16 -fcommon -clang-vendor-feature=+disableNonDependentMemberExprInCurrentInstantiation -fno-odr-hash-protocols -clang-vendor-feature=+enableAggressiveVLAFolding -clang-vendor-feature=+revert09abecef7bbf -clang-vendor-feature=+thisNoAlignAttr -clang-vendor-feature=+thisNoNullAttr -clang-vendor-feature=+disableAtImportPrivateFrameworkInImplementationError -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_2f15b.dir/CMakeCXXCompilerABI.cpp.o -x c++ /usr/local/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [clang -cc1 version 17.0.0 (clang-1700.0.13.5) default target x86_64-apple-darwin24.6.0]
+        ignore line: [ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include"]
+        ignore line: [ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/SubFrameworks"]
+        ignore line: [ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/Library/Frameworks"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /usr/local/include]
+        ignore line: [ /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1]
+        ignore line: [ /Library/Developer/CommandLineTools/usr/lib/clang/17/include]
+        ignore line: [ /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include]
+        ignore line: [ /Library/Developer/CommandLineTools/usr/include]
+        ignore line: [ /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks (framework directory)]
+        ignore line: [End of search list.]
+        ignore line: [Linking CXX executable cmTC_2f15b]
+        ignore line: [/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2f15b.dir/link.txt --verbose=1]
+        ignore line: [Apple clang version 17.0.0 (clang-1700.0.13.5)]
+        ignore line: [Target: x86_64-apple-darwin24.6.0]
+        ignore line: [Thread model: posix]
+        ignore line: [InstalledDir: /Library/Developer/CommandLineTools/usr/bin]
+        link line: [ "/Library/Developer/CommandLineTools/usr/bin/ld" -demangle -lto_library /Library/Developer/CommandLineTools/usr/lib/libLTO.dylib -dynamic -arch x86_64 -platform_version macos 15.0.0 15.5 -syslibroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -mllvm -enable-linkonceodr-outlining -o cmTC_2f15b -L/usr/local/lib -v CMakeFiles/cmTC_2f15b.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lSystem /Library/Developer/CommandLineTools/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a]
+          arg [/Library/Developer/CommandLineTools/usr/bin/ld] ==> ignore
+          arg [-demangle] ==> ignore
+          arg [-lto_library] ==> ignore, skip following value
+          arg [/Library/Developer/CommandLineTools/usr/lib/libLTO.dylib] ==> skip value of -lto_library
+          arg [-dynamic] ==> ignore
+          arg [-arch] ==> ignore
+          arg [x86_64] ==> ignore
+          arg [-platform_version] ==> ignore
+          arg [macos] ==> ignore
+          arg [15.0.0] ==> ignore
+          arg [15.5] ==> ignore
+          arg [-syslibroot] ==> ignore
+          arg [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk] ==> ignore
+          arg [-mllvm] ==> ignore
+          arg [-enable-linkonceodr-outlining] ==> ignore
+          arg [-o] ==> ignore
+          arg [cmTC_2f15b] ==> ignore
+          arg [-L/usr/local/lib] ==> dir [/usr/local/lib]
+          arg [-v] ==> ignore
+          arg [CMakeFiles/cmTC_2f15b.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+          arg [-lc++] ==> lib [c++]
+          arg [-lSystem] ==> lib [System]
+          arg [/Library/Developer/CommandLineTools/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a] ==> lib [/Library/Developer/CommandLineTools/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a]
+        linker tool for 'CXX': /Library/Developer/CommandLineTools/usr/bin/ld
+        Library search paths: [;/usr/local/lib;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib/swift]
+        Framework search paths: [;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks]
+        remove lib [System]
+        remove lib [/Library/Developer/CommandLineTools/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a]
+        collapse library dir [/usr/local/lib] ==> [/usr/local/lib]
+        collapse library dir [/usr/local/lib] ==> [/usr/local/lib]
+        collapse library dir [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib] ==> [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib]
+        collapse library dir [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib/swift] ==> [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib/swift]
+        collapse framework dir [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks] ==> [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks]
+        implicit libs: [c++]
+        implicit objs: []
+        implicit dirs: [/usr/local/lib;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib/swift]
+        implicit fwks: [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/Internal/CMakeDetermineLinkerId.cmake:38 (message)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:299 (cmake_determine_linker_id)"
+      - "/usr/local/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Running the CXX compiler's linker: "/Library/Developer/CommandLineTools/usr/bin/ld" "-v"
+      @(#)PROGRAM:ld PROJECT:ld-1167.5
+      BUILD 01:44:07 Apr 30 2025
+      configured to support archs: armv6 armv7 armv7s arm64 arm64e arm64_32 i386 x86_64 x86_64h armv6m armv7k armv7m armv7em
+      will use ld-classic for: armv6 armv7 armv7s i386 armv6m armv7k armv7m armv7em
+      LTO support using: LLVM version 17.0.0 (static support for 29, runtime is 29)
+      TAPI support using: Apple TAPI version 17.0.0 (tapi-1700.0.3.5)
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/FindGit.cmake:111 (find_program)"
+      - "/usr/local/share/cmake/Modules/FetchContent.cmake:1887 (find_package)"
+      - "/usr/local/share/cmake/Modules/FetchContent.cmake:1622 (__FetchContent_populateSubbuild)"
+      - "/usr/local/share/cmake/Modules/FetchContent.cmake:2158:EVAL:2 (__FetchContent_doPopulation)"
+      - "/usr/local/share/cmake/Modules/FetchContent.cmake:2158 (cmake_language)"
+      - "/usr/local/share/cmake/Modules/FetchContent.cmake:2399 (__FetchContent_Populate)"
+      - "cmake/Dependencies.cmake:35 (FetchContent_MakeAvailable)"
+      - "CMakeLists.txt:49 (include)"
+    mode: "program"
+    variable: "GIT_EXECUTABLE"
+    description: "Git command line client"
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "git"
+    candidate_directories:
+      - "/Users/tonytran/.local/bin/"
+      - "/usr/local/bin/"
+      - "/System/Cryptexes/App/usr/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/Users/tonytran/.cargo/bin/"
+      - "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/bin/"
+      - "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/sbin/"
+      - "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/"
+      - "/usr/local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/"
+      - "/usr/bin/"
+      - "/usr/sbin/"
+      - "/usr/"
+      - "/bin/"
+      - "/sbin/"
+      - "/usr/X11R6/bin/"
+      - "/usr/X11R6/sbin/"
+      - "/usr/X11R6/"
+      - "/usr/pkg/bin/"
+      - "/usr/pkg/sbin/"
+      - "/usr/pkg/"
+      - "/opt/bin/"
+      - "/opt/sbin/"
+      - "/opt/"
+      - "/sw/bin/"
+      - "/sw/sbin/"
+      - "/sw/"
+      - "/opt/local/bin/"
+      - "/opt/local/sbin/"
+      - "/opt/local/"
+      - "/Applications/"
+    searched_directories:
+      - "/Users/tonytran/.local/bin/git"
+      - "/usr/local/bin/git"
+      - "/System/Cryptexes/App/usr/bin/git"
+    found: "/usr/bin/git"
+    search_context:
+      ENV{PATH}:
+        - "/Users/tonytran/.local/bin"
+        - "/usr/local/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Users/tonytran/.local/bin"
+        - "/Users/tonytran/.cargo/bin"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr"
+        - "/usr/local"
+        - "/usr/local"
+        - "/usr"
+        - "/"
+        - "/usr/local"
+        - "/usr/local"
+        - "/usr/X11R6"
+        - "/usr/pkg"
+        - "/opt"
+        - "/sw"
+        - "/opt/local"
+      CMAKE_SYSTEM_APPBUNDLE_PATH:
+        - "/Applications"
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/usr/local/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/local/share/cmake/Modules/CheckCXXCompilerFlag.cmake:103 (cmake_check_compiler_flag)"
+      - "build/fmt-test/_deps/fmt-src/CMakeLists.txt:262 (check_cxx_compiler_flag)"
+    checks:
+      - "Performing Test HAS_NULLPTR_WARNING"
+    directories:
+      source: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-3hLfTW"
+      binary: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-3hLfTW"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_STDLIB_MODULES_JSON: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/cmake;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/fmt-src/support/cmake"
+      CMAKE_MSVC_DEBUG_INFORMATION_FORMAT: "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "HAS_NULLPTR_WARNING"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-3hLfTW'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_f1041/fast
+        /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_f1041.dir/build.make CMakeFiles/cmTC_f1041.dir/build
+        Building CXX object CMakeFiles/cmTC_f1041.dir/src.cxx.o
+        /usr/bin/c++ -DHAS_NULLPTR_WARNING  -std=c++23   -Wzero-as-null-pointer-constant -MD -MT CMakeFiles/cmTC_f1041.dir/src.cxx.o -MF CMakeFiles/cmTC_f1041.dir/src.cxx.o.d -o CMakeFiles/cmTC_f1041.dir/src.cxx.o -c /Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-3hLfTW/src.cxx
+        Linking CXX executable cmTC_f1041
+        /usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f1041.dir/link.txt --verbose=1
+        /usr/bin/c++ CMakeFiles/cmTC_f1041.dir/src.cxx.o -o cmTC_f1041
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/usr/local/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/local/share/cmake/Modules/CheckCXXCompilerFlag.cmake:103 (cmake_check_compiler_flag)"
+      - "build/fmt-test/_deps/catch2-src/CMake/CatchMiscFunctions.cmake:12 (check_cxx_compiler_flag)"
+      - "build/fmt-test/_deps/catch2-src/CMake/CatchMiscFunctions.cmake:119 (add_cxx_flag_if_supported_to_targets)"
+      - "build/fmt-test/_deps/catch2-src/src/CMakeLists.txt:342 (add_build_reproducibility_settings)"
+    checks:
+      - "Performing Test HAVE_FLAG__ffile_prefix_map__Users_tonytran_Documents_GitHub_Declarative_Pipeline_Builder_build_fmt_test__deps_catch2_src__"
+    directories:
+      source: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-Guw92a"
+      binary: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-Guw92a"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_STDLIB_MODULES_JSON: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/cmake;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/catch2-src/extras;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/catch2-src/CMake"
+      CMAKE_MSVC_DEBUG_INFORMATION_FORMAT: "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "HAVE_FLAG__ffile_prefix_map__Users_tonytran_Documents_GitHub_Declarative_Pipeline_Builder_build_fmt_test__deps_catch2_src__"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-Guw92a'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_4ccd4/fast
+        /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_4ccd4.dir/build.make CMakeFiles/cmTC_4ccd4.dir/build
+        Building CXX object CMakeFiles/cmTC_4ccd4.dir/src.cxx.o
+        /usr/bin/c++ -DHAVE_FLAG__ffile_prefix_map__Users_tonytran_Documents_GitHub_Declarative_Pipeline_Builder_build_fmt_test__deps_catch2_src__  -std=c++23   -ffile-prefix-map=/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/catch2-src/= -MD -MT CMakeFiles/cmTC_4ccd4.dir/src.cxx.o -MF CMakeFiles/cmTC_4ccd4.dir/src.cxx.o.d -o CMakeFiles/cmTC_4ccd4.dir/src.cxx.o -c /Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-Guw92a/src.cxx
+        Linking CXX executable cmTC_4ccd4
+        /usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4ccd4.dir/link.txt --verbose=1
+        /usr/bin/c++ CMakeFiles/cmTC_4ccd4.dir/src.cxx.o -o cmTC_4ccd4
+        
+      exitCode: 0
+  -
+    kind: "find-v1"
+    backtrace:
+      - "build/fmt-test/_deps/benchmark-src/CMakeLists.txt:80 (find_program)"
+      - "build/fmt-test/_deps/benchmark-src/CMakeLists.txt:90 (should_enable_assembly_tests)"
+    mode: "program"
+    variable: "LLVM_FILECHECK_EXE"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "FileCheck"
+    candidate_directories:
+      - "/Users/tonytran/.local/bin/"
+      - "/usr/local/bin/"
+      - "/System/Cryptexes/App/usr/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/Users/tonytran/.cargo/bin/"
+      - "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/bin/"
+      - "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/sbin/"
+      - "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/"
+      - "/usr/local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/"
+      - "/usr/bin/"
+      - "/usr/sbin/"
+      - "/usr/"
+      - "/bin/"
+      - "/sbin/"
+      - "/usr/X11R6/bin/"
+      - "/usr/X11R6/sbin/"
+      - "/usr/X11R6/"
+      - "/usr/pkg/bin/"
+      - "/usr/pkg/sbin/"
+      - "/usr/pkg/"
+      - "/opt/bin/"
+      - "/opt/sbin/"
+      - "/opt/"
+      - "/sw/bin/"
+      - "/sw/sbin/"
+      - "/sw/"
+      - "/opt/local/bin/"
+      - "/opt/local/sbin/"
+      - "/opt/local/"
+      - "/Applications/"
+    searched_directories:
+      - "/Users/tonytran/.local/bin/FileCheck"
+      - "/usr/local/bin/FileCheck"
+      - "/System/Cryptexes/App/usr/bin/FileCheck"
+      - "/usr/bin/FileCheck"
+      - "/bin/FileCheck"
+      - "/usr/sbin/FileCheck"
+      - "/sbin/FileCheck"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/FileCheck"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/FileCheck"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/FileCheck"
+      - "/Users/tonytran/.cargo/bin/FileCheck"
+      - "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/bin/FileCheck"
+      - "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/sbin/FileCheck"
+      - "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/FileCheck"
+      - "/usr/local/bin/FileCheck"
+      - "/usr/local/sbin/FileCheck"
+      - "/usr/local/FileCheck"
+      - "/usr/bin/FileCheck"
+      - "/usr/sbin/FileCheck"
+      - "/usr/FileCheck"
+      - "/bin/FileCheck"
+      - "/sbin/FileCheck"
+      - "/usr/X11R6/bin/FileCheck"
+      - "/usr/X11R6/sbin/FileCheck"
+      - "/usr/X11R6/FileCheck"
+      - "/usr/pkg/bin/FileCheck"
+      - "/usr/pkg/sbin/FileCheck"
+      - "/usr/pkg/FileCheck"
+      - "/opt/bin/FileCheck"
+      - "/opt/sbin/FileCheck"
+      - "/opt/FileCheck"
+      - "/sw/bin/FileCheck"
+      - "/sw/sbin/FileCheck"
+      - "/sw/FileCheck"
+      - "/opt/local/bin/FileCheck"
+      - "/opt/local/sbin/FileCheck"
+      - "/opt/local/FileCheck"
+      - "/Applications/FileCheck"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "/Users/tonytran/.local/bin"
+        - "/usr/local/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Users/tonytran/.local/bin"
+        - "/Users/tonytran/.cargo/bin"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr"
+        - "/usr/local"
+        - "/usr/local"
+        - "/usr"
+        - "/"
+        - "/usr/local"
+        - "/usr/local"
+        - "/usr/X11R6"
+        - "/usr/pkg"
+        - "/opt"
+        - "/sw"
+        - "/opt/local"
+      CMAKE_SYSTEM_APPBUNDLE_PATH:
+        - "/Applications"
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/CheckLibraryExists.cmake:154 (try_compile)"
+      - "build/fmt-test/_deps/benchmark-src/CMakeLists.txt:125 (check_library_exists)"
+    checks:
+      - "Looking for shm_open in rt"
+    directories:
+      source: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-CqXmmT"
+      binary: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-CqXmmT"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_STDLIB_MODULES_JSON: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/cmake;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/catch2-src/extras;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake/Modules;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake"
+      CMAKE_MSVC_DEBUG_INFORMATION_FORMAT: "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "HAVE_LIB_RT"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-CqXmmT'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_5a011/fast
+        /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_5a011.dir/build.make CMakeFiles/cmTC_5a011.dir/build
+        Building CXX object CMakeFiles/cmTC_5a011.dir/CheckFunctionExists.cxx.o
+        /usr/bin/c++   -DCHECK_FUNCTION_EXISTS=shm_open -std=c++23 -MD -MT CMakeFiles/cmTC_5a011.dir/CheckFunctionExists.cxx.o -MF CMakeFiles/cmTC_5a011.dir/CheckFunctionExists.cxx.o.d -o CMakeFiles/cmTC_5a011.dir/CheckFunctionExists.cxx.o -c /Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-CqXmmT/CheckFunctionExists.cxx
+        Linking CXX executable cmTC_5a011
+        /usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5a011.dir/link.txt --verbose=1
+        ld: library 'rt' not found
+        clang++: error: linker command failed with exit code 1 (use -v to see invocation)
+        /usr/bin/c++  -DCHECK_FUNCTION_EXISTS=shm_open CMakeFiles/cmTC_5a011.dir/CheckFunctionExists.cxx.o -o cmTC_5a011  -lrt
+        make[1]: *** [cmTC_5a011] Error 1
+        make: *** [cmTC_5a011/fast] Error 2
+        
+      exitCode: 2
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/usr/local/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/local/share/cmake/Modules/CheckCXXCompilerFlag.cmake:103 (cmake_check_compiler_flag)"
+      - "build/fmt-test/_deps/benchmark-src/cmake/AddCXXCompilerFlag.cmake:34 (check_cxx_compiler_flag)"
+      - "build/fmt-test/_deps/benchmark-src/CMakeLists.txt:174 (add_cxx_compiler_flag)"
+    checks:
+      - "Performing Test HAVE_CXX_FLAG_WALL"
+    directories:
+      source: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-BzNgRQ"
+      binary: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-BzNgRQ"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_STDLIB_MODULES_JSON: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/cmake;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/catch2-src/extras;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake/Modules;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake"
+      CMAKE_MSVC_DEBUG_INFORMATION_FORMAT: "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "HAVE_CXX_FLAG_WALL"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-BzNgRQ'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_847fa/fast
+        /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_847fa.dir/build.make CMakeFiles/cmTC_847fa.dir/build
+        Building CXX object CMakeFiles/cmTC_847fa.dir/src.cxx.o
+        /usr/bin/c++ -DHAVE_CXX_FLAG_WALL  -Wall -std=c++11   -Wall -MD -MT CMakeFiles/cmTC_847fa.dir/src.cxx.o -MF CMakeFiles/cmTC_847fa.dir/src.cxx.o.d -o CMakeFiles/cmTC_847fa.dir/src.cxx.o -c /Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-BzNgRQ/src.cxx
+        Linking CXX executable cmTC_847fa
+        /usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_847fa.dir/link.txt --verbose=1
+        /usr/bin/c++   -Wall CMakeFiles/cmTC_847fa.dir/src.cxx.o -o cmTC_847fa
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/usr/local/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/local/share/cmake/Modules/CheckCXXCompilerFlag.cmake:103 (cmake_check_compiler_flag)"
+      - "build/fmt-test/_deps/benchmark-src/cmake/AddCXXCompilerFlag.cmake:34 (check_cxx_compiler_flag)"
+      - "build/fmt-test/_deps/benchmark-src/CMakeLists.txt:175 (add_cxx_compiler_flag)"
+    checks:
+      - "Performing Test HAVE_CXX_FLAG_WEXTRA"
+    directories:
+      source: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-S9I4mB"
+      binary: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-S9I4mB"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "  -Wall"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_STDLIB_MODULES_JSON: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/cmake;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/catch2-src/extras;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake/Modules;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake"
+      CMAKE_MSVC_DEBUG_INFORMATION_FORMAT: "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "HAVE_CXX_FLAG_WEXTRA"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-S9I4mB'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_23f4d/fast
+        /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_23f4d.dir/build.make CMakeFiles/cmTC_23f4d.dir/build
+        Building CXX object CMakeFiles/cmTC_23f4d.dir/src.cxx.o
+        /usr/bin/c++ -DHAVE_CXX_FLAG_WEXTRA  -Wall  -Wextra -std=c++11   -Wextra -MD -MT CMakeFiles/cmTC_23f4d.dir/src.cxx.o -MF CMakeFiles/cmTC_23f4d.dir/src.cxx.o.d -o CMakeFiles/cmTC_23f4d.dir/src.cxx.o -c /Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-S9I4mB/src.cxx
+        Linking CXX executable cmTC_23f4d
+        /usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_23f4d.dir/link.txt --verbose=1
+        /usr/bin/c++   -Wall  -Wextra CMakeFiles/cmTC_23f4d.dir/src.cxx.o -o cmTC_23f4d
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/usr/local/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/local/share/cmake/Modules/CheckCXXCompilerFlag.cmake:103 (cmake_check_compiler_flag)"
+      - "build/fmt-test/_deps/benchmark-src/cmake/AddCXXCompilerFlag.cmake:34 (check_cxx_compiler_flag)"
+      - "build/fmt-test/_deps/benchmark-src/CMakeLists.txt:176 (add_cxx_compiler_flag)"
+    checks:
+      - "Performing Test HAVE_CXX_FLAG_WSHADOW"
+    directories:
+      source: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-kFnqC8"
+      binary: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-kFnqC8"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "  -Wall  -Wextra"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_STDLIB_MODULES_JSON: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/cmake;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/catch2-src/extras;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake/Modules;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake"
+      CMAKE_MSVC_DEBUG_INFORMATION_FORMAT: "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "HAVE_CXX_FLAG_WSHADOW"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-kFnqC8'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_45314/fast
+        /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_45314.dir/build.make CMakeFiles/cmTC_45314.dir/build
+        Building CXX object CMakeFiles/cmTC_45314.dir/src.cxx.o
+        /usr/bin/c++ -DHAVE_CXX_FLAG_WSHADOW  -Wall  -Wextra  -Wshadow -std=c++11   -Wshadow -MD -MT CMakeFiles/cmTC_45314.dir/src.cxx.o -MF CMakeFiles/cmTC_45314.dir/src.cxx.o.d -o CMakeFiles/cmTC_45314.dir/src.cxx.o -c /Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-kFnqC8/src.cxx
+        Linking CXX executable cmTC_45314
+        /usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_45314.dir/link.txt --verbose=1
+        /usr/bin/c++   -Wall  -Wextra  -Wshadow CMakeFiles/cmTC_45314.dir/src.cxx.o -o cmTC_45314
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/usr/local/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/local/share/cmake/Modules/CheckCXXCompilerFlag.cmake:103 (cmake_check_compiler_flag)"
+      - "build/fmt-test/_deps/benchmark-src/cmake/AddCXXCompilerFlag.cmake:34 (check_cxx_compiler_flag)"
+      - "build/fmt-test/_deps/benchmark-src/CMakeLists.txt:177 (add_cxx_compiler_flag)"
+    checks:
+      - "Performing Test HAVE_CXX_FLAG_WFLOAT_EQUAL"
+    directories:
+      source: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-RsFh0s"
+      binary: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-RsFh0s"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "  -Wall  -Wextra  -Wshadow"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_STDLIB_MODULES_JSON: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/cmake;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/catch2-src/extras;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake/Modules;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake"
+      CMAKE_MSVC_DEBUG_INFORMATION_FORMAT: "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "HAVE_CXX_FLAG_WFLOAT_EQUAL"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-RsFh0s'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_16b1c/fast
+        /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_16b1c.dir/build.make CMakeFiles/cmTC_16b1c.dir/build
+        Building CXX object CMakeFiles/cmTC_16b1c.dir/src.cxx.o
+        /usr/bin/c++ -DHAVE_CXX_FLAG_WFLOAT_EQUAL  -Wall  -Wextra  -Wshadow  -Wfloat-equal -std=c++11   -Wfloat-equal -MD -MT CMakeFiles/cmTC_16b1c.dir/src.cxx.o -MF CMakeFiles/cmTC_16b1c.dir/src.cxx.o.d -o CMakeFiles/cmTC_16b1c.dir/src.cxx.o -c /Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-RsFh0s/src.cxx
+        Linking CXX executable cmTC_16b1c
+        /usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_16b1c.dir/link.txt --verbose=1
+        /usr/bin/c++   -Wall  -Wextra  -Wshadow  -Wfloat-equal CMakeFiles/cmTC_16b1c.dir/src.cxx.o -o cmTC_16b1c
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/usr/local/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/local/share/cmake/Modules/CheckCXXCompilerFlag.cmake:103 (cmake_check_compiler_flag)"
+      - "build/fmt-test/_deps/benchmark-src/cmake/AddCXXCompilerFlag.cmake:34 (check_cxx_compiler_flag)"
+      - "build/fmt-test/_deps/benchmark-src/CMakeLists.txt:178 (add_cxx_compiler_flag)"
+    checks:
+      - "Performing Test HAVE_CXX_FLAG_WOLD_STYLE_CAST"
+    directories:
+      source: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-kc8FSF"
+      binary: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-kc8FSF"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "  -Wall  -Wextra  -Wshadow  -Wfloat-equal"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_STDLIB_MODULES_JSON: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/cmake;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/catch2-src/extras;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake/Modules;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake"
+      CMAKE_MSVC_DEBUG_INFORMATION_FORMAT: "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "HAVE_CXX_FLAG_WOLD_STYLE_CAST"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-kc8FSF'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_8113a/fast
+        /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_8113a.dir/build.make CMakeFiles/cmTC_8113a.dir/build
+        Building CXX object CMakeFiles/cmTC_8113a.dir/src.cxx.o
+        /usr/bin/c++ -DHAVE_CXX_FLAG_WOLD_STYLE_CAST  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast -std=c++11   -Wold-style-cast -MD -MT CMakeFiles/cmTC_8113a.dir/src.cxx.o -MF CMakeFiles/cmTC_8113a.dir/src.cxx.o.d -o CMakeFiles/cmTC_8113a.dir/src.cxx.o -c /Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-kc8FSF/src.cxx
+        Linking CXX executable cmTC_8113a
+        /usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8113a.dir/link.txt --verbose=1
+        /usr/bin/c++   -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast CMakeFiles/cmTC_8113a.dir/src.cxx.o -o cmTC_8113a
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/usr/local/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/local/share/cmake/Modules/CheckCXXCompilerFlag.cmake:103 (cmake_check_compiler_flag)"
+      - "build/fmt-test/_deps/benchmark-src/cmake/AddCXXCompilerFlag.cmake:34 (check_cxx_compiler_flag)"
+      - "build/fmt-test/_deps/benchmark-src/CMakeLists.txt:180 (add_cxx_compiler_flag)"
+    checks:
+      - "Performing Test HAVE_CXX_FLAG_WERROR"
+    directories:
+      source: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-b5a6VI"
+      binary: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-b5a6VI"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_STDLIB_MODULES_JSON: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/cmake;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/catch2-src/extras;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake/Modules;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake"
+      CMAKE_MSVC_DEBUG_INFORMATION_FORMAT: "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "HAVE_CXX_FLAG_WERROR"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-b5a6VI'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_9375d/fast
+        /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_9375d.dir/build.make CMakeFiles/cmTC_9375d.dir/build
+        Building CXX object CMakeFiles/cmTC_9375d.dir/src.cxx.o
+        /usr/bin/c++ -DHAVE_CXX_FLAG_WERROR  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror -std=c++11   -Werror -MD -MT CMakeFiles/cmTC_9375d.dir/src.cxx.o -MF CMakeFiles/cmTC_9375d.dir/src.cxx.o.d -o CMakeFiles/cmTC_9375d.dir/src.cxx.o -c /Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-b5a6VI/src.cxx
+        Linking CXX executable cmTC_9375d
+        /usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9375d.dir/link.txt --verbose=1
+        /usr/bin/c++   -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror CMakeFiles/cmTC_9375d.dir/src.cxx.o -o cmTC_9375d
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/usr/local/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/local/share/cmake/Modules/CheckCXXCompilerFlag.cmake:103 (cmake_check_compiler_flag)"
+      - "build/fmt-test/_deps/benchmark-src/cmake/AddCXXCompilerFlag.cmake:34 (check_cxx_compiler_flag)"
+      - "build/fmt-test/_deps/benchmark-src/CMakeLists.txt:184 (add_cxx_compiler_flag)"
+    checks:
+      - "Performing Test HAVE_CXX_FLAG_WSUGGEST_OVERRIDE"
+    directories:
+      source: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-W1FaKJ"
+      binary: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-W1FaKJ"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_STDLIB_MODULES_JSON: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/cmake;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/catch2-src/extras;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake/Modules;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake"
+      CMAKE_MSVC_DEBUG_INFORMATION_FORMAT: "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "HAVE_CXX_FLAG_WSUGGEST_OVERRIDE"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-W1FaKJ'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_89b63/fast
+        /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_89b63.dir/build.make CMakeFiles/cmTC_89b63.dir/build
+        Building CXX object CMakeFiles/cmTC_89b63.dir/src.cxx.o
+        /usr/bin/c++ -DHAVE_CXX_FLAG_WSUGGEST_OVERRIDE  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override -std=c++11   -Wsuggest-override -MD -MT CMakeFiles/cmTC_89b63.dir/src.cxx.o -MF CMakeFiles/cmTC_89b63.dir/src.cxx.o.d -o CMakeFiles/cmTC_89b63.dir/src.cxx.o -c /Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-W1FaKJ/src.cxx
+        Linking CXX executable cmTC_89b63
+        /usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_89b63.dir/link.txt --verbose=1
+        /usr/bin/c++   -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override CMakeFiles/cmTC_89b63.dir/src.cxx.o -o cmTC_89b63
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/usr/local/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/local/share/cmake/Modules/CheckCXXCompilerFlag.cmake:103 (cmake_check_compiler_flag)"
+      - "build/fmt-test/_deps/benchmark-src/cmake/AddCXXCompilerFlag.cmake:34 (check_cxx_compiler_flag)"
+      - "build/fmt-test/_deps/benchmark-src/CMakeLists.txt:186 (add_cxx_compiler_flag)"
+    checks:
+      - "Performing Test HAVE_CXX_FLAG_PEDANTIC"
+    directories:
+      source: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-avcvQi"
+      binary: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-avcvQi"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_STDLIB_MODULES_JSON: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/cmake;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/catch2-src/extras;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake/Modules;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake"
+      CMAKE_MSVC_DEBUG_INFORMATION_FORMAT: "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "HAVE_CXX_FLAG_PEDANTIC"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-avcvQi'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_e6272/fast
+        /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_e6272.dir/build.make CMakeFiles/cmTC_e6272.dir/build
+        Building CXX object CMakeFiles/cmTC_e6272.dir/src.cxx.o
+        /usr/bin/c++ -DHAVE_CXX_FLAG_PEDANTIC  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic -std=c++11   -pedantic -MD -MT CMakeFiles/cmTC_e6272.dir/src.cxx.o -MF CMakeFiles/cmTC_e6272.dir/src.cxx.o.d -o CMakeFiles/cmTC_e6272.dir/src.cxx.o -c /Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-avcvQi/src.cxx
+        Linking CXX executable cmTC_e6272
+        /usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e6272.dir/link.txt --verbose=1
+        /usr/bin/c++   -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic CMakeFiles/cmTC_e6272.dir/src.cxx.o -o cmTC_e6272
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/usr/local/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/local/share/cmake/Modules/CheckCXXCompilerFlag.cmake:103 (cmake_check_compiler_flag)"
+      - "build/fmt-test/_deps/benchmark-src/cmake/AddCXXCompilerFlag.cmake:34 (check_cxx_compiler_flag)"
+      - "build/fmt-test/_deps/benchmark-src/CMakeLists.txt:187 (add_cxx_compiler_flag)"
+    checks:
+      - "Performing Test HAVE_CXX_FLAG_PEDANTIC_ERRORS"
+    directories:
+      source: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-vQg6Nv"
+      binary: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-vQg6Nv"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_STDLIB_MODULES_JSON: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/cmake;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/catch2-src/extras;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake/Modules;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake"
+      CMAKE_MSVC_DEBUG_INFORMATION_FORMAT: "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "HAVE_CXX_FLAG_PEDANTIC_ERRORS"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-vQg6Nv'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_bb048/fast
+        /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_bb048.dir/build.make CMakeFiles/cmTC_bb048.dir/build
+        Building CXX object CMakeFiles/cmTC_bb048.dir/src.cxx.o
+        /usr/bin/c++ -DHAVE_CXX_FLAG_PEDANTIC_ERRORS  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors -std=c++11   -pedantic-errors -MD -MT CMakeFiles/cmTC_bb048.dir/src.cxx.o -MF CMakeFiles/cmTC_bb048.dir/src.cxx.o.d -o CMakeFiles/cmTC_bb048.dir/src.cxx.o -c /Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-vQg6Nv/src.cxx
+        Linking CXX executable cmTC_bb048
+        /usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bb048.dir/link.txt --verbose=1
+        /usr/bin/c++   -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors CMakeFiles/cmTC_bb048.dir/src.cxx.o -o cmTC_bb048
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/usr/local/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/local/share/cmake/Modules/CheckCXXCompilerFlag.cmake:103 (cmake_check_compiler_flag)"
+      - "build/fmt-test/_deps/benchmark-src/cmake/AddCXXCompilerFlag.cmake:34 (check_cxx_compiler_flag)"
+      - "build/fmt-test/_deps/benchmark-src/CMakeLists.txt:188 (add_cxx_compiler_flag)"
+    checks:
+      - "Performing Test HAVE_CXX_FLAG_WSHORTEN_64_TO_32"
+    directories:
+      source: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-cajBh7"
+      binary: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-cajBh7"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_STDLIB_MODULES_JSON: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/cmake;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/catch2-src/extras;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake/Modules;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake"
+      CMAKE_MSVC_DEBUG_INFORMATION_FORMAT: "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "HAVE_CXX_FLAG_WSHORTEN_64_TO_32"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-cajBh7'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_5fb37/fast
+        /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_5fb37.dir/build.make CMakeFiles/cmTC_5fb37.dir/build
+        Building CXX object CMakeFiles/cmTC_5fb37.dir/src.cxx.o
+        /usr/bin/c++ -DHAVE_CXX_FLAG_WSHORTEN_64_TO_32  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32 -std=c++11   -Wshorten-64-to-32 -MD -MT CMakeFiles/cmTC_5fb37.dir/src.cxx.o -MF CMakeFiles/cmTC_5fb37.dir/src.cxx.o.d -o CMakeFiles/cmTC_5fb37.dir/src.cxx.o -c /Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-cajBh7/src.cxx
+        Linking CXX executable cmTC_5fb37
+        /usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5fb37.dir/link.txt --verbose=1
+        /usr/bin/c++   -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32 CMakeFiles/cmTC_5fb37.dir/src.cxx.o -o cmTC_5fb37
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/usr/local/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/local/share/cmake/Modules/CheckCXXCompilerFlag.cmake:103 (cmake_check_compiler_flag)"
+      - "build/fmt-test/_deps/benchmark-src/cmake/AddCXXCompilerFlag.cmake:34 (check_cxx_compiler_flag)"
+      - "build/fmt-test/_deps/benchmark-src/CMakeLists.txt:189 (add_cxx_compiler_flag)"
+    checks:
+      - "Performing Test HAVE_CXX_FLAG_FSTRICT_ALIASING"
+    directories:
+      source: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-hseFPG"
+      binary: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-hseFPG"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_STDLIB_MODULES_JSON: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/cmake;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/catch2-src/extras;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake/Modules;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake"
+      CMAKE_MSVC_DEBUG_INFORMATION_FORMAT: "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "HAVE_CXX_FLAG_FSTRICT_ALIASING"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-hseFPG'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_03683/fast
+        /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_03683.dir/build.make CMakeFiles/cmTC_03683.dir/build
+        Building CXX object CMakeFiles/cmTC_03683.dir/src.cxx.o
+        /usr/bin/c++ -DHAVE_CXX_FLAG_FSTRICT_ALIASING  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing -std=c++11   -fstrict-aliasing -MD -MT CMakeFiles/cmTC_03683.dir/src.cxx.o -MF CMakeFiles/cmTC_03683.dir/src.cxx.o.d -o CMakeFiles/cmTC_03683.dir/src.cxx.o -c /Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-hseFPG/src.cxx
+        Linking CXX executable cmTC_03683
+        /usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_03683.dir/link.txt --verbose=1
+        /usr/bin/c++   -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing CMakeFiles/cmTC_03683.dir/src.cxx.o -o cmTC_03683
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/usr/local/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/local/share/cmake/Modules/CheckCXXCompilerFlag.cmake:103 (cmake_check_compiler_flag)"
+      - "build/fmt-test/_deps/benchmark-src/cmake/AddCXXCompilerFlag.cmake:34 (check_cxx_compiler_flag)"
+      - "build/fmt-test/_deps/benchmark-src/CMakeLists.txt:192 (add_cxx_compiler_flag)"
+    checks:
+      - "Performing Test HAVE_CXX_FLAG_WNO_DEPRECATED_DECLARATIONS"
+    directories:
+      source: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-RK9RlC"
+      binary: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-RK9RlC"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_STDLIB_MODULES_JSON: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/cmake;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/catch2-src/extras;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake/Modules;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake"
+      CMAKE_MSVC_DEBUG_INFORMATION_FORMAT: "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "HAVE_CXX_FLAG_WNO_DEPRECATED_DECLARATIONS"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-RK9RlC'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_0d638/fast
+        /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_0d638.dir/build.make CMakeFiles/cmTC_0d638.dir/build
+        Building CXX object CMakeFiles/cmTC_0d638.dir/src.cxx.o
+        /usr/bin/c++ -DHAVE_CXX_FLAG_WNO_DEPRECATED_DECLARATIONS  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations -std=c++11   -Wno-deprecated-declarations -MD -MT CMakeFiles/cmTC_0d638.dir/src.cxx.o -MF CMakeFiles/cmTC_0d638.dir/src.cxx.o.d -o CMakeFiles/cmTC_0d638.dir/src.cxx.o -c /Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-RK9RlC/src.cxx
+        Linking CXX executable cmTC_0d638
+        /usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0d638.dir/link.txt --verbose=1
+        /usr/bin/c++   -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations CMakeFiles/cmTC_0d638.dir/src.cxx.o -o cmTC_0d638
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/usr/local/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/local/share/cmake/Modules/CheckCXXCompilerFlag.cmake:103 (cmake_check_compiler_flag)"
+      - "build/fmt-test/_deps/benchmark-src/cmake/AddCXXCompilerFlag.cmake:34 (check_cxx_compiler_flag)"
+      - "build/fmt-test/_deps/benchmark-src/CMakeLists.txt:202 (add_cxx_compiler_flag)"
+    checks:
+      - "Performing Test HAVE_CXX_FLAG_WNO_DEPRECATED"
+    directories:
+      source: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-AH9Gw3"
+      binary: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-AH9Gw3"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_STDLIB_MODULES_JSON: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/cmake;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/catch2-src/extras;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake/Modules;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake"
+      CMAKE_MSVC_DEBUG_INFORMATION_FORMAT: "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "HAVE_CXX_FLAG_WNO_DEPRECATED"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-AH9Gw3'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_c2989/fast
+        /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_c2989.dir/build.make CMakeFiles/cmTC_c2989.dir/build
+        Building CXX object CMakeFiles/cmTC_c2989.dir/src.cxx.o
+        /usr/bin/c++ -DHAVE_CXX_FLAG_WNO_DEPRECATED  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wno-deprecated -std=c++11   -Wno-deprecated -MD -MT CMakeFiles/cmTC_c2989.dir/src.cxx.o -MF CMakeFiles/cmTC_c2989.dir/src.cxx.o.d -o CMakeFiles/cmTC_c2989.dir/src.cxx.o -c /Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-AH9Gw3/src.cxx
+        Linking CXX executable cmTC_c2989
+        /usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c2989.dir/link.txt --verbose=1
+        /usr/bin/c++   -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wno-deprecated CMakeFiles/cmTC_c2989.dir/src.cxx.o -o cmTC_c2989
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/usr/local/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/local/share/cmake/Modules/CheckCXXCompilerFlag.cmake:103 (cmake_check_compiler_flag)"
+      - "build/fmt-test/_deps/benchmark-src/cmake/AddCXXCompilerFlag.cmake:34 (check_cxx_compiler_flag)"
+      - "build/fmt-test/_deps/benchmark-src/CMakeLists.txt:210 (add_cxx_compiler_flag)"
+    checks:
+      - "Performing Test HAVE_CXX_FLAG_WSTRICT_ALIASING"
+    directories:
+      source: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-8XXX3v"
+      binary: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-8XXX3v"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wno-deprecated"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_STDLIB_MODULES_JSON: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/cmake;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/catch2-src/extras;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake/Modules;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake"
+      CMAKE_MSVC_DEBUG_INFORMATION_FORMAT: "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "HAVE_CXX_FLAG_WSTRICT_ALIASING"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-8XXX3v'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_4bd28/fast
+        /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_4bd28.dir/build.make CMakeFiles/cmTC_4bd28.dir/build
+        Building CXX object CMakeFiles/cmTC_4bd28.dir/src.cxx.o
+        /usr/bin/c++ -DHAVE_CXX_FLAG_WSTRICT_ALIASING  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wno-deprecated  -Wstrict-aliasing -std=c++11   -Wstrict-aliasing -MD -MT CMakeFiles/cmTC_4bd28.dir/src.cxx.o -MF CMakeFiles/cmTC_4bd28.dir/src.cxx.o.d -o CMakeFiles/cmTC_4bd28.dir/src.cxx.o -c /Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-8XXX3v/src.cxx
+        Linking CXX executable cmTC_4bd28
+        /usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4bd28.dir/link.txt --verbose=1
+        /usr/bin/c++   -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wno-deprecated  -Wstrict-aliasing CMakeFiles/cmTC_4bd28.dir/src.cxx.o -o cmTC_4bd28
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/usr/local/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/local/share/cmake/Modules/CheckCXXCompilerFlag.cmake:103 (cmake_check_compiler_flag)"
+      - "build/fmt-test/_deps/benchmark-src/cmake/AddCXXCompilerFlag.cmake:34 (check_cxx_compiler_flag)"
+      - "build/fmt-test/_deps/benchmark-src/CMakeLists.txt:215 (add_cxx_compiler_flag)"
+    checks:
+      - "Performing Test HAVE_CXX_FLAG_WD654"
+    directories:
+      source: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-9fXTbB"
+      binary: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-9fXTbB"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wno-deprecated  -Wstrict-aliasing"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_STDLIB_MODULES_JSON: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/cmake;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/catch2-src/extras;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake/Modules;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake"
+      CMAKE_MSVC_DEBUG_INFORMATION_FORMAT: "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "HAVE_CXX_FLAG_WD654"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-9fXTbB'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_33a85/fast
+        /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_33a85.dir/build.make CMakeFiles/cmTC_33a85.dir/build
+        Building CXX object CMakeFiles/cmTC_33a85.dir/src.cxx.o
+        /usr/bin/c++ -DHAVE_CXX_FLAG_WD654  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wno-deprecated  -Wstrict-aliasing  -wd654 -std=c++11   -wd654 -MD -MT CMakeFiles/cmTC_33a85.dir/src.cxx.o -MF CMakeFiles/cmTC_33a85.dir/src.cxx.o.d -o CMakeFiles/cmTC_33a85.dir/src.cxx.o -c /Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-9fXTbB/src.cxx
+        clang++: error: unknown argument: '-wd654'
+        clang++: error: unknown argument: '-wd654'
+        make[1]: *** [CMakeFiles/cmTC_33a85.dir/src.cxx.o] Error 1
+        make: *** [cmTC_33a85/fast] Error 2
+        
+      exitCode: 2
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/usr/local/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/local/share/cmake/Modules/CheckCXXCompilerFlag.cmake:103 (cmake_check_compiler_flag)"
+      - "build/fmt-test/_deps/benchmark-src/cmake/AddCXXCompilerFlag.cmake:34 (check_cxx_compiler_flag)"
+      - "build/fmt-test/_deps/benchmark-src/CMakeLists.txt:216 (add_cxx_compiler_flag)"
+    checks:
+      - "Performing Test HAVE_CXX_FLAG_WTHREAD_SAFETY"
+    directories:
+      source: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-3Lugei"
+      binary: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-3Lugei"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wno-deprecated  -Wstrict-aliasing"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_STDLIB_MODULES_JSON: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/cmake;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/catch2-src/extras;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake/Modules;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake"
+      CMAKE_MSVC_DEBUG_INFORMATION_FORMAT: "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "HAVE_CXX_FLAG_WTHREAD_SAFETY"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-3Lugei'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_8b248/fast
+        /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_8b248.dir/build.make CMakeFiles/cmTC_8b248.dir/build
+        Building CXX object CMakeFiles/cmTC_8b248.dir/src.cxx.o
+        /usr/bin/c++ -DHAVE_CXX_FLAG_WTHREAD_SAFETY  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wno-deprecated  -Wstrict-aliasing  -Wthread-safety -std=c++11   -Wthread-safety -MD -MT CMakeFiles/cmTC_8b248.dir/src.cxx.o -MF CMakeFiles/cmTC_8b248.dir/src.cxx.o.d -o CMakeFiles/cmTC_8b248.dir/src.cxx.o -c /Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-3Lugei/src.cxx
+        Linking CXX executable cmTC_8b248
+        /usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8b248.dir/link.txt --verbose=1
+        /usr/bin/c++   -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wno-deprecated  -Wstrict-aliasing  -Wthread-safety CMakeFiles/cmTC_8b248.dir/src.cxx.o -o cmTC_8b248
+        
+      exitCode: 0
+  -
+    kind: "try_run-v1"
+    backtrace:
+      - "build/fmt-test/_deps/benchmark-src/cmake/CXXFeatureCheck.cmake:57 (try_run)"
+      - "build/fmt-test/_deps/benchmark-src/CMakeLists.txt:218 (cxx_feature_check)"
+    directories:
+      source: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeTmp"
+      binary: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wno-deprecated  -Wstrict-aliasing  -Wthread-safety"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_STDLIB_MODULES_JSON: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/cmake;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/catch2-src/extras;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake/Modules;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake"
+      CMAKE_MSVC_DEBUG_INFORMATION_FORMAT: "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "COMPILE_HAVE_THREAD_SAFETY_ATTRIBUTES"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_f558a/fast
+        /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_f558a.dir/build.make CMakeFiles/cmTC_f558a.dir/build
+        Building CXX object CMakeFiles/cmTC_f558a.dir/thread_safety_attributes.cpp.o
+        /usr/bin/c++  -I/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/include -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wno-deprecated  -Wstrict-aliasing  -Wthread-safety  -std=c++11 -MD -MT CMakeFiles/cmTC_f558a.dir/thread_safety_attributes.cpp.o -MF CMakeFiles/cmTC_f558a.dir/thread_safety_attributes.cpp.o.d -o CMakeFiles/cmTC_f558a.dir/thread_safety_attributes.cpp.o -c /Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake/thread_safety_attributes.cpp
+        Linking CXX executable cmTC_f558a
+        /usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f558a.dir/link.txt --verbose=1
+        /usr/bin/c++   -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wno-deprecated  -Wstrict-aliasing  -Wthread-safety  CMakeFiles/cmTC_f558a.dir/thread_safety_attributes.cpp.o -o cmTC_f558a
+        
+      exitCode: 0
+    runResult:
+      variable: "RUN_HAVE_THREAD_SAFETY_ATTRIBUTES"
+      cached: true
+      stdout: |
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/usr/local/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/local/share/cmake/Modules/CheckCXXCompilerFlag.cmake:103 (cmake_check_compiler_flag)"
+      - "build/fmt-test/_deps/benchmark-src/cmake/AddCXXCompilerFlag.cmake:34 (check_cxx_compiler_flag)"
+      - "build/fmt-test/_deps/benchmark-src/CMakeLists.txt:267 (add_cxx_compiler_flag)"
+    checks:
+      - "Performing Test HAVE_CXX_FLAG_COVERAGE"
+    directories:
+      source: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-fmkM8F"
+      binary: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-fmkM8F"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wno-deprecated  -Wstrict-aliasing  -Wthread-safety"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_STDLIB_MODULES_JSON: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/cmake;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/catch2-src/extras;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake/Modules;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake"
+      CMAKE_MSVC_DEBUG_INFORMATION_FORMAT: "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "HAVE_CXX_FLAG_COVERAGE"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-fmkM8F'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_211d8/fast
+        /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_211d8.dir/build.make CMakeFiles/cmTC_211d8.dir/build
+        Building CXX object CMakeFiles/cmTC_211d8.dir/src.cxx.o
+        /usr/bin/c++ -DHAVE_CXX_FLAG_COVERAGE  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wno-deprecated  -Wstrict-aliasing  -Wthread-safety  --coverage -std=c++11   --coverage -MD -MT CMakeFiles/cmTC_211d8.dir/src.cxx.o -MF CMakeFiles/cmTC_211d8.dir/src.cxx.o.d -o CMakeFiles/cmTC_211d8.dir/src.cxx.o -c /Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-fmkM8F/src.cxx
+        Linking CXX executable cmTC_211d8
+        /usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_211d8.dir/link.txt --verbose=1
+        /usr/bin/c++   -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wno-deprecated  -Wstrict-aliasing  -Wthread-safety  --coverage CMakeFiles/cmTC_211d8.dir/src.cxx.o -o cmTC_211d8
+        
+      exitCode: 0
+  -
+    kind: "try_run-v1"
+    backtrace:
+      - "build/fmt-test/_deps/benchmark-src/cmake/CXXFeatureCheck.cmake:57 (try_run)"
+      - "build/fmt-test/_deps/benchmark-src/CMakeLists.txt:297 (cxx_feature_check)"
+    directories:
+      source: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeTmp"
+      binary: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wno-deprecated  -Wstrict-aliasing  -Wthread-safety"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_STDLIB_MODULES_JSON: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/cmake;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/catch2-src/extras;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake/Modules;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake"
+      CMAKE_MSVC_DEBUG_INFORMATION_FORMAT: "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "COMPILE_HAVE_STD_REGEX"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_6111f/fast
+        /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_6111f.dir/build.make CMakeFiles/cmTC_6111f.dir/build
+        Building CXX object CMakeFiles/cmTC_6111f.dir/std_regex.cpp.o
+        /usr/bin/c++   -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wno-deprecated  -Wstrict-aliasing  -Wthread-safety  -std=c++11 -MD -MT CMakeFiles/cmTC_6111f.dir/std_regex.cpp.o -MF CMakeFiles/cmTC_6111f.dir/std_regex.cpp.o.d -o CMakeFiles/cmTC_6111f.dir/std_regex.cpp.o -c /Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake/std_regex.cpp
+        Linking CXX executable cmTC_6111f
+        /usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6111f.dir/link.txt --verbose=1
+        /usr/bin/c++   -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wno-deprecated  -Wstrict-aliasing  -Wthread-safety  CMakeFiles/cmTC_6111f.dir/std_regex.cpp.o -o cmTC_6111f
+        
+      exitCode: 0
+    runResult:
+      variable: "RUN_HAVE_STD_REGEX"
+      cached: true
+      stdout: |
+      exitCode: 0
+  -
+    kind: "try_run-v1"
+    backtrace:
+      - "build/fmt-test/_deps/benchmark-src/cmake/CXXFeatureCheck.cmake:57 (try_run)"
+      - "build/fmt-test/_deps/benchmark-src/CMakeLists.txt:298 (cxx_feature_check)"
+    directories:
+      source: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeTmp"
+      binary: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wno-deprecated  -Wstrict-aliasing  -Wthread-safety"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_STDLIB_MODULES_JSON: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/cmake;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/catch2-src/extras;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake/Modules;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake"
+      CMAKE_MSVC_DEBUG_INFORMATION_FORMAT: "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "COMPILE_HAVE_GNU_POSIX_REGEX"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_71ff7/fast
+        /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_71ff7.dir/build.make CMakeFiles/cmTC_71ff7.dir/build
+        Building CXX object CMakeFiles/cmTC_71ff7.dir/gnu_posix_regex.cpp.o
+        /usr/bin/c++   -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wno-deprecated  -Wstrict-aliasing  -Wthread-safety  -std=c++11 -MD -MT CMakeFiles/cmTC_71ff7.dir/gnu_posix_regex.cpp.o -MF CMakeFiles/cmTC_71ff7.dir/gnu_posix_regex.cpp.o.d -o CMakeFiles/cmTC_71ff7.dir/gnu_posix_regex.cpp.o -c /Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake/gnu_posix_regex.cpp
+        /Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake/gnu_posix_regex.cpp:1:10: fatal error: 'gnuregex.h' file not found
+            1 | #include <gnuregex.h>
+              |          ^~~~~~~~~~~~
+        1 error generated.
+        make[1]: *** [CMakeFiles/cmTC_71ff7.dir/gnu_posix_regex.cpp.o] Error 1
+        make: *** [cmTC_71ff7/fast] Error 2
+        
+      exitCode: 2
+    runResult:
+      variable: "RUN_HAVE_GNU_POSIX_REGEX"
+      cached: true
+  -
+    kind: "try_run-v1"
+    backtrace:
+      - "build/fmt-test/_deps/benchmark-src/cmake/CXXFeatureCheck.cmake:57 (try_run)"
+      - "build/fmt-test/_deps/benchmark-src/CMakeLists.txt:299 (cxx_feature_check)"
+    directories:
+      source: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeTmp"
+      binary: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wno-deprecated  -Wstrict-aliasing  -Wthread-safety"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_STDLIB_MODULES_JSON: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/cmake;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/catch2-src/extras;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake/Modules;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake"
+      CMAKE_MSVC_DEBUG_INFORMATION_FORMAT: "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "COMPILE_HAVE_POSIX_REGEX"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_4b499/fast
+        /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_4b499.dir/build.make CMakeFiles/cmTC_4b499.dir/build
+        Building CXX object CMakeFiles/cmTC_4b499.dir/posix_regex.cpp.o
+        /usr/bin/c++   -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wno-deprecated  -Wstrict-aliasing  -Wthread-safety  -std=c++11 -MD -MT CMakeFiles/cmTC_4b499.dir/posix_regex.cpp.o -MF CMakeFiles/cmTC_4b499.dir/posix_regex.cpp.o.d -o CMakeFiles/cmTC_4b499.dir/posix_regex.cpp.o -c /Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake/posix_regex.cpp
+        Linking CXX executable cmTC_4b499
+        /usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4b499.dir/link.txt --verbose=1
+        /usr/bin/c++   -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wno-deprecated  -Wstrict-aliasing  -Wthread-safety  CMakeFiles/cmTC_4b499.dir/posix_regex.cpp.o -o cmTC_4b499
+        
+      exitCode: 0
+    runResult:
+      variable: "RUN_HAVE_POSIX_REGEX"
+      cached: true
+      stdout: |
+      exitCode: 0
+  -
+    kind: "try_run-v1"
+    backtrace:
+      - "build/fmt-test/_deps/benchmark-src/cmake/CXXFeatureCheck.cmake:57 (try_run)"
+      - "build/fmt-test/_deps/benchmark-src/CMakeLists.txt:308 (cxx_feature_check)"
+    directories:
+      source: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeTmp"
+      binary: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wno-deprecated  -Wstrict-aliasing  -Wthread-safety"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_STDLIB_MODULES_JSON: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/cmake;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/catch2-src/extras;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake/Modules;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake"
+      CMAKE_MSVC_DEBUG_INFORMATION_FORMAT: "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "COMPILE_HAVE_STEADY_CLOCK"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_678b1/fast
+        /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_678b1.dir/build.make CMakeFiles/cmTC_678b1.dir/build
+        Building CXX object CMakeFiles/cmTC_678b1.dir/steady_clock.cpp.o
+        /usr/bin/c++   -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wno-deprecated  -Wstrict-aliasing  -Wthread-safety  -std=c++11 -MD -MT CMakeFiles/cmTC_678b1.dir/steady_clock.cpp.o -MF CMakeFiles/cmTC_678b1.dir/steady_clock.cpp.o.d -o CMakeFiles/cmTC_678b1.dir/steady_clock.cpp.o -c /Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake/steady_clock.cpp
+        Linking CXX executable cmTC_678b1
+        /usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_678b1.dir/link.txt --verbose=1
+        /usr/bin/c++   -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wno-deprecated  -Wstrict-aliasing  -Wthread-safety  CMakeFiles/cmTC_678b1.dir/steady_clock.cpp.o -o cmTC_678b1
+        
+      exitCode: 0
+    runResult:
+      variable: "RUN_HAVE_STEADY_CLOCK"
+      cached: true
+      stdout: |
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/usr/local/share/cmake/Modules/CheckCXXSourceCompiles.cmake:103 (cmake_check_source_compiles)"
+      - "/usr/local/share/cmake/Modules/FindThreads.cmake:162 (check_cxx_source_compiles)"
+      - "/usr/local/share/cmake/Modules/FindThreads.cmake:226 (_threads_check_libc)"
+      - "build/fmt-test/_deps/benchmark-src/CMakeLists.txt:311 (find_package)"
+    checks:
+      - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
+    directories:
+      source: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-nkfn1U"
+      binary: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-nkfn1U"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wno-deprecated  -Wstrict-aliasing  -Wthread-safety"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_STDLIB_MODULES_JSON: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/cmake;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/catch2-src/extras;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake/Modules;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake"
+      CMAKE_MSVC_DEBUG_INFORMATION_FORMAT: "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "CMAKE_HAVE_LIBC_PTHREAD"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-nkfn1U'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_05262/fast
+        /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_05262.dir/build.make CMakeFiles/cmTC_05262.dir/build
+        Building CXX object CMakeFiles/cmTC_05262.dir/src.cxx.o
+        /usr/bin/c++ -DCMAKE_HAVE_LIBC_PTHREAD  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wno-deprecated  -Wstrict-aliasing  -Wthread-safety  -std=c++11 -MD -MT CMakeFiles/cmTC_05262.dir/src.cxx.o -MF CMakeFiles/cmTC_05262.dir/src.cxx.o.d -o CMakeFiles/cmTC_05262.dir/src.cxx.o -c /Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeScratch/TryCompile-nkfn1U/src.cxx
+        Linking CXX executable cmTC_05262
+        /usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_05262.dir/link.txt --verbose=1
+        /usr/bin/c++   -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wno-deprecated  -Wstrict-aliasing  -Wthread-safety  CMakeFiles/cmTC_05262.dir/src.cxx.o -o cmTC_05262
+        
+      exitCode: 0
+  -
+    kind: "try_run-v1"
+    backtrace:
+      - "build/fmt-test/_deps/benchmark-src/cmake/CXXFeatureCheck.cmake:57 (try_run)"
+      - "build/fmt-test/_deps/benchmark-src/CMakeLists.txt:312 (cxx_feature_check)"
+    directories:
+      source: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeTmp"
+      binary: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "  -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wno-deprecated  -Wstrict-aliasing  -Wthread-safety"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_STDLIB_MODULES_JSON: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/cmake;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/catch2-src/extras;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake/Modules;/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake"
+      CMAKE_MSVC_DEBUG_INFORMATION_FORMAT: "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "COMPILE_HAVE_PTHREAD_AFFINITY"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_afc9f/fast
+        /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_afc9f.dir/build.make CMakeFiles/cmTC_afc9f.dir/build
+        Building CXX object CMakeFiles/cmTC_afc9f.dir/pthread_affinity.cpp.o
+        /usr/bin/c++   -Wall  -Wextra  -Wshadow  -Wfloat-equal  -Wold-style-cast  -Werror  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wno-deprecated  -Wstrict-aliasing  -Wthread-safety  -std=c++11 -MD -MT CMakeFiles/cmTC_afc9f.dir/pthread_affinity.cpp.o -MF CMakeFiles/cmTC_afc9f.dir/pthread_affinity.cpp.o.d -o CMakeFiles/cmTC_afc9f.dir/pthread_affinity.cpp.o -c /Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake/pthread_affinity.cpp
+        /Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake/pthread_affinity.cpp:3:3: error: unknown type name 'cpu_set_t'
+            3 |   cpu_set_t set;
+              |   ^
+        /Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/fmt-test/_deps/benchmark-src/cmake/pthread_affinity.cpp:5:23: error: use of undeclared identifier 'CPU_SETSIZE'
+            5 |   for (int i = 0; i < CPU_SETSIZE; ++i) {
+              |                       ^
+        2 errors generated.
+        make[1]: *** [CMakeFiles/cmTC_afc9f.dir/pthread_affinity.cpp.o] Error 1
+        make: *** [cmTC_afc9f/fast] Error 2
+        
+      exitCode: 2
+    runResult:
+      variable: "RUN_HAVE_PTHREAD_AFFINITY"
+      cached: true
+...
