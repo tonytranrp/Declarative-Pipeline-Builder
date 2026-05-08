@@ -1,0 +1,9 @@
+{
+	"InstallScripts" : 
+	[
+		"C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/scalar/cmake_install.cmake",
+		"C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/scalar/_deps/catch2-build/cmake_install.cmake",
+		"C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/scalar/_deps/catch2-build/src/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

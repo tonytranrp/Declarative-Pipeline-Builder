@@ -18,18 +18,18 @@ project(catch2-populate NONE)
 
 # Pass through things we've already detected in the main project to avoid
 # paying the cost of redetecting them again in ExternalProject_Add()
-set(GIT_EXECUTABLE [==[/usr/bin/git]==])
-set(Git_VERSION [==[2.39.5 (Apple Git-154)]==])
+set(GIT_EXECUTABLE [==[C:/Users/Tonyt/AppData/Roaming/npm/git.cmd]==])
+set(Git_VERSION [==[2.54.0.windows.1]==])
 set_property(GLOBAL PROPERTY _CMAKE_FindGit_GIT_EXECUTABLE_VERSION
-  [==[/usr/bin/git;2.39.5 (Apple Git-154)]==]
+  [==[C:/Users/Tonyt/AppData/Roaming/npm/git.cmd;2.54.0.windows.1]==]
 )
 
 
 include(ExternalProject)
 ExternalProject_Add(catch2-populate
                      "UPDATE_DISCONNECTED" "False" "GIT_REPOSITORY" "https://github.com/catchorg/Catch2.git" "EXTERNALPROJECT_INTERNAL_ARGUMENT_SEPARATOR" "GIT_TAG" "v3.4.0"
-                    SOURCE_DIR          "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/default/_deps/catch2-src"
-                    BINARY_DIR          "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/default/_deps/catch2-build"
+                    SOURCE_DIR          "C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/default/_deps/catch2-src"
+                    BINARY_DIR          "C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/default/_deps/catch2-build"
                     CONFIGURE_COMMAND   ""
                     BUILD_COMMAND       ""
                     INSTALL_COMMAND     ""

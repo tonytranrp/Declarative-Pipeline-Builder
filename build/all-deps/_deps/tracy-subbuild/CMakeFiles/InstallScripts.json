@@ -1,7 +1,0 @@
-{
-	"InstallScripts" : 
-	[
-		"/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/all-deps/_deps/tracy-subbuild/cmake_install.cmake"
-	],
-	"Parallel" : false
-}

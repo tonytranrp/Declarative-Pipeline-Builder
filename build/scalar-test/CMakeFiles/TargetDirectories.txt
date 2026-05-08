@@ -1,0 +1,9 @@
+C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/scalar-test/CMakeFiles/pipeline_tests.dir
+C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/scalar-test/CMakeFiles/INSTALL.dir
+C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/scalar-test/CMakeFiles/ALL_BUILD.dir
+C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/scalar-test/CMakeFiles/ZERO_CHECK.dir
+C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/scalar-test/_deps/catch2-build/CMakeFiles/INSTALL.dir
+C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/scalar-test/_deps/catch2-build/CMakeFiles/ALL_BUILD.dir
+C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/scalar-test/_deps/catch2-build/src/CMakeFiles/Catch2.dir
+C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/scalar-test/_deps/catch2-build/src/CMakeFiles/Catch2WithMain.dir
+C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/scalar-test/_deps/catch2-build/src/CMakeFiles/INSTALL.dir

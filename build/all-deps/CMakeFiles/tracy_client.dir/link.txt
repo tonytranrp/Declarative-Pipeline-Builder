@@ -1,2 +1,0 @@
-"/usr/bin/ar" qc libtracy_client.a "CMakeFiles/tracy_client.dir/_deps/tracy-src/public/TracyClient.cpp.o"
-"/usr/bin/ranlib" libtracy_client.a

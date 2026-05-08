@@ -1,0 +1,10 @@
+^C:\USERS\TONYT\DOCUMENTS\GITHUB\DECLARATIVE-PIPELINE-BUILDER\BUILD\DEFAULT\_DEPS\CATCH2-SUBBUILD\CMAKEFILES\021F7D960E3C94190AE52F06FABDD4E3\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/default/_deps/catch2-subbuild -BC:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/default/_deps/catch2-subbuild --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/default/_deps/catch2-subbuild/catch2-populate.slnx
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

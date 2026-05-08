@@ -1,0 +1,7 @@
+C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\tests\test_pipeline.cpp;C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\build\default\pipeline_tests.dir\Release\test_pipeline.obj
+C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\tests\test_async_pipeline.cpp;C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\build\default\pipeline_tests.dir\Release\test_async_pipeline.obj
+C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\tests\test_parallel_pipeline.cpp;C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\build\default\pipeline_tests.dir\Release\test_parallel_pipeline.obj
+C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\tests\test_integration.cpp;C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\build\default\pipeline_tests.dir\Release\test_integration.obj
+C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\tests\test_new_features.cpp;C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\build\default\pipeline_tests.dir\Release\test_new_features.obj
+C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\tests\test_perf_monitor.cpp;C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\build\default\pipeline_tests.dir\Release\test_perf_monitor.obj
+C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\tests\test_simd_traits.cpp;C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\build\default\pipeline_tests.dir\Release\test_simd_traits.obj

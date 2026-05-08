@@ -1,0 +1,150 @@
+^C:\USERS\TONYT\DOCUMENTS\GITHUB\DECLARATIVE-PIPELINE-BUILDER\BUILD\SIMD-TEST\_DEPS\BENCHMARK-SUBBUILD\CMAKEFILES\C079D965FA4AC7C466ED9A006ADBE60B\BENCHMARK-POPULATE-MKDIR.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -Dcfgdir=/Debug -P C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/simd-test/_deps/benchmark-subbuild/benchmark-populate-prefix/tmp/benchmark-populate-mkdirs.cmake
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/simd-test/_deps/benchmark-subbuild/benchmark-populate-prefix/src/benchmark-populate-stamp/Debug/benchmark-populate-mkdir
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\TONYT\DOCUMENTS\GITHUB\DECLARATIVE-PIPELINE-BUILDER\BUILD\SIMD-TEST\_DEPS\BENCHMARK-SUBBUILD\CMAKEFILES\C079D965FA4AC7C466ED9A006ADBE60B\BENCHMARK-POPULATE-DOWNLOAD.RULE
+setlocal
+cd C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\build\simd-test\_deps
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/simd-test/_deps/benchmark-subbuild/benchmark-populate-prefix/tmp/benchmark-populate-gitclone.cmake
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/simd-test/_deps/benchmark-subbuild/benchmark-populate-prefix/src/benchmark-populate-stamp/Debug/benchmark-populate-download
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\TONYT\DOCUMENTS\GITHUB\DECLARATIVE-PIPELINE-BUILDER\BUILD\SIMD-TEST\_DEPS\BENCHMARK-SUBBUILD\CMAKEFILES\C079D965FA4AC7C466ED9A006ADBE60B\BENCHMARK-POPULATE-UPDATE.RULE
+setlocal
+cd C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\build\simd-test\_deps\benchmark-src
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -Dcan_fetch=YES -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/simd-test/_deps/benchmark-subbuild/benchmark-populate-prefix/tmp/benchmark-populate-gitupdate.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\TONYT\DOCUMENTS\GITHUB\DECLARATIVE-PIPELINE-BUILDER\BUILD\SIMD-TEST\_DEPS\BENCHMARK-SUBBUILD\CMAKEFILES\C079D965FA4AC7C466ED9A006ADBE60B\BENCHMARK-POPULATE-PATCH.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/simd-test/_deps/benchmark-subbuild/benchmark-populate-prefix/src/benchmark-populate-stamp/Debug/benchmark-populate-patch
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\TONYT\DOCUMENTS\GITHUB\DECLARATIVE-PIPELINE-BUILDER\BUILD\SIMD-TEST\_DEPS\BENCHMARK-SUBBUILD\CMAKEFILES\C079D965FA4AC7C466ED9A006ADBE60B\BENCHMARK-POPULATE-CONFIGURE.RULE
+setlocal
+cd C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\build\simd-test\_deps\benchmark-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/simd-test/_deps/benchmark-subbuild/benchmark-populate-prefix/src/benchmark-populate-stamp/Debug/benchmark-populate-configure
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\TONYT\DOCUMENTS\GITHUB\DECLARATIVE-PIPELINE-BUILDER\BUILD\SIMD-TEST\_DEPS\BENCHMARK-SUBBUILD\CMAKEFILES\C079D965FA4AC7C466ED9A006ADBE60B\BENCHMARK-POPULATE-BUILD.RULE
+setlocal
+cd C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\build\simd-test\_deps\benchmark-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/simd-test/_deps/benchmark-subbuild/benchmark-populate-prefix/src/benchmark-populate-stamp/Debug/benchmark-populate-build
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\TONYT\DOCUMENTS\GITHUB\DECLARATIVE-PIPELINE-BUILDER\BUILD\SIMD-TEST\_DEPS\BENCHMARK-SUBBUILD\CMAKEFILES\C079D965FA4AC7C466ED9A006ADBE60B\BENCHMARK-POPULATE-INSTALL.RULE
+setlocal
+cd C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\build\simd-test\_deps\benchmark-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/simd-test/_deps/benchmark-subbuild/benchmark-populate-prefix/src/benchmark-populate-stamp/Debug/benchmark-populate-install
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\TONYT\DOCUMENTS\GITHUB\DECLARATIVE-PIPELINE-BUILDER\BUILD\SIMD-TEST\_DEPS\BENCHMARK-SUBBUILD\CMAKEFILES\C079D965FA4AC7C466ED9A006ADBE60B\BENCHMARK-POPULATE-TEST.RULE
+setlocal
+cd C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\build\simd-test\_deps\benchmark-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/simd-test/_deps/benchmark-subbuild/benchmark-populate-prefix/src/benchmark-populate-stamp/Debug/benchmark-populate-test
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\TONYT\DOCUMENTS\GITHUB\DECLARATIVE-PIPELINE-BUILDER\BUILD\SIMD-TEST\_DEPS\BENCHMARK-SUBBUILD\CMAKEFILES\950BF85C88955595EDB8298D2EB347CD\BENCHMARK-POPULATE-COMPLETE.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/simd-test/_deps/benchmark-subbuild/CMakeFiles/Debug
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/simd-test/_deps/benchmark-subbuild/CMakeFiles/Debug/benchmark-populate-complete
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/simd-test/_deps/benchmark-subbuild/benchmark-populate-prefix/src/benchmark-populate-stamp/Debug/benchmark-populate-done
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\TONYT\DOCUMENTS\GITHUB\DECLARATIVE-PIPELINE-BUILDER\BUILD\SIMD-TEST\_DEPS\BENCHMARK-SUBBUILD\CMAKEFILES\88C48C0736418B461638233360ADE992\BENCHMARK-POPULATE.RULE
+setlocal
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\TONYT\DOCUMENTS\GITHUB\DECLARATIVE-PIPELINE-BUILDER\BUILD\SIMD-TEST\_DEPS\BENCHMARK-SUBBUILD\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/simd-test/_deps/benchmark-subbuild -BC:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/simd-test/_deps/benchmark-subbuild --check-stamp-file C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/simd-test/_deps/benchmark-subbuild/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

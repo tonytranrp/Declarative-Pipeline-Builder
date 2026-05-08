@@ -8,6 +8,8 @@
 #include "dpb/memory.hpp"
 #include "dpb/pipeline_erase.hpp"
 #include "dpb/portable_attrs.hpp"
+#include "pipeline/operations/zip.hpp"
+#include "pipeline/operations/join.hpp"
 
 #ifdef DPB_HAS_HIGHWAY
 #include "dpb/simd.hpp"
@@ -19,6 +21,7 @@
 #include <algorithm>
 #include <thread>
 #include <optional>
+#include <unordered_map>
 
 namespace dpb {
 
@@ -36,16 +39,16 @@ enum class ExecutionPolicy {
 // RESULT WITH STATS
 // ============================================================================
 
-template<typename T>
+template<typename T, typename Alloc = std::allocator<T>>
 struct ResultWithStats {
-    std::vector<T> data;
+    std::vector<T, Alloc> data;
     size_t items_processed{0};
     size_t items_filtered{0};
     size_t errors{0};
     size_t total_items{0};
     std::chrono::nanoseconds total_duration{0};
 
-    ResultWithStats(std::vector<T> d, size_t processed, size_t filtered, size_t errs, size_t total, std::chrono::nanoseconds duration)
+    ResultWithStats(std::vector<T, Alloc> d, size_t processed, size_t filtered, size_t errs, size_t total, std::chrono::nanoseconds duration)
         : data(std::move(d)), items_processed(processed), items_filtered(filtered), errors(errs), total_items(total), total_duration(duration) {}
 
     void print_stats() const {
@@ -84,7 +87,7 @@ struct ResultWithStats {
     auto cbegin() const { return data.cbegin(); }
     auto cend() const { return data.cend(); }
 
-    bool operator==(const std::vector<T>& other) const { return data == other; }
+    bool operator==(const std::vector<T, Alloc>& other) const { return data == other; }
     bool operator==(const ResultWithStats& other) const { return data == other.data; }
 };
 
@@ -107,13 +110,17 @@ struct DefaultOp {
 // GENERIC PIPELINE - Type-driven pipeline supporting arbitrary transformations
 // ============================================================================
 
-template<typename In, typename Out = In, typename OpFunc = DefaultOp>
+template<typename In, typename Out = In, typename OpFunc = DefaultOp, typename Alloc = std::allocator<Out>>
 class Pipeline {
     OpFunc operation_;
     std::shared_ptr<PipelineStats> stats_;
     std::shared_ptr<Profiler> profiler_;
     ExecutionPolicy exec_policy_ = ExecutionPolicy::Sequential;
     std::size_t parallelism_ = std::thread::hardware_concurrency();  // chunk count, not pool worker count
+    Alloc alloc_;
+
+public:
+    using allocator_type = Alloc;
 
 #ifdef DPB_HAS_HIGHWAY
     template<typename I, typename O, typename F, std::ranges::input_range R>
@@ -126,14 +133,16 @@ public:
              std::shared_ptr<PipelineStats> stats = nullptr,
              std::shared_ptr<Profiler> prof = nullptr,
              ExecutionPolicy exec_policy = ExecutionPolicy::Sequential,
-             std::size_t parallelism = std::thread::hardware_concurrency())
+             std::size_t parallelism = std::thread::hardware_concurrency(),
+             Alloc alloc = Alloc())
         : operation_(std::forward<F>(op)),
           stats_(std::move(stats)),
           profiler_(std::move(prof)),
           exec_policy_(exec_policy),
-          parallelism_(parallelism) {}
+          parallelism_(parallelism),
+          alloc_(std::move(alloc)) {}
 
-    Pipeline() : operation_(DefaultOp{}) {}
+    Pipeline() : operation_(DefaultOp{}), alloc_() {}
 
     // Static factory
     template<std::ranges::input_range Range>
@@ -144,15 +153,15 @@ public:
 
     [[nodiscard]] auto with_stats() && {
         auto new_stats = std::make_shared<PipelineStats>();
-        return Pipeline<In, Out, OpFunc>(
-            std::move(operation_), std::move(new_stats), profiler_, exec_policy_, parallelism_
+        return Pipeline<In, Out, OpFunc, Alloc>(
+            std::move(operation_), std::move(new_stats), profiler_, exec_policy_, parallelism_, alloc_
         );
     }
 
     [[nodiscard]] auto with_profiler() && {
         auto new_prof = std::make_shared<Profiler>();
-        return Pipeline<In, Out, OpFunc>(
-            std::move(operation_), stats_, std::move(new_prof), exec_policy_, parallelism_
+        return Pipeline<In, Out, OpFunc, Alloc>(
+            std::move(operation_), stats_, std::move(new_prof), exec_policy_, parallelism_, alloc_
         );
     }
 
@@ -185,8 +194,8 @@ public:
             return op(x, out) && pred(out);
         };
 
-        return Pipeline<In, Out, decltype(fused)>(
-            std::move(fused), stats_, profiler_, exec_policy_, parallelism_
+        return Pipeline<In, Out, decltype(fused), Alloc>(
+            std::move(fused), stats_, profiler_, exec_policy_, parallelism_, alloc_
         );
     }
 
@@ -194,6 +203,7 @@ public:
     template<typename Fn>
     [[nodiscard]] DPB_HOT auto transform(Fn&& fn) && {
         using NewOut = decltype(fn(std::declval<const Out&>()));
+        using NewAlloc = typename std::allocator_traits<Alloc>::template rebind_alloc<NewOut>;
 
         auto fused = [op = std::move(operation_),
                       tfn = std::forward<Fn>(fn)](const In& x, NewOut& out) noexcept(noexcept(tfn(std::declval<Out>()))) -> bool {
@@ -203,8 +213,9 @@ public:
             return true;
         };
 
-        return Pipeline<In, NewOut, decltype(fused)>(
-            std::move(fused), stats_, profiler_, exec_policy_, parallelism_
+        return Pipeline<In, NewOut, decltype(fused), NewAlloc>(
+            std::move(fused), stats_, profiler_, exec_policy_, parallelism_,
+            typename std::allocator_traits<Alloc>::template rebind_alloc<NewOut>(alloc_)
         );
     }
 
@@ -229,8 +240,8 @@ public:
             --remaining;
             return op(x, out);
         };
-        return Pipeline<In, Out, decltype(fused)>(
-            std::move(fused), stats_, profiler_, exec_policy_, parallelism_
+        return Pipeline<In, Out, decltype(fused), Alloc>(
+            std::move(fused), stats_, profiler_, exec_policy_, parallelism_, alloc_
         );
     }
 
@@ -243,8 +254,8 @@ public:
             }
             return op(x, out);
         };
-        return Pipeline<In, Out, decltype(fused)>(
-            std::move(fused), stats_, profiler_, exec_policy_, parallelism_
+        return Pipeline<In, Out, decltype(fused), Alloc>(
+            std::move(fused), stats_, profiler_, exec_policy_, parallelism_, alloc_
         );
     }
 
@@ -258,8 +269,8 @@ public:
             if (!pred(out)) { active = false; return false; }
             return true;
         };
-        return Pipeline<In, Out, decltype(fused)>(
-            std::move(fused), stats_, profiler_, exec_policy_, parallelism_
+        return Pipeline<In, Out, decltype(fused), Alloc>(
+            std::move(fused), stats_, profiler_, exec_policy_, parallelism_, alloc_
         );
     }
 
@@ -273,8 +284,8 @@ public:
             skipping = false;
             return true;
         };
-        return Pipeline<In, Out, decltype(fused)>(
-            std::move(fused), stats_, profiler_, exec_policy_, parallelism_
+        return Pipeline<In, Out, decltype(fused), Alloc>(
+            std::move(fused), stats_, profiler_, exec_policy_, parallelism_, alloc_
         );
     }
 
@@ -288,8 +299,8 @@ public:
             side_effect(out);
             return true;
         };
-        return Pipeline<In, Out, decltype(fused)>(
-            std::move(fused), stats_, profiler_, exec_policy_, parallelism_
+        return Pipeline<In, Out, decltype(fused), Alloc>(
+            std::move(fused), stats_, profiler_, exec_policy_, parallelism_, alloc_
         );
     }
 
@@ -461,13 +472,17 @@ public:
     // ── Enumerate: pairs each item with its index ──────────────────────
 
     [[nodiscard]] auto enumerate() && {
-        auto fused = [op = std::move(operation_), idx = size_t(0)](const In& x, std::pair<size_t, Out>& out) mutable -> bool {
+        using EnumOut = std::pair<size_t, Out>;
+        using EnumAlloc = typename std::allocator_traits<Alloc>::template rebind_alloc<EnumOut>;
+
+        auto fused = [op = std::move(operation_), idx = size_t(0)](const In& x, EnumOut& out) mutable -> bool {
             if (!op(x, out.second)) return false;
             out.first = idx++;
             return true;
         };
-        return Pipeline<In, std::pair<size_t, Out>, decltype(fused)>(
-            std::move(fused), stats_, profiler_, exec_policy_, parallelism_
+        return Pipeline<In, EnumOut, decltype(fused), EnumAlloc>(
+            std::move(fused), stats_, profiler_, exec_policy_, parallelism_,
+            typename std::allocator_traits<Alloc>::template rebind_alloc<EnumOut>(alloc_)
         );
     }
 
@@ -480,8 +495,8 @@ public:
             last = out;
             return true;
         };
-        return Pipeline<In, Out, decltype(fused)>(
-            std::move(fused), stats_, profiler_, exec_policy_, parallelism_
+        return Pipeline<In, Out, decltype(fused), Alloc>(
+            std::move(fused), stats_, profiler_, exec_policy_, parallelism_, alloc_
         );
     }
 
@@ -578,6 +593,63 @@ public:
         }
     }
 
+    // ── Zip: pairs pipeline output with another range (terminal) ────────
+
+    template<std::ranges::input_range Range, std::ranges::input_range OtherRange>
+    [[nodiscard]] auto zip(Range&& input, OtherRange&& other) && {
+        using OtherT = std::ranges::range_value_t<OtherRange>;
+        using ResultType = std::pair<Out, OtherT>;
+
+        std::vector<ResultType> result;
+
+        auto it = std::ranges::begin(input);
+        auto end = std::ranges::end(input);
+        auto other_it = std::ranges::begin(other);
+        auto other_end = std::ranges::end(other);
+
+        while (it != end && other_it != other_end) {
+            Out out_val;
+            if (operation_(*it++, out_val)) {
+                result.emplace_back(std::move(out_val), *other_it++);
+            }
+        }
+
+        return result;
+    }
+
+    // ── Join: inner join with another range on matching key (terminal) ──
+
+    template<std::ranges::input_range Range, std::ranges::input_range OtherRange, typename KeyFn>
+    [[nodiscard]] auto join(Range&& input, OtherRange&& other, KeyFn&& key_fn) && {
+        using OtherT = std::ranges::range_value_t<OtherRange>;
+        using Key = decltype(key_fn(std::declval<const Out&>()));
+        using ResultType = std::pair<Out, OtherT>;
+
+        // Build hash map from other range (hash join build phase)
+        std::unordered_multimap<Key, OtherT> other_map;
+        for (auto&& elem : other) {
+            other_map.emplace(key_fn(elem), elem);
+        }
+
+        std::vector<ResultType> result;
+
+        auto it = std::ranges::begin(input);
+        auto end = std::ranges::end(input);
+
+        while (it != end) {
+            Out out_val;
+            if (operation_(*it++, out_val)) {
+                auto key = key_fn(out_val);
+                auto range = other_map.equal_range(key);
+                for (auto map_it = range.first; map_it != range.second; ++map_it) {
+                    result.emplace_back(out_val, map_it->second);
+                }
+            }
+        }
+
+        return result;
+    }
+
     // ── First: returns optional<Out> - first matching item (terminal) ──
 
     template<std::ranges::input_range Range>
@@ -630,7 +702,7 @@ public:
     }
 
 private:
-    template<std::ranges::input_range Range>
+template<std::ranges::input_range Range>
     [[nodiscard]] DPB_HOT DPB_FLATTEN DPB_INLINE
     auto collect_sequential(Range&& input) {
         DPB_ZONE_SCOPED;
@@ -640,7 +712,7 @@ private:
             estimated = std::ranges::size(input);
         }
         
-        dpb::collect_buffer<Out> result(estimated);
+        dpb::collect_buffer<Out, Alloc> result(estimated, alloc_);
 
         auto start_time = std::chrono::high_resolution_clock::now();
 
@@ -651,7 +723,7 @@ private:
 
         if (!stats_) {
 #ifdef DPB_HAS_HIGHWAY
-            if constexpr (simd::simd_numeric<In> && simd::simd_numeric<Out>) {
+            if constexpr (simd::simd_numeric<In> && simd::simd_numeric<Out> && std::same_as<Alloc, std::allocator<Out>>) {
                 return simd_collect_sequential(std::move(*this), std::forward<Range>(input));
             }
 #endif
@@ -667,7 +739,7 @@ private:
             }
 
             const std::size_t result_size = result.size();
-            return ResultWithStats<Out>{
+            return ResultWithStats<Out, Alloc>{
                 std::move(result),
                 result_size, 0, 0, result_size,
                 std::chrono::nanoseconds{0}
@@ -698,7 +770,7 @@ private:
         stats_->total_duration_ns.fetch_add(elapsed, std::memory_order_relaxed);
 
         DPB_FRAME_MARK;
-        return ResultWithStats<Out>{
+        return ResultWithStats<Out, Alloc>{
             std::move(result),
             stats_->items_processed.load(),
             stats_->items_filtered.load(),
@@ -727,7 +799,11 @@ private:
             data_ptr = noncontiguous_buffer.data();
         }
 
-        std::vector<std::vector<Out>> local_results(num_threads);
+        std::vector<std::vector<Out, Alloc>> local_results;
+        local_results.reserve(num_threads);
+        for (std::size_t i = 0; i < num_threads; ++i) {
+            local_results.emplace_back(alloc_);
+        }
         auto& pool = global_thread_pool();
         std::vector<std::future<void>> futures;
         futures.reserve(num_threads);
@@ -781,7 +857,7 @@ private:
         // types the compiler reduces this to memmove. Future optimization:
         // resize_and_overwrite (C++23) + std::uninitialized_move would avoid
         // move-assign for non-trivial types, but requires broad compiler support.
-        std::vector<Out> merged;
+        std::vector<Out, Alloc> merged(alloc_);
         std::size_t total_out = 0;
         for (auto& v : local_results) total_out += v.size();
         merged.reserve(total_out);
@@ -794,7 +870,7 @@ private:
 
         DPB_FRAME_MARK;
         if (stats_) {
-            return ResultWithStats<Out>{
+            return ResultWithStats<Out, Alloc>{
                 std::move(merged),
                 stats_->items_processed.load(),
                 stats_->items_filtered.load(),
@@ -804,7 +880,7 @@ private:
             };
         }
         const std::size_t merged_size = merged.size();
-        return ResultWithStats<Out>{
+        return ResultWithStats<Out, Alloc>{
             std::move(merged),
             merged_size, 0, 0, total,
             std::chrono::nanoseconds{0}

@@ -65,6 +65,12 @@ if(DPB_ENABLE_TRACY)
             "-framework CoreFoundation"
         )
     endif()
+    if(WIN32)
+        target_link_libraries(tracy_client PUBLIC
+            dbghelp
+            ws2_32
+        )
+    endif()
     target_compile_definitions(tracy_client PUBLIC TRACY_ENABLE=ON)
 
     target_link_libraries(declarative_pipeline INTERFACE tracy_client)

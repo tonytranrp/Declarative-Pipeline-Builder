@@ -1,25 +1,94 @@
 {
-  "active_plan": "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/.sisyphus/plans/lib-integration.md",
-  "started_at": "2026-05-06T19:17:54.432Z",
+  "active_plan": "C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/.sisyphus/plans/dual-mode-simd-optimization.md",
+  "started_at": "2026-05-07T23:21:00.000Z",
   "session_ids": [
-    "ses_201465388ffevwHiSPW9pM1tN1",
-    "ses_200c975a2ffesdxMaAuBvVOwEN",
-    "ses_201374cd5ffeHYs58KsJrP2Xlj"
+    "ses_1fb6b8f39ffe0bU7WhgZCow7x6"
   ],
-  "plan_name": "lib-integration",
+  "plan_name": "dual-mode-simd-optimization",
   "session_origins": {
-    "ses_201465388ffevwHiSPW9pM1tN1": "direct",
-    "ses_200c975a2ffesdxMaAuBvVOwEN": "direct"
+    "ses_1fb6b8f39ffe0bU7WhgZCow7x6": "direct"
   },
   "task_sessions": {
     "todo:1": {
       "task_key": "todo:1",
       "task_label": "1",
-      "task_title": "Modernize CMakeLists.txt — LTO flags, vcpkg skeleton, option guards",
-      "session_id": "ses_2014370f7ffeuvLl4CV8ZiKqxT",
+      "task_title": "Verify `collect_parallel` merge efficiency + investigate thread pool",
+      "session_id": "ses_1fb3ebaa2ffec0aDS50GE7ZzCJ",
+      "agent": "Sisyphus-Junior",
+      "category": "deep",
+      "updated_at": "2026-05-07T23:53:56.588Z"
+    },
+    "todo:2": {
+      "task_key": "todo:2",
+      "task_label": "2",
+      "task_title": "Portable attribute macros (DPB_HOT, DPB_INLINE, DPB_LIKELY)",
+      "session_id": "ses_1fb1f1f4fffedRf8sc8nEm6t7R",
       "agent": "Sisyphus-Junior",
       "category": "quick",
-      "updated_at": "2026-05-06T19:21:04.699Z"
+      "updated_at": "2026-05-08T00:05:17.929Z"
+    },
+    "todo:3": {
+      "task_key": "todo:3",
+      "task_label": "3",
+      "task_title": "Reconcile `PipelineError`/`Result<T>` in concepts.hpp",
+      "session_id": "ses_1fb16b79cffevBbRrY9kkprqrM",
+      "agent": "Sisyphus-Junior",
+      "category": "quick",
+      "updated_at": "2026-05-08T00:09:25.874Z"
+    },
+    "todo:4": {
+      "task_key": "todo:4",
+      "task_label": "4",
+      "task_title": "SIMD type traits + eligibility detection",
+      "session_id": "ses_1fb144474ffe701XMiWoc9f1TD",
+      "agent": "Sisyphus-Junior",
+      "category": "deep",
+      "updated_at": "2026-05-08T00:18:06.882Z"
+    },
+    "todo:5": {
+      "task_key": "todo:5",
+      "task_label": "5",
+      "task_title": "CMake scalar-test + simd-test presets",
+      "session_id": "ses_1fb0c8e36ffeJ8qOJg8VVc4jk4",
+      "agent": "Sisyphus-Junior",
+      "category": "quick",
+      "updated_at": "2026-05-08T00:35:50.552Z"
+    },
+    "todo:6": {
+      "task_key": "todo:6",
+      "task_label": "6",
+      "task_title": "SIMD-accelerated Pipeline collect path",
+      "session_id": "ses_1faf41beaffeeH18I0Y1omDbjF",
+      "agent": "Sisyphus-Junior",
+      "category": "deep",
+      "updated_at": "2026-05-08T01:09:06.295Z"
+    },
+    "todo:7": {
+      "task_key": "todo:7",
+      "task_label": "7",
+      "task_title": "Runtime CPU detection + Highway dispatch",
+      "session_id": "ses_1fadbeab3ffeM9QHQyVc9yQeT3",
+      "agent": "Sisyphus-Junior",
+      "category": "deep",
+      "updated_at": "2026-05-08T01:18:01.169Z"
+    },
+    "todo:8": {
+      "task_key": "todo:8",
+      "task_label": "8",
+      "task_title": "Custom allocator template parameter",
+      "session_id": "ses_1fad4b6fcffeT5mL9q3lxT1Zr8",
+      "agent": "Sisyphus-Junior",
+      "category": "unspecified-high",
+      "updated_at": "2026-05-08T01:32:23.785Z"
+    },
+    "todo:9": {
+      "task_key": "todo:9",
+      "task_label": "9",
+      "task_title": "New operations: zip + join",
+      "session_id": "ses_1fac7e307ffewRRWL2mjQGcK1h",
+      "agent": "Sisyphus-Junior",
+      "category": "unspecified-high",
+      "updated_at": "2026-05-08T03:07:04.060Z"
     }
   },
   "agent": "atlas"

@@ -1,0 +1,9 @@
+C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\tests\test_pipeline.cpp;C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\build\task1\pipeline_tests.dir\Release\test_pipeline.obj
+C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\tests\test_async_pipeline.cpp;C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\build\task1\pipeline_tests.dir\Release\test_async_pipeline.obj
+C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\tests\test_parallel_pipeline.cpp;C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\build\task1\pipeline_tests.dir\Release\test_parallel_pipeline.obj
+C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\tests\test_integration.cpp;C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\build\task1\pipeline_tests.dir\Release\test_integration.obj
+C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\tests\test_new_features.cpp;C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\build\task1\pipeline_tests.dir\Release\test_new_features.obj
+C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\tests\test_perf_monitor.cpp;C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\build\task1\pipeline_tests.dir\Release\test_perf_monitor.obj
+C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\tests\test_simd_traits.cpp;C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\build\task1\pipeline_tests.dir\Release\test_simd_traits.obj
+C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\tests\test_simd_pipeline.cpp;C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\build\task1\pipeline_tests.dir\Release\test_simd_pipeline.obj
+C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\tests\test_cpu_detect.cpp;C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\build\task1\pipeline_tests.dir\Release\test_cpu_detect.obj

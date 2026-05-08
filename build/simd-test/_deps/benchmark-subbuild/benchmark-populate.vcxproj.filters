@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\build\simd-test\_deps\benchmark-subbuild\CMakeFiles\c079d965fa4ac7c466ed9a006adbe60b\benchmark-populate-mkdir.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\build\simd-test\_deps\benchmark-subbuild\CMakeFiles\c079d965fa4ac7c466ed9a006adbe60b\benchmark-populate-download.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\build\simd-test\_deps\benchmark-subbuild\CMakeFiles\c079d965fa4ac7c466ed9a006adbe60b\benchmark-populate-update.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\build\simd-test\_deps\benchmark-subbuild\CMakeFiles\c079d965fa4ac7c466ed9a006adbe60b\benchmark-populate-patch.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\build\simd-test\_deps\benchmark-subbuild\CMakeFiles\c079d965fa4ac7c466ed9a006adbe60b\benchmark-populate-configure.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\build\simd-test\_deps\benchmark-subbuild\CMakeFiles\c079d965fa4ac7c466ed9a006adbe60b\benchmark-populate-build.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\build\simd-test\_deps\benchmark-subbuild\CMakeFiles\c079d965fa4ac7c466ed9a006adbe60b\benchmark-populate-install.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\build\simd-test\_deps\benchmark-subbuild\CMakeFiles\c079d965fa4ac7c466ed9a006adbe60b\benchmark-populate-test.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\build\simd-test\_deps\benchmark-subbuild\CMakeFiles\950bf85c88955595edb8298d2eb347cd\benchmark-populate-complete.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\build\simd-test\_deps\benchmark-subbuild\CMakeFiles\88c48c0736418b461638233360ade992\benchmark-populate.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\build\simd-test\_deps\benchmark-subbuild\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\build\simd-test\_deps\benchmark-subbuild\CMakeFiles\benchmark-populate" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{F5ABB0F7-2E45-365C-AA0E-7AC5213BCFF6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

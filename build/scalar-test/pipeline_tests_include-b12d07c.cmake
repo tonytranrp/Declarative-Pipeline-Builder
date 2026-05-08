@@ -1,0 +1,5 @@
+if(EXISTS "C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/scalar-test/pipeline_tests_tests-b12d07c.cmake")
+  include("C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/scalar-test/pipeline_tests_tests-b12d07c.cmake")
+else()
+  add_test(pipeline_tests_NOT_BUILT-b12d07c pipeline_tests_NOT_BUILT-b12d07c)
+endif()

@@ -1,7 +1,0 @@
-{
-	"InstallScripts" : 
-	[
-		"/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/simd-test/_deps/catch2-subbuild/cmake_install.cmake"
-	],
-	"Parallel" : false
-}

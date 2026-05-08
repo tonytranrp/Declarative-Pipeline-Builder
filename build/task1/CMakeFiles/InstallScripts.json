@@ -1,0 +1,11 @@
+{
+	"InstallScripts" : 
+	[
+		"C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/task1/cmake_install.cmake",
+		"C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/task1/_deps/catch2-build/cmake_install.cmake",
+		"C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/task1/_deps/catch2-build/src/cmake_install.cmake",
+		"C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/task1/_deps/benchmark-build/cmake_install.cmake",
+		"C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/task1/_deps/benchmark-build/src/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

@@ -1,7 +1,7 @@
 {
 	"InstallScripts" : 
 	[
-		"/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/default/_deps/catch2-subbuild/cmake_install.cmake"
+		"C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/default/_deps/catch2-subbuild/cmake_install.cmake"
 	],
 	"Parallel" : false
 }

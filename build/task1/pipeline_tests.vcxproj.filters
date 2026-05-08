@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\tests\test_pipeline.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\tests\test_async_pipeline.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\tests\test_parallel_pipeline.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\tests\test_integration.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\tests\test_new_features.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\tests\test_perf_monitor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\tests\test_simd_traits.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\tests\test_simd_pipeline.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\tests\test_cpu_detect.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\tests\test_zip_join.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{99A08131-9CED-330A-8232-817401A29186}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

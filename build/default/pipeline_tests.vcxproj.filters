@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\tests\test_pipeline.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\tests\test_async_pipeline.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\tests\test_parallel_pipeline.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\tests\test_integration.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\tests\test_new_features.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\tests\test_perf_monitor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\tests\test_simd_traits.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{B3E9ECE1-4ACF-3C48-BCB8-9DCDBC94EFDE}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

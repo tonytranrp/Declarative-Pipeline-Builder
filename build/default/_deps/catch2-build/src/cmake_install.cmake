@@ -1,8 +1,8 @@
-# Install script for directory: /Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/default/_deps/catch2-src/src
+# Install script for directory: C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/default/_deps/catch2-src/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/usr/local")
+  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/DeclarativePipelineBuilder")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -32,14 +32,9 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "FALSE")
 endif()
 
-# Set path to fallback-tool for dependency-resolution.
-if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "/usr/bin/objdump")
-endif()
-
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/Users/tonytran/Documents/GitHub/Declarative-Pipeline-Builder/build/default/_deps/catch2-build/src/install_local_manifest.txt"
+  file(WRITE "C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/default/_deps/catch2-build/src/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

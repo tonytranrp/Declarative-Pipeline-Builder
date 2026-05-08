@@ -1,0 +1,13 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/CMake/share/cmake-4.3/Modules/CheckCXXCompilerFlag.cmake
+C:/Program Files/CMake/share/cmake-4.3/Modules/CheckCXXSourceCompiles.cmake
+C:/Program Files/CMake/share/cmake-4.3/Modules/CheckIncludeFileCXX.cmake
+C:/Program Files/CMake/share/cmake-4.3/Modules/CheckLibraryExists.cmake
+C:/Program Files/CMake/share/cmake-4.3/Modules/FindGit.cmake
+C:/Program Files/CMake/share/cmake-4.3/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files/CMake/share/cmake-4.3/Modules/FindPackageMessage.cmake
+C:/Program Files/CMake/share/cmake-4.3/Modules/FindThreads.cmake
+C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/task1/_deps/benchmark-src/CMakeLists.txt
+C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/task1/_deps/benchmark-src/cmake/AddCXXCompilerFlag.cmake
+C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/task1/_deps/benchmark-src/cmake/CXXFeatureCheck.cmake
+C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/task1/_deps/benchmark-src/cmake/GetGitVersion.cmake

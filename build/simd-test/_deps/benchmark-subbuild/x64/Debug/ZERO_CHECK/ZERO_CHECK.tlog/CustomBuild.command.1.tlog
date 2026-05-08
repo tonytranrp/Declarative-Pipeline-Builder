@@ -1,0 +1,10 @@
+^C:\USERS\TONYT\DOCUMENTS\GITHUB\DECLARATIVE-PIPELINE-BUILDER\BUILD\SIMD-TEST\_DEPS\BENCHMARK-SUBBUILD\CMAKEFILES\88C48C0736418B461638233360ADE992\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/simd-test/_deps/benchmark-subbuild -BC:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/simd-test/_deps/benchmark-subbuild --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/simd-test/_deps/benchmark-subbuild/benchmark-populate.slnx
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

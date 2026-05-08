@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/test-build/_deps/catch2-subbuild/CMakeFiles/catch2-populate"
+		},
+		{
+			"file" : "C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/test-build/_deps/catch2-subbuild/CMakeFiles/3132ca8ece14f4d51fc5df904bd61ee5/catch2-populate.rule"
+		},
+		{
+			"file" : "C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/test-build/_deps/catch2-subbuild/CMakeFiles/7f1d582b304262a46d6ff42d84e2c62d/catch2-populate-complete.rule"
+		},
+		{
+			"file" : "C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/test-build/_deps/catch2-subbuild/CMakeFiles/7cadca5fe72a1734c3c439a429145f58/catch2-populate-build.rule"
+		},
+		{
+			"file" : "C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/test-build/_deps/catch2-subbuild/CMakeFiles/7cadca5fe72a1734c3c439a429145f58/catch2-populate-configure.rule"
+		},
+		{
+			"file" : "C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/test-build/_deps/catch2-subbuild/CMakeFiles/7cadca5fe72a1734c3c439a429145f58/catch2-populate-download.rule"
+		},
+		{
+			"file" : "C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/test-build/_deps/catch2-subbuild/CMakeFiles/7cadca5fe72a1734c3c439a429145f58/catch2-populate-install.rule"
+		},
+		{
+			"file" : "C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/test-build/_deps/catch2-subbuild/CMakeFiles/7cadca5fe72a1734c3c439a429145f58/catch2-populate-mkdir.rule"
+		},
+		{
+			"file" : "C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/test-build/_deps/catch2-subbuild/CMakeFiles/7cadca5fe72a1734c3c439a429145f58/catch2-populate-patch.rule"
+		},
+		{
+			"file" : "C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/test-build/_deps/catch2-subbuild/CMakeFiles/7cadca5fe72a1734c3c439a429145f58/catch2-populate-test.rule"
+		},
+		{
+			"file" : "C:/Users/Tonyt/Documents/GitHub/Declarative-Pipeline-Builder/build/test-build/_deps/catch2-subbuild/CMakeFiles/7cadca5fe72a1734c3c439a429145f58/catch2-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"catch2-populate"
+		],
+		"name" : "catch2-populate"
+	}
+}

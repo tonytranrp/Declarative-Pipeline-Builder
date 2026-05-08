@@ -68,6 +68,7 @@ add_executable(pipeline_tests
         tests/test_simd_traits.cpp
         tests/test_simd_pipeline.cpp
         tests/test_cpu_detect.cpp
+        tests/test_zip_join.cpp
     )
     target_link_libraries(pipeline_tests PRIVATE Catch2::Catch2WithMain declarative_pipeline fast_pipeline)
     target_compile_features(pipeline_tests PRIVATE cxx_std_23)

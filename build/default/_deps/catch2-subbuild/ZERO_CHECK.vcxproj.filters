@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Tonyt\Documents\GitHub\Declarative-Pipeline-Builder\build\default\_deps\catch2-subbuild\CMakeFiles\021f7d960e3c94190ae52f06fabdd4e3\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{E1C26ADE-4BB5-3597-8DE0-86E0E5BA2607}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

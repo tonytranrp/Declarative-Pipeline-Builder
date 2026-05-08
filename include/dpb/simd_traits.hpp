@@ -77,8 +77,8 @@ inline constexpr bool simd_eligible_predicate_v =
 template<typename T>
 struct simd_eligible_chain : std::false_type {};
 
-template<typename In, typename Out, typename OpFunc>
-struct simd_eligible_chain<Pipeline<In, Out, OpFunc>>
+template<typename In, typename Out, typename OpFunc, typename Alloc>
+struct simd_eligible_chain<Pipeline<In, Out, OpFunc, Alloc>>
     : std::bool_constant<
         simd::simd_numeric<In> && simd::simd_numeric<Out>
     > {};
