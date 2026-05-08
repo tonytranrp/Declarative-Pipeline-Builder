@@ -58,15 +58,30 @@ if(DPB_BUILD_TESTS)
     )
     FetchContent_MakeAvailable(Catch2)
 
-    add_executable(pipeline_tests
+add_executable(pipeline_tests
         tests/test_pipeline.cpp
         tests/test_async_pipeline.cpp
         tests/test_parallel_pipeline.cpp
         tests/test_integration.cpp
         tests/test_new_features.cpp
+        tests/test_perf_monitor.cpp
+        tests/test_simd_traits.cpp
     )
     target_link_libraries(pipeline_tests PRIVATE Catch2::Catch2WithMain declarative_pipeline fast_pipeline)
     target_compile_features(pipeline_tests PRIVATE cxx_std_23)
+
+    # Wire DPB_HAS_HIGHWAY when SIMD is enabled (code checks this define)
+    if(DPB_ENABLE_SIMD)
+        target_compile_definitions(pipeline_tests PRIVATE DPB_HAS_HIGHWAY)
+    endif()
+
+    # Size optimization for SIMD builds (GCC/Clang only)
+    target_compile_options(pipeline_tests PRIVATE
+        $<$<CXX_COMPILER_ID:GNU,Clang>:-Os -flto=thin>
+    )
+    target_link_options(pipeline_tests PRIVATE
+        $<$<CXX_COMPILER_ID:GNU,Clang>:-Wl,--gc-sections>
+    )
 
     include(Catch)
     catch_discover_tests(pipeline_tests)

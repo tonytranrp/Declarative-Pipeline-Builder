@@ -7,6 +7,7 @@
 #include "dpb/tracy_config.hpp"
 #include "dpb/memory.hpp"
 #include "dpb/pipeline_erase.hpp"
+#include "dpb/portable_attrs.hpp"
 
 #include <vector>
 #include <memory>
@@ -108,7 +109,7 @@ class Pipeline {
     std::shared_ptr<PipelineStats> stats_;
     std::shared_ptr<Profiler> profiler_;
     ExecutionPolicy exec_policy_ = ExecutionPolicy::Sequential;
-    std::size_t parallelism_ = std::thread::hardware_concurrency();
+    std::size_t parallelism_ = std::thread::hardware_concurrency();  // chunk count, not pool worker count
 
 public:
     template<typename F>
@@ -149,7 +150,12 @@ public:
     [[nodiscard]] const PipelineStats* stats() const noexcept { return stats_.get(); }
     [[nodiscard]] const Profiler* profiler() const noexcept { return profiler_.get(); }
 
-    // Enable parallel execution
+    // Enable parallel execution.
+    // Note: parallelism_ controls the number of data chunks (and thus effective
+    // parallelism), not the thread pool size. The global thread pool has its own
+    // fixed worker count (default: hardware_concurrency). Tasks are distributed
+    // round-robin across all pool workers — if chunk count < worker count, some
+    // workers idle; if chunk count > worker count, work-stealing balances load.
     [[nodiscard]] auto parallel(std::size_t threads = std::thread::hardware_concurrency(),
                                  ExecutionPolicy policy = ExecutionPolicy::ParallelPreserveOrder) && noexcept {
         parallelism_ = (threads == 0 ? 1 : threads);
@@ -164,7 +170,7 @@ public:
 
     // Fused filter: operation + predicate compose into single lambda
     template<typename Fn>
-    [[nodiscard]] [[gnu::hot]] auto filter(Fn&& fn) && {
+    [[nodiscard]] DPB_HOT auto filter(Fn&& fn) && {
         auto fused = [op = std::move(operation_),
                       pred = std::forward<Fn>(fn)](const In& x, Out& out) noexcept(noexcept(pred(out))) -> bool {
             return op(x, out) && pred(out);
@@ -177,13 +183,13 @@ public:
 
     // Fused transform: operation + transform compose into single lambda, no intermediate allocation
     template<typename Fn>
-    [[nodiscard]] [[gnu::hot]] auto transform(Fn&& fn) && {
+    [[nodiscard]] DPB_HOT auto transform(Fn&& fn) && {
         using NewOut = decltype(fn(std::declval<const Out&>()));
 
         auto fused = [op = std::move(operation_),
                       tfn = std::forward<Fn>(fn)](const In& x, NewOut& out) noexcept(noexcept(tfn(std::declval<Out>()))) -> bool {
             Out temp;
-            if (!op(x, temp)) [[unlikely]] return false;
+            if (DPB_UNLIKELY(!op(x, temp))) return false;
             out = tfn(std::move(temp));
             return true;
         };
@@ -616,7 +622,7 @@ public:
 
 private:
     template<std::ranges::input_range Range>
-    [[nodiscard]] [[gnu::hot]] [[gnu::flatten]] [[gnu::always_inline]]
+    [[nodiscard]] DPB_HOT DPB_FLATTEN DPB_INLINE
     auto collect_sequential(Range&& input) {
         DPB_ZONE_SCOPED;
         size_t estimated = 0;
@@ -634,6 +640,25 @@ private:
         auto it = std::ranges::begin(input);
         auto end = std::ranges::end(input);
 
+        if (!stats_) {
+            while (it != end) {
+                auto&& in_val = *it;
+                ++it;
+
+                Out out_val;
+                if (DPB_LIKELY(operation_(in_val, out_val))) {
+                    result.emplace_back(std::move(out_val));
+                }
+            }
+
+            const std::size_t result_size = result.size();
+            return ResultWithStats<Out>{
+                std::move(result),
+                result_size, 0, 0, result_size,
+                std::chrono::nanoseconds{0}
+            };
+        }
+
         while (it != end) {
             auto&& in_val = *it;
             ++it;
@@ -641,7 +666,7 @@ private:
             Out out_val;
             bool passed = operation_(in_val, out_val);
 
-            if (passed) [[likely]] {
+            if (DPB_LIKELY(passed)) {
                 result.emplace_back(std::move(out_val));
             }
 
@@ -649,32 +674,22 @@ private:
             filtered_count += !passed;
         }
 
-        if (stats_) {
-            auto end_time = std::chrono::high_resolution_clock::now();
-            auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end_time - start_time).count();
+        auto end_time = std::chrono::high_resolution_clock::now();
+        auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end_time - start_time).count();
 
-            stats_->items_processed.fetch_add(processed_count, std::memory_order_relaxed);
-            stats_->items_filtered.fetch_add(filtered_count, std::memory_order_relaxed);
-            stats_->total_items.fetch_add(processed_count + filtered_count, std::memory_order_relaxed);
-            stats_->total_duration_ns.fetch_add(elapsed, std::memory_order_relaxed);
-        }
+        stats_->items_processed.fetch_add(processed_count, std::memory_order_relaxed);
+        stats_->items_filtered.fetch_add(filtered_count, std::memory_order_relaxed);
+        stats_->total_items.fetch_add(processed_count + filtered_count, std::memory_order_relaxed);
+        stats_->total_duration_ns.fetch_add(elapsed, std::memory_order_relaxed);
 
         DPB_FRAME_MARK;
-        if (stats_) {
-            return ResultWithStats<Out>{
-                std::move(result),
-                stats_->items_processed.load(),
-                stats_->items_filtered.load(),
-                stats_->errors.load(),
-                stats_->total_items.load(),
-                std::chrono::nanoseconds{stats_->total_duration_ns.load()}
-            };
-        }
-        const std::size_t result_size = result.size();
         return ResultWithStats<Out>{
             std::move(result),
-            result_size, 0, 0, result_size,
-            std::chrono::nanoseconds{0}
+            stats_->items_processed.load(),
+            stats_->items_filtered.load(),
+            stats_->errors.load(),
+            stats_->total_items.load(),
+            std::chrono::nanoseconds{stats_->total_duration_ns.load()}
         };
     }
 
@@ -721,7 +736,7 @@ private:
 
                 for (auto* p = chunk_begin; p != chunk_end; ++p) {
                     Out out_val;
-                    if (operation_(*p, out_val)) [[likely]] {
+                    if (DPB_LIKELY(operation_(*p, out_val))) {
                         local_results[t].emplace_back(std::move(out_val));
                         ++local_processed;
                     } else {
@@ -745,7 +760,12 @@ private:
             stats_->total_duration_ns.fetch_add(elapsed, std::memory_order_relaxed);
         }
 
-        // Merge thread-local results
+        // Merge thread-local results — O(n), single pass over all sub-results.
+        // reserve(total_out) prevents reallocation; insert(make_move_iterator)
+        // uses move semantics for optimal bulk transfer. For trivially copyable
+        // types the compiler reduces this to memmove. Future optimization:
+        // resize_and_overwrite (C++23) + std::uninitialized_move would avoid
+        // move-assign for non-trivial types, but requires broad compiler support.
         std::vector<Out> merged;
         std::size_t total_out = 0;
         for (auto& v : local_results) total_out += v.size();

@@ -147,6 +147,9 @@ class ThreadPool {
     }
 
 public:
+    // ThreadPool creates a fixed set of worker threads. The worker count is
+    // independent of per-pipeline parallelism_ — see Pipeline::parallel() for
+    // how chunk granularity vs pool workers interact.
     explicit ThreadPool(std::size_t num_threads = std::thread::hardware_concurrency()) {
         num_threads = (num_threads == 0) ? 1 : num_threads;
         for (std::size_t i = 0; i < num_threads; ++i) {
@@ -184,6 +187,12 @@ public:
     ThreadPool(ThreadPool&&) = delete;
     ThreadPool& operator=(ThreadPool&&) = delete;
 
+    // Enqueue a task — distributes round-robin across ALL workers.
+    // Note: this uses workers_.size() (the pool's fixed worker count), NOT any
+    // per-pipeline parallelism_ setting. The Pipeline::parallelism_ field controls
+    // chunk granularity (how many tasks are submitted), while this method
+    // distributes those tasks across all available workers. Work-stealing
+    // automatically balances load when task count ≠ worker count.
     template<typename F, typename... Args>
     auto enqueue(F&& f, Args&&... args) -> std::future<decltype(f(args...))> {
         using return_type = decltype(f(args...));

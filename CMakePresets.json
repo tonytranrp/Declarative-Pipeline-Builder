@@ -49,6 +49,31 @@
         "DPB_ENABLE_FMT": "ON",
         "DPB_ENABLE_TRACY": "ON"
       }
+    },
+    {
+      "name": "scalar-test",
+      "displayName": "Scalar tests (no SIMD)",
+      "inherits": "default",
+      "binaryDir": "${sourceDir}/build/scalar-test",
+      "cacheVariables": {
+        "DPB_BUILD_TESTS": "ON",
+        "DPB_BUILD_BENCHMARKS": "OFF",
+        "DPB_BUILD_EXAMPLES": "OFF",
+        "DPB_ENABLE_SIMD": "OFF"
+      }
+    },
+    {
+      "name": "simd-test",
+      "displayName": "SIMD tests with Highway",
+      "inherits": "default",
+      "binaryDir": "${sourceDir}/build/simd-test",
+      "cacheVariables": {
+        "DPB_BUILD_TESTS": "ON",
+        "DPB_BUILD_BENCHMARKS": "ON",
+        "DPB_BUILD_EXAMPLES": "OFF",
+        "DPB_ENABLE_SIMD": "ON",
+        "CMAKE_BUILD_TYPE": "Release"
+      }
     }
   ]
 }
