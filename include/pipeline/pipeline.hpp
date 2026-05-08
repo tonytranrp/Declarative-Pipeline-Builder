@@ -9,6 +9,10 @@
 #include "dpb/pipeline_erase.hpp"
 #include "dpb/portable_attrs.hpp"
 
+#ifdef DPB_HAS_HIGHWAY
+#include "dpb/simd.hpp"
+#endif
+
 #include <vector>
 #include <memory>
 #include <ranges>
@@ -110,6 +114,11 @@ class Pipeline {
     std::shared_ptr<Profiler> profiler_;
     ExecutionPolicy exec_policy_ = ExecutionPolicy::Sequential;
     std::size_t parallelism_ = std::thread::hardware_concurrency();  // chunk count, not pool worker count
+
+#ifdef DPB_HAS_HIGHWAY
+    template<typename I, typename O, typename F, std::ranges::input_range R>
+    friend auto simd_collect_sequential(Pipeline<I, O, F>&& pipe, R&& input) -> ResultWithStats<O>;
+#endif
 
 public:
     template<typename F>
@@ -641,6 +650,12 @@ private:
         auto end = std::ranges::end(input);
 
         if (!stats_) {
+#ifdef DPB_HAS_HIGHWAY
+            if constexpr (simd::simd_numeric<In> && simd::simd_numeric<Out>) {
+                return simd_collect_sequential(std::move(*this), std::forward<Range>(input));
+            }
+#endif
+
             while (it != end) {
                 auto&& in_val = *it;
                 ++it;
@@ -806,3 +821,7 @@ template<std::ranges::input_range Range>
 }
 
 } // namespace dpb
+
+#ifdef DPB_HAS_HIGHWAY
+#include "pipeline/simd_collect.hpp"
+#endif
